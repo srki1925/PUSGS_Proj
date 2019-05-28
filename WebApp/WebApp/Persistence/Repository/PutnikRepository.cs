@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApp.Models;
+using WebApp.Models.Users;
 
 namespace WebApp.Persistence.Repository
 {

@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using WebApp.Models;
+using WebApp.Models.Users;
 
 namespace WebApp.Persistence
 {
@@ -21,6 +22,8 @@ namespace WebApp.Persistence
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<WebApp.Models.Putnik> Putniks { get; set; }
+        public System.Data.Entity.DbSet<Putnik> Putniks { get; set; }
+
+        public System.Data.Entity.DbSet<WebApp.Models.Users.Administrator> Administrators { get; set; }
     }
 }

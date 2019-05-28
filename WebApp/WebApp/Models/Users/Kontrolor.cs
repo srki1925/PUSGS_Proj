@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using WebApp.Models.Enums;
 
-namespace WebApp.Models
+namespace WebApp.Models.Users
 {
-    public class Administrator:Korisnik
+    public class Kontrolor:Korisnik
     {
-        public Administrator()
+        public Kontrolor()
         {
-            UserType = UserType.Administrator;
+            UserType = UserType.Kotrolor;
         }
     }
 }

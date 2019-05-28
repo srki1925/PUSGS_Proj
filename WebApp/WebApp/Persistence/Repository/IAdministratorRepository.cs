@@ -7,9 +7,7 @@ using WebApp.Models.Users;
 
 namespace WebApp.Persistence.Repository
 {
-    public interface IPutnikRepository:IRepository<Putnik,int>
+    public interface IAdministratorRepository:IRepository<Administrator,int>
     {
-        void UpdatePhoto(int id, string imageUri);   
     }
-    
 }

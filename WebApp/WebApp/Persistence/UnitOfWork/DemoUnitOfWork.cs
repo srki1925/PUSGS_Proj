@@ -19,6 +19,7 @@ namespace WebApp.Persistence.UnitOfWork
 
         [Dependency]
         public IPutnikRepository PutnikServices { get; set; }
+        public IAdministratorRepository AdministratorServices { get; set; }
 
         public int Complete()
         {

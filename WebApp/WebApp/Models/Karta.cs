@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using WebApp.Models.Enums;
+using WebApp.Models.Users;
 
 namespace WebApp.Models
 {
@@ -12,7 +13,7 @@ namespace WebApp.Models
     {
         public Karta()
         {
-
+           
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

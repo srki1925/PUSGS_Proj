@@ -8,56 +8,54 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebApp.Models;
 using WebApp.Models.Users;
 using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
-    public class PutniksController : ApiController
+    public class AdministratorsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private IUnitOfWork unitOfWork { get; set; }
-        public PutniksController(IUnitOfWork unitOfWork)
+        private IUnitOfWork unitOfWork;
+        public AdministratorsController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-        // GET: api/Putniks
-        public IQueryable<Putnik> GetPutniks()
+        // GET: api/Administrators
+        public IQueryable<Administrator> GetAdministrators()
         {
-            
-            return db.Putniks;
+            return db.Administrators;
         }
 
-        // GET: api/Putniks/5
-        [ResponseType(typeof(Putnik))]
-        public IHttpActionResult GetPutnik(int id)
+        // GET: api/Administrators/5
+        [ResponseType(typeof(Administrator))]
+        public IHttpActionResult GetAdministrator(int id)
         {
-            Putnik putnik = db.Putniks.Find(id);
-            if (putnik == null)
+            Administrator administrator = db.Administrators.Find(id);
+            if (administrator == null)
             {
                 return NotFound();
             }
 
-            return Ok(putnik);
+            return Ok(administrator);
         }
 
-        // PUT: api/Putniks/5
+        // PUT: api/Administrators/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPutnik(int id, Putnik putnik)
+        public IHttpActionResult PutAdministrator(int id, Administrator administrator)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != putnik.Id)
+            if (id != administrator.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(putnik).State = EntityState.Modified;
+            db.Entry(administrator).State = EntityState.Modified;
 
             try
             {
@@ -65,7 +63,7 @@ namespace WebApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PutnikExists(id))
+                if (!AdministratorExists(id))
                 {
                     return NotFound();
                 }
@@ -78,35 +76,35 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Putniks
-        [ResponseType(typeof(Putnik))]
-        public IHttpActionResult PostPutnik(Putnik putnik)
+        // POST: api/Administrators
+        [ResponseType(typeof(Administrator))]
+        public IHttpActionResult PostAdministrator(Administrator administrator)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Putniks.Add(putnik);
+            db.Administrators.Add(administrator);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = putnik.Id }, putnik);
+            return CreatedAtRoute("DefaultApi", new { id = administrator.Id }, administrator);
         }
 
-        // DELETE: api/Putniks/5
-        [ResponseType(typeof(Putnik))]
-        public IHttpActionResult DeletePutnik(int id)
+        // DELETE: api/Administrators/5
+        [ResponseType(typeof(Administrator))]
+        public IHttpActionResult DeleteAdministrator(int id)
         {
-            Putnik putnik = db.Putniks.Find(id);
-            if (putnik == null)
+            Administrator administrator = db.Administrators.Find(id);
+            if (administrator == null)
             {
                 return NotFound();
             }
 
-            db.Putniks.Remove(putnik);
+            db.Administrators.Remove(administrator);
             db.SaveChanges();
 
-            return Ok(putnik);
+            return Ok(administrator);
         }
 
         protected override void Dispose(bool disposing)
@@ -118,9 +116,9 @@ namespace WebApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PutnikExists(int id)
+        private bool AdministratorExists(int id)
         {
-            return db.Putniks.Count(e => e.Id == id) > 0;
+            return db.Administrators.Count(e => e.Id == id) > 0;
         }
     }
 }

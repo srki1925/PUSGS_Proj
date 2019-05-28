@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Web;
 using WebApp.Models.Enums;
 
-namespace WebApp.Models
+namespace WebApp.Models.Users
 {
 
     public class Putnik:Korisnik
@@ -15,7 +15,6 @@ namespace WebApp.Models
             UserType = UserType.Putnik;
         }
         public PutnikType PutnikType { get; set; }
-        public bool Active { get; set; }
         public string ImageUri { get; set; }
     }
 }

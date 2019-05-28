@@ -10,6 +10,7 @@ namespace WebApp.Persistence.UnitOfWork
     public interface IUnitOfWork : IDisposable
     {
         IPutnikRepository PutnikServices { get; set; }
+        IAdministratorRepository AdministratorServices { get; set; }
         int Complete();
     }
 }
