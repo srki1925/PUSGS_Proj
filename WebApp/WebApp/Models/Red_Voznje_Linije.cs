@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Web;
-using WebApp.Models.Enums;
 
 namespace WebApp.Models
 {
-
-    public class Linija
+    public class Red_Voznje_Linije
     {
-        public Linija()
+        public Red_Voznje_Linije()
         {
 
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         public int Id { get; set; }
-        public string Name { get; set; }
-        public LineType LineType { get; set; }
-        public bool Active { get; set; }
+
+        [ForeignKey("Red_Voznje")]
+        public int? Red_Voznje_Id { get; set; }
+        public Red_Voznje Red_Voznje { get; set; }
+        [ForeignKey("Linija")]
+        public int? Linija_Id { get; set; }
+        public Linija Linija { get; set; }
     }
 }

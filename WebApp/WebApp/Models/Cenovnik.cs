@@ -19,6 +19,6 @@ namespace WebApp.Models
         public DateTime VaziOd { get; set; }
         public DateTime VaziDo { get; set; }
 
-
+        public bool Active { get; set; }
     }
 }

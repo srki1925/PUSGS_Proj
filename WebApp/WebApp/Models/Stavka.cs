@@ -33,5 +33,6 @@ namespace WebApp.Models
         [ForeignKey("Godisnja")]
         public int? Godisnja_Id { get; set; }
         public Karta Godisnja { get; set; }
+        public bool Active { get; set; }
     }
 }

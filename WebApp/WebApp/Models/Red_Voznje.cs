@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using WebApp.Models.Enums;
 
 namespace WebApp.Models
 {
@@ -17,10 +18,7 @@ namespace WebApp.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [ForeignKey("Linija")]
-        public int? Linija_Id { get; set; }
-        public Linija Linija { get; set; }
-        public DateTime Datum { get; set; }
-        //sad kako polaske da uradimo treba odakle i kamo tj kada krece u kom smeru
+        public DayType DayType { get; set; }
+        public bool Active { get; set; }
     }
 }

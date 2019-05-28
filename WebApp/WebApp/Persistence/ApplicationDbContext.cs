@@ -20,5 +20,7 @@ namespace WebApp.Persistence
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WebApp.Models.Putnik> Putniks { get; set; }
     }
 }

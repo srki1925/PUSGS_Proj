@@ -251,6 +251,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PutniksController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -267,6 +268,8 @@
     <Compile Include="Models\Autobus.cs" />
     <Compile Include="Models\Cenovnik.cs" />
     <Compile Include="Models\Cenovnik_Stavka.cs" />
+    <Compile Include="Models\Enums\DayType.cs" />
+    <Compile Include="Models\Enums\LineType.cs" />
     <Compile Include="Models\Enums\PutnikType.cs" />
     <Compile Include="Models\Enums\TicketType.cs" />
     <Compile Include="Models\Enums\UserType.cs" />
@@ -274,14 +277,18 @@
     <Compile Include="Models\Kontrolor.cs" />
     <Compile Include="Models\Korisnik.cs" />
     <Compile Include="Models\Linija.cs" />
+    <Compile Include="Models\Polazak.cs" />
     <Compile Include="Models\Red_Voznje.cs" />
+    <Compile Include="Models\Red_Voznje_Linije.cs" />
     <Compile Include="Models\Stanica_Autobus.cs" />
     <Compile Include="Models\Linija_Stanica.cs" />
     <Compile Include="Models\Putnik.cs" />
     <Compile Include="Models\Stanica.cs" />
     <Compile Include="Models\Stavka.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Persistence\Repository\IPutnikRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
+    <Compile Include="Persistence\Repository\PutnikRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
     <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork\IUnitOfWork.cs" />
@@ -352,6 +359,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

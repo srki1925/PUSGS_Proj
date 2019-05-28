@@ -17,6 +17,9 @@ namespace WebApp.Persistence.UnitOfWork
             _context = context;
         }
 
+        [Dependency]
+        public IPutnikRepository PutnikServices { get; set; }
+
         public int Complete()
         {
             return _context.SaveChanges();

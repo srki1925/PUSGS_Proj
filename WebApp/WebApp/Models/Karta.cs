@@ -24,5 +24,6 @@ namespace WebApp.Models
         [ForeignKey("Korisnik")]
         public int? Korisnik_Id { get; set; } // korisnik moze da kupi 0 * karata a karta pripada 0 1 => korisnik id se nalazi u karti
         public Korisnik Korisnik { get; set; }
+        public bool Active { get; set; }
     }
 }

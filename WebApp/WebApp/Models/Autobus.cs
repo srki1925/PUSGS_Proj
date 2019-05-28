@@ -23,5 +23,6 @@ namespace WebApp.Models
         [ForeignKey("Linija")]
         public int? Linija_Id { get; set; }
         public Linija Linija { get; set; }
+        public bool Active { get; set; }
     }
 }
