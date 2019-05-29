@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905290740594_First.cs" />
+    <Compile Include="Migrations\201905290740594_First.Designer.cs">
+      <DependentUpon>201905290740594_First.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -289,8 +293,10 @@
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\AdministratorRepository.cs" />
     <Compile Include="Persistence\Repository\IAdministratorRepository.cs" />
+    <Compile Include="Persistence\Repository\IKontrolorRepository.cs" />
     <Compile Include="Persistence\Repository\IPutnikRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
+    <Compile Include="Persistence\Repository\KontrolorRepository.cs" />
     <Compile Include="Persistence\Repository\PutnikRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
     <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
@@ -396,6 +402,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905290740594_First.resx">
+      <DependentUpon>201905290740594_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

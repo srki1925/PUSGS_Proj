@@ -6,7 +6,7 @@ using WebApp.Models.Users;
 
 namespace WebApp.Persistence.Repository
 {
-    public interface IKontrolerRepository:IRepository<Kontrolor,int>
+    public interface IKontrolorRepository:IRepository<Kontrolor,int>
     {
     }
 }
