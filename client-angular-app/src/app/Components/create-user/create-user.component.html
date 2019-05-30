@@ -16,8 +16,6 @@
 <br>
 <label>User type: </label>
       <select aria-placeholder="type">
-        <option  value="Administrator">Administrator</option>
-        <option value="Kontrolor">Kontrolor</option>
         <option value="Djak">Djak</option>
         <option value="Penzioner">Penzioner</option>
         <option value="Regularni">Regularni</option>
@@ -27,5 +25,5 @@
 <input type="file" placeholder="imageUri"/>
 <br>
 <button (click)="CreateUser()">Ok</button>
-<button (click)="Cancel()">Cancel</button>
+<button routerLink="/Login">Cancel</button>
 </div>
