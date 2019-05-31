@@ -8,6 +8,7 @@ import { CreateUserComponent } from './Components/create-user/create-user.compon
 import { NavBarComponent } from './Components/view/nav-bar/nav-bar.component';
 import { PreviewComponent } from './Components/view/preview/preview.component';
 import { PriceListComponent } from './Components/view/previews/price-list/price-list.component';
+import { ViewComponent } from './Components/view/view.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PriceListComponent } from './Components/view/previews/price-list/price-
     CreateUserComponent,
     NavBarComponent,
     PreviewComponent,
-    PriceListComponent
+    PriceListComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
