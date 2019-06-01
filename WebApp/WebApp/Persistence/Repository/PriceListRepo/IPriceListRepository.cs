@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using WebApp.Models;
+﻿using WebApp.Models;
 
 namespace WebApp.Persistence.Repository.PriceListRepo
 {
-    public interface IPriceListRepository:IRepository<PriceList,int>
-    {
-    }
+	public interface IPriceListRepository : IRepository<PriceList, int>
+	{
+	}
 }

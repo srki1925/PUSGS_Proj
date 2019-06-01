@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using WebApp.Models;
 
 namespace WebApp.Persistence.Repository.LineRepo
 {
-    public class LineRepository : Repository<Line, int>, ILineRepository
-    {
-        public LineRepository(DbContext context) : base(context)
-        {
-        }
-    }
+	public sealed class LineRepository : Repository<Line, int>, ILineRepository
+	{
+		public LineRepository(DbContext context) : base(context)
+		{
+		}
+	}
 }

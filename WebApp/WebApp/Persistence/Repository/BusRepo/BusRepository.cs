@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using WebApp.Models;
 
 namespace WebApp.Persistence.Repository.BusRepo
 {
-    public class BusRepository : Repository<Bus, int>, IBusRepository
-    {
-        public BusRepository(DbContext context) : base(context)
-        {
-        }
-    }
+	public sealed class BusRepository : Repository<Bus, int>, IBusRepository
+	{
+		public BusRepository(DbContext context) : base(context)
+		{
+		}
+	}
 }

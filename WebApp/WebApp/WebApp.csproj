@@ -250,10 +250,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdministratorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PutniksController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -303,17 +300,17 @@
     <Compile Include="Persistence\Repository\PriceListItemRepo\PriceListItemRepository.cs" />
     <Compile Include="Persistence\Repository\PriceListRepo\IPriceListRepository.cs" />
     <Compile Include="Persistence\Repository\PriceListRepo\PriceListRepository.cs" />
-    <Compile Include="Persistence\Repository\PutnikRepo\IPutnikRepository.cs" />
+    <Compile Include="Persistence\Repository\PassengerRepo\IPassengerRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
-    <Compile Include="Persistence\Repository\BusStationRepo\IStationRepository.cs" />
+    <Compile Include="Persistence\Repository\BusStationRepo\IBusStationRepository.cs" />
     <Compile Include="Persistence\Repository\TicketRepo\ITicketRepository.cs" />
     <Compile Include="Persistence\Repository\ConductorRepo\ConductorRepository.cs" />
     <Compile Include="Persistence\Repository\LineRepo\LineRepository.cs" />
-    <Compile Include="Persistence\Repository\PutnikRepo\PutnikRepository.cs" />
+    <Compile Include="Persistence\Repository\PassengerRepo\PassengerRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
-    <Compile Include="Persistence\Repository\BusStationRepo\StationRepository.cs" />
+    <Compile Include="Persistence\Repository\BusStationRepo\BusStationRepository.cs" />
     <Compile Include="Persistence\Repository\TicketRepo\TicketRepository.cs" />
-    <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
+    <Compile Include="Persistence\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

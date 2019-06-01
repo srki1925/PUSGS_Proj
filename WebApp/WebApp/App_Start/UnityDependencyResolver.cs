@@ -78,11 +78,11 @@ namespace WebApp.App_Start
             // container.RegisterType<IProductRepository, ProductRepository>();
            
             container.RegisterType<DbContext, ApplicationDbContext>(new PerResolveLifetimeManager());
-            container.RegisterType<IUnitOfWork, DemoUnitOfWork>();
-            container.RegisterType<IPutnikRepository, PutnikRepository>();
+            container.RegisterType<IUnitOfWork, UnitOfWork>();
+            container.RegisterType<IPassengerRepository, PassengerRepository>();
             container.RegisterType<IAdministratorRepository, AdministratorRepository>();
             container.RegisterType<ILineRepository, LineRepository>();
-            container.RegisterType<IStationRepository, StationRepository>();
+            container.RegisterType<IBusStationRepository, BusStationRepository>();
             container.RegisterType<IDepartureRepository, DepartureRepository>();
             container.RegisterType<ITicketRepository, TicketRepository>();
             container.RegisterType<IBusRepository, BusRepository>();

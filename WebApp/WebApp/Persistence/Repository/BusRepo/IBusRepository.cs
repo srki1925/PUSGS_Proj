@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using WebApp.Models;
+﻿using WebApp.Models;
 
 namespace WebApp.Persistence.Repository.BusRepo
 {
-    public interface IBusRepository:IRepository<Bus,int>
-    {
-    }
+	public interface IBusRepository : IRepository<Bus, int>
+	{
+	}
 }
