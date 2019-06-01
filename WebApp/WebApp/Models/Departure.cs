@@ -8,9 +8,9 @@ using WebApp.Models.Enums;
 
 namespace WebApp.Models
 {
-    public class Polazak
+    public class Departure
     {
-        public Polazak()
+        public Departure()
         {
 
         }

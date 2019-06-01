@@ -23,16 +23,16 @@ namespace WebApp.Models
         public int Id { get; set; }
         [ForeignKey("Vremenska")]
         public int? Vremeska_Id { get; set; }
-        public Karta Vremenska { get; set; }
+        public TIcket Vremenska { get; set; }
         [ForeignKey("Dnevna")]
         public int? Dnevna_Id { get; set; }
-        public Karta Dnevna { get; set; }
+        public TIcket Dnevna { get; set; }
         [ForeignKey("Mesecna")]
         public int? Mesecna_Id { get; set; }
-        public Karta Mesecna { get; set; }
+        public TIcket Mesecna { get; set; }
         [ForeignKey("Godisnja")]
         public int? Godisnja_Id { get; set; }
-        public Karta Godisnja { get; set; }
+        public TIcket Godisnja { get; set; }
         public bool Active { get; set; }
     }
 }

@@ -7,9 +7,9 @@ using WebApp.Models.Users;
 
 namespace WebApp.Persistence.Repository
 {
-    public class KontrolorRepository : Repository<Kontrolor, int>, IKontrolorRepository
+    public class ConductorRepository : Repository<Kontrolor, int>, IConductorRepository
     {
-        public KontrolorRepository(DbContext context) : base(context)
+        public ConductorRepository(DbContext context) : base(context)
         {
         }
     }

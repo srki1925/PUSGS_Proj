@@ -22,6 +22,6 @@ namespace WebApp.Models
         public Red_Voznje Red_Voznje { get; set; }
         [ForeignKey("Linija")]
         public int? Linija_Id { get; set; }
-        public Linija Linija { get; set; }
+        public Line Linija { get; set; }
     }
 }

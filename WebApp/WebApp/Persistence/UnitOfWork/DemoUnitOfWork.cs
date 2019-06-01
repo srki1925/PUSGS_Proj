@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using Unity;
 using WebApp.Persistence.Repository;
+using WebApp.Persistence.Repository.AdminRepo;
+using WebApp.Persistence.Repository.DepartureRepo;
+using WebApp.Persistence.Repository.TicketRepo;
 
 namespace WebApp.Persistence.UnitOfWork
 {
@@ -21,6 +24,11 @@ namespace WebApp.Persistence.UnitOfWork
         public IPutnikRepository PutnikServices { get; set; }
         [Dependency]
         public IAdministratorRepository AdministratorServices { get; set; }
+        [Dependency]
+        public IStationRepository StationServices { get; set; }
+        public ILineRepository LineServices { get; set; }
+        public IDepartureRepository DepartureServices { get; set; }
+        public ITicketRepository TicketServices { get; set; }
 
         public int Complete()
         {

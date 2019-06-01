@@ -9,9 +9,9 @@ using WebApp.Models.Users;
 
 namespace WebApp.Models
 {
-    public class Karta
+    public class TIcket
     {
-        public Karta()
+        public TIcket()
         {
            
         }
@@ -26,5 +26,6 @@ namespace WebApp.Models
         public int? Korisnik_Id { get; set; } // korisnik moze da kupi 0 * karata a karta pripada 0 1 => korisnik id se nalazi u karti
         public Korisnik Korisnik { get; set; }
         public bool Active { get; set; }
+        public string Email { get; set; }
     }
 }

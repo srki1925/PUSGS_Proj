@@ -4,13 +4,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApp.Models;
-using WebApp.Models.Users;
 
 namespace WebApp.Persistence.Repository
 {
-    public class AdministratorRepository : Repository<Administrator, int>, IAdministratorRepository
+    public class StationRepository : Repository<Stanica, int>, IStationRepository
     {
-        public AdministratorRepository(DbContext context) : base(context)
+        public StationRepository(DbContext context) : base(context)
         {
         }
     }

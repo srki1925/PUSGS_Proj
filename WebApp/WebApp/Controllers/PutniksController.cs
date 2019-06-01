@@ -56,7 +56,7 @@ namespace WebApp.Controllers
             {
                 return BadRequest();
             }
-
+          
             db.Entry(putnik).State = EntityState.Modified;
 
             try
