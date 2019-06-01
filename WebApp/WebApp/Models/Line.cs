@@ -10,9 +10,9 @@ using WebApp.Models.Enums;
 namespace WebApp.Models
 {
 
-    public class Linija
+    public class Line
     {
-        public Linija()
+        public Line()
         {
 
         }

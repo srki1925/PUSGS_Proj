@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using WebApp.Models;
 
-namespace WebApp.Persistence.Repository
+namespace WebApp.Persistence.Repository.LineRepo
 {
-    public interface ILineRepository:IRepository<Linija,int>
+    public interface ILineRepository:IRepository<Line,int>
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 using WebApp.Models;
 using WebApp.Models.Users;
 
-namespace WebApp.Persistence.Repository
+namespace WebApp.Persistence.Repository.PutnikRepo
 {
     public class PutnikRepository : Repository<Putnik, int>, IPutnikRepository
     {

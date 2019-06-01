@@ -18,7 +18,7 @@ namespace WebApp.Models
         public int Id { get; set; }
         [ForeignKey("Linija")]
         public int? Linija_Id { get; set; }
-        public Linija Linija { get; set; }
+        public Line Linija { get; set; }
         [ForeignKey("Stanica")]
         public int? Stanica_Id { get; set; }
         public Stanica Stanica { get; set; }

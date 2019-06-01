@@ -22,7 +22,7 @@ namespace WebApp.Models
         public DayType DayType { get; set; }
         [ForeignKey("Linija")]
         public int? Linija_Id { get; set; }
-        public Linija Linija { get; set; }
+        public Line Linija { get; set; }
         public bool Active { get; set; }
     }
 }

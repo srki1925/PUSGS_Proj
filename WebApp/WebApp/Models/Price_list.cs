@@ -7,9 +7,9 @@ using System.Web;
 
 namespace WebApp.Models
 {
-    public class Cenovnik
+    public class Price_list
     {
-        public Cenovnik()
+        public Price_list()
         {
 
         }
