@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 using WebApp.Models;
 
-namespace WebApp.Persistence.Repository
+namespace WebApp.Persistence.Repository.LineRepo
 {
-    public class LineRepository : Repository<Linija, int>, ILineRepository
+    public class LineRepository : Repository<Line, int>, ILineRepository
     {
         public LineRepository(DbContext context) : base(context)
         {

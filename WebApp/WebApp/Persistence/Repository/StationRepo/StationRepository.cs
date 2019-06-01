@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using WebApp.Models;
 
-namespace WebApp.Persistence.Repository
+namespace WebApp.Persistence.Repository.StationRepo
 {
     public class StationRepository : Repository<Stanica, int>, IStationRepository
     {
