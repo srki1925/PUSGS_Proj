@@ -12,8 +12,11 @@ using WebApp.Models;
 using WebApp.Persistence;
 using WebApp.Persistence.Repository;
 using WebApp.Persistence.Repository.AdminRepo;
+using WebApp.Persistence.Repository.BusRepo;
 using WebApp.Persistence.Repository.DepartureRepo;
 using WebApp.Persistence.Repository.LineRepo;
+using WebApp.Persistence.Repository.PriceListItemRepo;
+using WebApp.Persistence.Repository.PriceListRepo;
 using WebApp.Persistence.Repository.PutnikRepo;
 using WebApp.Persistence.Repository.StationRepo;
 using WebApp.Persistence.Repository.TicketRepo;
@@ -82,6 +85,9 @@ namespace WebApp.App_Start
             container.RegisterType<IStationRepository, StationRepository>();
             container.RegisterType<IDepartureRepository, DepartureRepository>();
             container.RegisterType<ITicketRepository, TicketRepository>();
+            container.RegisterType<IBusRepository, BusRepository>();
+            container.RegisterType<IPriceListRepository, PriceListRepository>();
+            container.RegisterType<IPriceListItemRepository, PriceListItemRepository>();
         }
 
         public void Dispose()

@@ -289,6 +289,8 @@
     <Compile Include="Models\PriceListItem.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\AdminRepo\AdministratorRepository.cs" />
+    <Compile Include="Persistence\Repository\BusRepo\BusRepository.cs" />
+    <Compile Include="Persistence\Repository\BusRepo\IBusRepository.cs" />
     <Compile Include="Persistence\Repository\DepartureRepo\DepartureRepository.cs" />
     <Compile Include="Persistence\Repository\AdminRepo\IAdministratorRepository.cs" />
     <Compile Include="Persistence\Repository\DepartureRepo\IDepartureRepository.cs" />
@@ -296,13 +298,13 @@
     <Compile Include="Persistence\Repository\LineRepo\ILineRepository.cs" />
     <Compile Include="Persistence\Repository\PutnikRepo\IPutnikRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
-    <Compile Include="Persistence\Repository\StationRepo\IStationRepository.cs" />
+    <Compile Include="Persistence\Repository\BusStationRepo\IStationRepository.cs" />
     <Compile Include="Persistence\Repository\TicketRepo\ITicketRepository.cs" />
     <Compile Include="Persistence\Repository\ConductorRepo\ConductorRepository.cs" />
     <Compile Include="Persistence\Repository\LineRepo\LineRepository.cs" />
     <Compile Include="Persistence\Repository\PutnikRepo\PutnikRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
-    <Compile Include="Persistence\Repository\StationRepo\StationRepository.cs" />
+    <Compile Include="Persistence\Repository\BusStationRepo\StationRepository.cs" />
     <Compile Include="Persistence\Repository\TicketRepo\TicketRepository.cs" />
     <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork\IUnitOfWork.cs" />

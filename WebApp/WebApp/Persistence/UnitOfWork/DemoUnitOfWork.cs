@@ -6,8 +6,11 @@ using System.Web;
 using Unity;
 using WebApp.Persistence.Repository;
 using WebApp.Persistence.Repository.AdminRepo;
+using WebApp.Persistence.Repository.BusRepo;
 using WebApp.Persistence.Repository.DepartureRepo;
 using WebApp.Persistence.Repository.LineRepo;
+using WebApp.Persistence.Repository.PriceListItemRepo;
+using WebApp.Persistence.Repository.PriceListRepo;
 using WebApp.Persistence.Repository.PutnikRepo;
 using WebApp.Persistence.Repository.StationRepo;
 using WebApp.Persistence.Repository.TicketRepo;
@@ -35,6 +38,11 @@ namespace WebApp.Persistence.UnitOfWork
         public IDepartureRepository DepartureServices { get; set; }
         [Dependency]
         public ITicketRepository TicketServices { get; set; }
+        [Dependency]
+        public IBusRepository BusServices { get; set; }
+        [Dependency]
+        public IPriceListRepository PriceListServices { get; set; }
+        public IPriceListItemRepository PriceListItemServices { get; set; }
 
         public int Complete()
         {
