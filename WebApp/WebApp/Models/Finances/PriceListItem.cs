@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
@@ -15,6 +16,8 @@ namespace WebApp.Models
 		public int Id { get; set; }
 
 		public TicketDefinition TicketDefinition { get; set; }
+
+		public List<PriceList> PrileLists { get; set; }
 
 		public bool Active { get; set; }
 	}

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WebApp.Models.Enums;
 
@@ -17,6 +18,8 @@ namespace WebApp.Models
 		public string Name { get; set; }
 
 		public LineType LineType { get; set; }
+
+		public List<BusStation> Stations { get; set; }
 
 		public bool Active { get; set; }
 	}

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
@@ -20,6 +21,8 @@ namespace WebApp.Models
 		public string Longitude { get; set; }
 
 		public string Latitude { get; set; }
+
+		public List<Line> Lines { get; set; }
 
 		public bool Active { get; set; }
 	}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,5 +20,7 @@ namespace WebApp.Models
 		public DateTime To { get; set; }
 
 		public bool Active { get; set; }
+
+		public List<PriceListItem> PriceListItems { get; set; }
 	}
 }

@@ -261,18 +261,20 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906011527549_First.cs" />
+    <Compile Include="Migrations\201906011527549_First.Designer.cs">
+      <DependentUpon>201906011527549_First.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Finances\Extensions\DateTimeExtension.cs" />
     <Compile Include="Models\Finances\PriceList.cs" />
     <Compile Include="Models\Finances\PriceListItem.cs" />
-    <Compile Include="Models\Finances\PriceList_PriceListItem.cs" />
     <Compile Include="Models\Finances\Ticket.cs" />
     <Compile Include="Models\Finances\TicketDefinition.cs" />
     <Compile Include="Models\LinesAdministration\Bus.cs" />
     <Compile Include="Models\LinesAdministration\BusStation.cs" />
     <Compile Include="Models\LinesAdministration\Departure.cs" />
     <Compile Include="Models\LinesAdministration\Line.cs" />
-    <Compile Include="Models\LinesAdministration\Line_BusStation.cs" />
     <Compile Include="Models\Security\AccountBindingModels.cs" />
     <Compile Include="Models\Security\AccountViewModels.cs" />
     <Compile Include="Models\Security\ApplicationUser.cs" />
@@ -410,6 +412,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906011527549_First.resx">
+      <DependentUpon>201906011527549_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
