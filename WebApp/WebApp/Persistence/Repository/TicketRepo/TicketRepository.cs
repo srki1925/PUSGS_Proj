@@ -7,7 +7,7 @@ using WebApp.Models;
 
 namespace WebApp.Persistence.Repository.TicketRepo
 {
-    public class TicketRepository : Repository<TIcket, int>, ITicketRepository
+    public class TicketRepository : Repository<Ticket, int>, ITicketRepository
     {
         public TicketRepository(DbContext context) : base(context)
         {

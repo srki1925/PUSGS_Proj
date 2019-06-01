@@ -7,7 +7,7 @@ using WebApp.Models;
 
 namespace WebApp.Persistence.Repository.StationRepo
 {
-    public class StationRepository : Repository<Stanica, int>, IStationRepository
+    public class StationRepository : Repository<BusStation, int>, IStationRepository
     {
         public StationRepository(DbContext context) : base(context)
         {

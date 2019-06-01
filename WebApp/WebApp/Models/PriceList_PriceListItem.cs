@@ -19,9 +19,9 @@ namespace WebApp.Models
         public int Id { get; set; }
         [ForeignKey("Cenovnik")]
         public int? Cenovnik_Id { get; set; }
-        public Price_list Cenovnik { get; set; }
+        public PriceList Cenovnik { get; set; }
         [ForeignKey("Stavka")]
         public int? Stavka_Id { get; set; }
-        public Stavka Stavka { get; set; }
+        public PriceListItem Stavka { get; set; }
     }
 }

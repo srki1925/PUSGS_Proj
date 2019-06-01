@@ -271,7 +271,7 @@
     <Compile Include="Models\Users\Administrator.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Autobus.cs" />
-    <Compile Include="Models\Price_list.cs" />
+    <Compile Include="Models\PriceList.cs" />
     <Compile Include="Models\Cenovnik_Stavka.cs" />
     <Compile Include="Models\Enums\DayType.cs" />
     <Compile Include="Models\Enums\LineType.cs" />
@@ -283,13 +283,13 @@
     <Compile Include="Models\Users\Korisnik.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\Departure.cs" />
-    <Compile Include="Models\Red_Voznje.cs" />
+    <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Red_Voznje_Linije.cs" />
     <Compile Include="Models\Stanica_Autobus.cs" />
-    <Compile Include="Models\Linija_Stanica.cs" />
+    <Compile Include="Models\Line_BusStation.cs" />
     <Compile Include="Models\Users\Putnik.cs" />
-    <Compile Include="Models\Stanica.cs" />
-    <Compile Include="Models\Stavka.cs" />
+    <Compile Include="Models\BusStation.cs" />
+    <Compile Include="Models\PriceListItem.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\AdminRepo\AdministratorRepository.cs" />
     <Compile Include="Persistence\Repository\DepartureRepo\DepartureRepository.cs" />
