@@ -24,17 +24,17 @@ namespace WebApp.Controllers
             this.unitOfWork = unitOfWork;
         }
         // GET: api/Putniks
-        public IQueryable<Putnik> GetPutniks()
+        public IQueryable<Passenger> GetPutniks()
         {
             
             return db.Putniks;
         }
 
         // GET: api/Putniks/5
-        [ResponseType(typeof(Putnik))]
+        [ResponseType(typeof(Passenger))]
         public IHttpActionResult GetPutnik(int id)
         {
-            Putnik putnik = db.Putniks.Find(id);
+            Passenger putnik = db.Putniks.Find(id);
             if (putnik == null)
             {
                 return NotFound();
@@ -45,7 +45,7 @@ namespace WebApp.Controllers
 
         // PUT: api/Putniks/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPutnik(int id, Putnik putnik)
+        public IHttpActionResult PutPutnik(int id, Passenger putnik)
         {
             if (!ModelState.IsValid)
             {
@@ -79,8 +79,8 @@ namespace WebApp.Controllers
         }
 
         // POST: api/Putniks
-        [ResponseType(typeof(Putnik))]
-        public IHttpActionResult PostPutnik(Putnik putnik)
+        [ResponseType(typeof(Passenger))]
+        public IHttpActionResult PostPutnik(Passenger putnik)
         {
             if (!ModelState.IsValid)
             {
@@ -94,10 +94,10 @@ namespace WebApp.Controllers
         }
 
         // DELETE: api/Putniks/5
-        [ResponseType(typeof(Putnik))]
+        [ResponseType(typeof(Passenger))]
         public IHttpActionResult DeletePutnik(int id)
         {
-            Putnik putnik = db.Putniks.Find(id);
+            Passenger putnik = db.Putniks.Find(id);
             if (putnik == null)
             {
                 return NotFound();

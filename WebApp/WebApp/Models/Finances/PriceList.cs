@@ -14,8 +14,9 @@ namespace WebApp.Models
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		public DateTime VaziOd { get; set; }
-		public DateTime VaziDo { get; set; }
+		public DateTime From { get; set; }
+
+		public DateTime To { get; set; }
 
 		public bool Active { get; set; }
 	}

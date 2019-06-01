@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WebApp.Models.Enums
+﻿namespace WebApp.Models.Enums
 {
-    public enum UserType
-    {
-        Administrator,Putnik,Kotrolor
-    }
+	public enum UserType
+	{
+		Administrator,
+		Passenger,
+		Conductor
+	}
 }

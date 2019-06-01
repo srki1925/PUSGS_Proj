@@ -7,7 +7,7 @@ using WebApp.Models.Users;
 
 namespace WebApp.Persistence.Repository.PutnikRepo
 {
-    public interface IPutnikRepository:IRepository<Putnik,int>
+    public interface IPutnikRepository:IRepository<Passenger,int>
     {
         void UpdatePhoto(int id, string imageUri);   
     }

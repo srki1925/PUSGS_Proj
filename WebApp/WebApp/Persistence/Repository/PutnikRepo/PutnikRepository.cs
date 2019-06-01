@@ -8,7 +8,7 @@ using WebApp.Models.Users;
 
 namespace WebApp.Persistence.Repository.PutnikRepo
 {
-    public class PutnikRepository : Repository<Putnik, int>, IPutnikRepository
+    public class PutnikRepository : Repository<Passenger, int>, IPutnikRepository
     {
         public PutnikRepository(DbContext context) : base(context)
         {
@@ -16,7 +16,7 @@ namespace WebApp.Persistence.Repository.PutnikRepo
 
         public void UpdatePhoto(int id, string imageUri)
         {
-            Putnik putnik = Get(id);
+            Passenger putnik = Get(id);
             putnik.ImageUri = imageUri;
             Update(putnik);
         }

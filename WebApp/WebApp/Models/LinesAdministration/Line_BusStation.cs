@@ -13,14 +13,14 @@ namespace WebApp.Models
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		[ForeignKey("Linija")]
-		public int? Linija_Id { get; set; }
+		[ForeignKey("Line")]
+		public int? LineID { get; set; }
 
-		public Line Linija { get; set; }
+		public Line Line { get; set; }
 
-		[ForeignKey("Stanica")]
-		public int? Stanica_Id { get; set; }
+		[ForeignKey("Station")]
+		public int? StationID { get; set; }
 
-		public BusStation Stanica { get; set; }
+		public BusStation Station { get; set; }
 	}
 }

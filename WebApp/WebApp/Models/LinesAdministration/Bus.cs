@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
 {
-	public class BusStation
+	public class Bus
 	{
-		public BusStation()
+		public Bus()
 		{
 		}
 
@@ -13,10 +13,19 @@ namespace WebApp.Models
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		public string Naziv { get; set; }
-		public string Adresa { get; set; }
+		public int Name { get; set; }
+
+		[NotMapped]
 		public string Longitude { get; set; }
+
+		[NotMapped]
 		public string Latitude { get; set; }
+
+		[ForeignKey("Line")]
+		public int? LineID { get; set; }
+
+		public Line Line { get; set; }
+
 		public bool Active { get; set; }
 	}
 }
