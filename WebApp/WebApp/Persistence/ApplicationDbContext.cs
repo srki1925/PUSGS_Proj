@@ -11,13 +11,15 @@ namespace WebApp.Persistence
 		{
 		}
 
-		public static ApplicationDbContext Create()
-		{
-			return new ApplicationDbContext();
-		}
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
+        public DbSet<Kontrolor> Conductors { get; set; }
+        public DbSet<Line> Lines { get; set; }
+        public DbSet<BusStation> BusStations { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<PriceList> PriceLists { get; set; }
+        public DbSet<PriceListItem> PriceListItems { get; set; }
 
-		public System.Data.Entity.DbSet<Passenger> Putniks { get; set; }
 
-		public System.Data.Entity.DbSet<WebApp.Models.Users.Administrator> Administrators { get; set; }
-	}
+    }
 }
