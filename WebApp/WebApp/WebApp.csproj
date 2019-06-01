@@ -261,33 +261,29 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905290740594_First.cs" />
-    <Compile Include="Migrations\201905290740594_First.Designer.cs">
-      <DependentUpon>201905290740594_First.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Finances\DateTimeExtension.cs" />
+    <Compile Include="Models\Finances\Extensions\DateTimeExtension.cs" />
+    <Compile Include="Models\Finances\PriceList.cs" />
+    <Compile Include="Models\Finances\PriceListItem.cs" />
+    <Compile Include="Models\Finances\PriceList_PriceListItem.cs" />
+    <Compile Include="Models\Finances\Ticket.cs" />
     <Compile Include="Models\Finances\TicketDefinition.cs" />
+    <Compile Include="Models\LinesAdministration\Bus.cs" />
+    <Compile Include="Models\LinesAdministration\BusStation.cs" />
+    <Compile Include="Models\LinesAdministration\Departure.cs" />
+    <Compile Include="Models\LinesAdministration\Line.cs" />
+    <Compile Include="Models\LinesAdministration\Line_BusStation.cs" />
+    <Compile Include="Models\Security\AccountBindingModels.cs" />
+    <Compile Include="Models\Security\AccountViewModels.cs" />
+    <Compile Include="Models\Security\ApplicationUser.cs" />
     <Compile Include="Models\Users\Administrator.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Bus.cs" />
-    <Compile Include="Models\PriceList.cs" />
-    <Compile Include="Models\PriceList_PriceListItem.cs" />
     <Compile Include="Models\Enums\DayType.cs" />
     <Compile Include="Models\Enums\LineType.cs" />
     <Compile Include="Models\Enums\PassengerType.cs" />
     <Compile Include="Models\Enums\UserType.cs" />
-    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\Users\Conductor.cs" />
     <Compile Include="Models\Users\User.cs" />
-    <Compile Include="Models\Line.cs" />
-    <Compile Include="Models\Departure.cs" />
-    <Compile Include="Models\Line_BusStation.cs" />
     <Compile Include="Models\Users\Passenger.cs" />
-    <Compile Include="Models\BusStation.cs" />
-    <Compile Include="Models\PriceListItem.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\AdminRepo\AdministratorRepository.cs" />
     <Compile Include="Persistence\Repository\BusRepo\BusRepository.cs" />
@@ -297,6 +293,10 @@
     <Compile Include="Persistence\Repository\DepartureRepo\IDepartureRepository.cs" />
     <Compile Include="Persistence\Repository\ConductorRepo\IConductorRepository.cs" />
     <Compile Include="Persistence\Repository\LineRepo\ILineRepository.cs" />
+    <Compile Include="Persistence\Repository\PriceListItemRepo\IPriceListItemRepository.cs" />
+    <Compile Include="Persistence\Repository\PriceListItemRepo\PriceListItemRepository.cs" />
+    <Compile Include="Persistence\Repository\PriceListRepo\IPriceListRepository.cs" />
+    <Compile Include="Persistence\Repository\PriceListRepo\PriceListRepository.cs" />
     <Compile Include="Persistence\Repository\PutnikRepo\IPutnikRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
     <Compile Include="Persistence\Repository\BusStationRepo\IStationRepository.cs" />
@@ -410,9 +410,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905290740594_First.resx">
-      <DependentUpon>201905290740594_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

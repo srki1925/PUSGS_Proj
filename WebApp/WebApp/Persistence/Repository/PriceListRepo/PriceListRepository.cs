@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using WebApp.Models;
 
 namespace WebApp.Persistence.Repository.PriceListRepo
 {
-    public class PriceListRepository:Repository<PriceList,int>,IPriceListRepository
-    {
-    }
+	public class PriceListRepository : Repository<PriceList, int>, IPriceListRepository
+	{
+		public PriceListRepository(DbContext context) : base(context)
+		{
+		}
+	}
 }

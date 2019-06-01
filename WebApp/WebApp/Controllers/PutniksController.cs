@@ -1,126 +1,123 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebApp.Models;
 using WebApp.Models.Users;
 using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
-    public class PutniksController : ApiController
-    {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private IUnitOfWork unitOfWork { get; set; }
-        public PutniksController(IUnitOfWork unitOfWork)
-        {
-            this.unitOfWork = unitOfWork;
-        }
-        // GET: api/Putniks
-        public IQueryable<Passenger> GetPutniks()
-        {
-            
-            return db.Putniks;
-        }
+	public class PutniksController : ApiController
+	{
+		private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Putniks/5
-        [ResponseType(typeof(Passenger))]
-        public IHttpActionResult GetPutnik(int id)
-        {
-            Passenger putnik = db.Putniks.Find(id);
-            if (putnik == null)
-            {
-                return NotFound();
-            }
+		private IUnitOfWork unitOfWork;
 
-            return Ok(putnik);
-        }
+		public PutniksController(IUnitOfWork unitOfWork)
+		{
+			this.unitOfWork = unitOfWork;
+		}
 
-        // PUT: api/Putniks/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPutnik(int id, Passenger putnik)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		// GET: api/Putniks
+		public IQueryable<Passenger> GetPutniks()
+		{
+			return db.Passengers;
+		}
 
-            if (id != putnik.Id)
-            {
-                return BadRequest();
-            }
-          
-            db.Entry(putnik).State = EntityState.Modified;
+		// GET: api/Putniks/5
+		[ResponseType(typeof(Passenger))]
+		public IHttpActionResult GetPutnik(int id)
+		{
+			Passenger putnik = db.Passengers.Find(id);
+			if (putnik == null)
+			{
+				return NotFound();
+			}
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PutnikExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			return Ok(putnik);
+		}
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+		// PUT: api/Putniks/5
+		[ResponseType(typeof(void))]
+		public IHttpActionResult PutPutnik(int id, Passenger putnik)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-        // POST: api/Putniks
-        [ResponseType(typeof(Passenger))]
-        public IHttpActionResult PostPutnik(Passenger putnik)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+			if (id != putnik.Id)
+			{
+				return BadRequest();
+			}
 
-            db.Putniks.Add(putnik);
-            db.SaveChanges();
+			db.Entry(putnik).State = EntityState.Modified;
 
-            return CreatedAtRoute("DefaultApi", new { id = putnik.Id }, putnik);
-        }
+			try
+			{
+				db.SaveChanges();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!PutnikExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-        // DELETE: api/Putniks/5
-        [ResponseType(typeof(Passenger))]
-        public IHttpActionResult DeletePutnik(int id)
-        {
-            Passenger putnik = db.Putniks.Find(id);
-            if (putnik == null)
-            {
-                return NotFound();
-            }
+			return StatusCode(HttpStatusCode.NoContent);
+		}
 
-            db.Putniks.Remove(putnik);
-            db.SaveChanges();
+		// POST: api/Putniks
+		[ResponseType(typeof(Passenger))]
+		public IHttpActionResult PostPutnik(Passenger putnik)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            return Ok(putnik);
-        }
+			db.Passengers.Add(putnik);
+			db.SaveChanges();
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+			return CreatedAtRoute("DefaultApi", new { id = putnik.Id }, putnik);
+		}
 
-        private bool PutnikExists(int id)
-        {
-            return db.Putniks.Count(e => e.Id == id) > 0;
-        }
-    }
+		// DELETE: api/Putniks/5
+		[ResponseType(typeof(Passenger))]
+		public IHttpActionResult DeletePutnik(int id)
+		{
+			Passenger putnik = db.Passengers.Find(id);
+			if (putnik == null)
+			{
+				return NotFound();
+			}
+
+			db.Passengers.Remove(putnik);
+			db.SaveChanges();
+
+			return Ok(putnik);
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		private bool PutnikExists(int id)
+		{
+			return db.Passengers.Count(e => e.Id == id) > 0;
+		}
+	}
 }
