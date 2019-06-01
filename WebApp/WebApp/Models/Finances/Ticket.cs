@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WebApp.Models.Users;
 
@@ -18,8 +19,11 @@ namespace WebApp.Models
 
 		public User Korisnik { get; set; }
 
-		public bool Active { get; set; }
+		public DateTime IssueDate { get; set; }
 
 		public string Email { get; set; }
+
+		[NotMapped]
+		public bool Valid => TicketDefinition.CheckTicketValidity(IssueDate);
 	}
 }

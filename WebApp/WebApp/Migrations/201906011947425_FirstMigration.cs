@@ -3,7 +3,7 @@ namespace WebApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class First : DbMigration
+    public partial class FirstMigration : DbMigration
     {
         public override void Up()
         {
@@ -77,10 +77,9 @@ namespace WebApp.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ValidFrom = c.DateTime(nullable: false),
-                        ValidTo = c.DateTime(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         TicketType = c.Int(nullable: false),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -89,7 +88,7 @@ namespace WebApp.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Active = c.Boolean(nullable: false),
+                        IssueDate = c.DateTime(nullable: false),
                         Email = c.String(),
                         Korisnik_Id = c.Int(),
                         TicketDefinition_Id = c.Int(),

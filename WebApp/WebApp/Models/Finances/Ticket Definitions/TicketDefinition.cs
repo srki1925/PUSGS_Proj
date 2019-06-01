@@ -27,56 +27,40 @@ namespace WebApp.Models
 		Year
 	}
 
-	public class TicketDefinition
+	public abstract class TicketDefinition
 	{
 		/// <summary>
-		/// Empty constructor used for, to be used by ORM for serialization porposes.
+		/// To be used only by ORM.
 		/// </summary>
 		public TicketDefinition()
 		{
 		}
 
 		/// <summary>
-		/// Initializes new instance of <see cref="TicketDefinition" /> class.
+		/// Initializes a new instance of <see cref="TicketDefinition" /> of specified <see
+		/// cref="WebApp.Models.TicketType" />.
 		/// </summary>
-		/// <param name="type">Type of ticket to instanciate.</param>
-		public TicketDefinition(TicketType type)
+		/// <param name="ticketType"></param>
+		public TicketDefinition(TicketType ticketType)
 		{
-			TicketType = type;
-
-			switch (TicketType)
-			{
-				case TicketType.Hour:
-					ValidTo.AddHours(1);
-					break;
-
-				case TicketType.Day:
-					ValidTo = ValidFrom.AddRoundedDay();
-					break;
-
-				case TicketType.Month:
-					ValidTo = ValidFrom.AddRoundedMonth();
-					break;
-
-				case TicketType.Year:
-					ValidTo = ValidFrom.AddRoundedYear();
-					break;
-
-				default:
-					break;
-			}
+			TicketType = ticketType;
 		}
 
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		public DateTime ValidFrom { get; set; } = DateTime.Now;
-
-		public DateTime ValidTo { get; set; }
-
 		public decimal Price { get; set; }
 
+		/// <summary>
+		/// Type of ticket definition.
+		/// </summary>
+		/// <remarks>
+		/// Since ticket definition is abstract, desciminator will be generated in table for each
+		/// concrete class, but this enum is used for faster processing.
+		/// </remarks>
 		public TicketType TicketType { get; set; }
+
+		public abstract bool CheckTicketValidity(DateTime issueDate);
 	}
 }
