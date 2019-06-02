@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from './../../services/interfaces'
-import { AdminService } from './../../services/adminService/admin-service.service'
+import { IUser, IConductorRequest, UserType } from './../../services/interfaces'
+import { AdminService } from './../../services/admin-service.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -12,19 +12,52 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class UsersListComponent implements OnInit {
 
   public users : IUser[]
-  public rideForm : FormGroup
-  
+  public conductorForm : FormGroup
+  public blockForm : FormGroup
+
   constructor(private adminService : AdminService) { }
 
   ngOnInit() {
-    this.rideForm = new FormGroup({
-      address: new FormControl(null, Validators.required),
-      cartype: new FormControl(0),
-      driver: new FormControl(null),
-      fare: new FormControl(Validators.required,Validators.min(0))
-    });
+    this.conductorForm = new FormGroup({
+      FirstName: new FormControl(null, [ Validators.required, Validators.nullValidator]),
+      LastName: new  FormControl(null, [ Validators.required, Validators.nullValidator]),
+      Email: new FormControl(null, [ Validators.required, Validators.email, Validators.nullValidator]),
+      Password: new FormControl(null, [ Validators.required, Validators.minLength(8), Validators.maxLength(16), Validators.nullValidator])
+    })
+
+    this.blockForm = new FormGroup({
+      UserId : new FormControl(null, [Validators.required, Validators.nullValidator])
+    })
+
      this.adminService.subscriberToUserChanges().subscribe((data : IUser[]) =>{
-        this.users = data;
+      this.users = data;
      })
+  }
+
+  getUserTypeString(userType : number) : string{
+    switch(userType){
+      case UserType.Passenger: return 'Passenger'
+      case UserType.Conductor: return 'Conductor'
+      case UserType.Administrator: return 'Administrator'
+    }
+  }
+
+  onSubmit(){
+    if(!this.conductorForm.valid) return
+
+    let conductor : IConductorRequest = {
+      FirstName : this.conductorForm.value.FirstName,
+      LastName : this.conductorForm.value.LastName,
+      Email : this.conductorForm.value.Email,
+      Password : this.conductorForm.value.Password
+    }
+
+    this.adminService.addConductor(conductor)
+  }
+
+  onBlockUser(){
+    if(!this.blockForm.valid) return
+
+    this.adminService.blockUser(this.blockForm.value.UserId)
   }
 }

@@ -6,35 +6,45 @@
     <li>{{user.Email}}</li>
     <li>{{user.Password}}</li>
     <li>{{user.Blocked}}</li>
-    <li>{{user.UserType}}</li>
+    <li>{{getUserTypeString(user.UserType)}}</li>
   </ul>
   </div>
 </div>
 
-<form [formGroup]="rideForm" (submit)="onSubmit()">
-    <div class="form-group">
-      <label for="address">Address</label>
-      <input type="text" id="address" formControlName="address" class="form-control">
-    </div>
-    <button class="btn btn-default" type="button" (click)="onCheckAddress()">Check Address</button>
-    <div *ngIf="userType !== 2" class="form-group">
-      <label for="cartype">Car type</label>
-      <select id="type" formControlName="cartype" class="form-control">
-        <option value=0>Sedan</option>
-        <option value=1>Van</option>
-      </select>
-    </div>
-    <div *ngIf="userType === 3" class="form-group">
-      <label for="driver">Driver</label>
-      <select id="type" formControlName="cartype" class="form-control">
-        <option *ngFor="let driver of availableDrivers" [value]="driver">{{driver}}</option>
-      </select>
-    </div>
-    <div *ngIf="destination" class="form-group">
-      <label for="fare">Fare</label>
-      <input type="number" id="fare" formControlName="fare" class="form-control">
-    </div>
-    <hr>
-    <button *ngIf="userType !== 2" type="submit" class="btn btn-primary">{{editMode ? 'Edit' : 'Add'}}</button>
-    <button *ngIf="userType === 2" type="submit" class="btn btn-primary" [disabled]="!rideForm.valid">Change</button>
-  </form>
+<h2>TODO:</h2>
+<h3>Mozes da napravis validator za email mozes da koristis Validators.pattern(regex) i da radis sa regex-om
+   ili da napravis custom, a kasnije mozemo dodati da bude async validator da email ne sme da postoji, 
+  a mozda i predjemo na microsoft api za tokene pa odlucimo da se koriste microsoft nalozi, a da admin samo
+na stranici dodeli privilegiju ko je conductor a ko passenger, ali za sad ima ovih drugih.
+Takodje nisam nacukao sve kontrolere isao sam vise da uradim primer za svaki tip request-a, da imas uradjeno,
+i baratanje async odgovorima i da imas refresh na validan odgovor -> probaj block da uradis nad nekim likom false -> true
+P.S. Kad budes pravio servise idi sa ng g s --spec false ili --skiptests jer smo ionako rekli da ih necemo, pa da ne gusi src </h3>
+
+<form [formGroup]="conductorForm" (submit)="onSubmit()">
+  <div class="form-group">
+    <label for="FirstName">Firstname: </label>
+    <input type="text" id="FirstName" formControlName="FirstName" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="LastName">Lastname: </label>
+    <input type="text" id="LastName" formControlName="LastName" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="Password">Password: </label>
+    <input type="password" formControlName="Password" class="form-control"/>
+  </div>
+  <div>
+    <label for="Email">Email: </label>
+    <input type="email" formControlName="Email" class="form-control"/>
+  </div>
+  <hr>
+  <button type="submit" >Add Conductor</button>
+</form>
+
+<form [formGroup]="blockForm" (submit)="onBlockUser()">
+  <div>
+    <label for="UserId">User id: </label>
+    <input type="number" formControlName="UserId" class="form-control"/>
+    <button type="submit">Block</button>
+  </div>
+</form>

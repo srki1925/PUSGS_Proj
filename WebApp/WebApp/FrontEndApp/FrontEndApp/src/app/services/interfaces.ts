@@ -7,6 +7,13 @@ export interface IUser{
     Blocked : boolean
 }
 
+export interface IConductorRequest{
+    FirstName : string,
+    LastName : string,
+    Email : string,
+    Password : string
+}
+
 export enum UserType{
     Administrator = 0,
     Passenger = 1,
