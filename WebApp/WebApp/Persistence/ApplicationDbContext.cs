@@ -32,5 +32,7 @@ namespace WebApp.Persistence
 		public DbSet<PriceList> PriceLists { get; set; }
 
 		public DbSet<PriceListItem> PriceListItems { get; set; }
+
+		public DbSet<User> ApplicationUsers { get; set; }
 	}
 }

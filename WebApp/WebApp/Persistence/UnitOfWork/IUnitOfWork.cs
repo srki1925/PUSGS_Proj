@@ -1,4 +1,5 @@
 ﻿using System;
+using WebApp.Persistence.Repository;
 using WebApp.Persistence.Repository.AdminRepo;
 using WebApp.Persistence.Repository.BusRepo;
 using WebApp.Persistence.Repository.DepartureRepo;
@@ -8,20 +9,23 @@ using WebApp.Persistence.Repository.PriceListRepo;
 using WebApp.Persistence.Repository.PutnikRepo;
 using WebApp.Persistence.Repository.StationRepo;
 using WebApp.Persistence.Repository.TicketRepo;
+using WebApp.Persistence.Repository.UsersRepository;
 
 namespace WebApp.Persistence.UnitOfWork
 {
 	public interface IUnitOfWork : IDisposable
 	{
-		IPassengerRepository PutnikServices { get; set; }
-		IAdministratorRepository AdministratorServices { get; set; }
-		IBusStationRepository StationServices { get; set; }
-		ILineRepository LineServices { get; set; }
-		IDepartureRepository DepartureServices { get; set; }
-		ITicketRepository TicketServices { get; set; }
-		IBusRepository BusServices { get; set; }
-		IPriceListRepository PriceListServices { get; set; }
-		IPriceListItemRepository PriceListItemServices { get; set; }
+		IPassengerRepository PutnikServices { get; }
+		IAdministratorRepository AdministratorServices { get; }
+		IBusStationRepository StationServices { get; }
+		ILineRepository LineServices { get; }
+		IDepartureRepository DepartureServices { get; }
+		ITicketRepository TicketServices { get; }
+		IBusRepository BusServices { get; }
+		IPriceListRepository PriceListServices { get; }
+		IPriceListItemRepository PriceListItemServices { get; }
+		IConductorRepository ConductorRepository { get; }
+		IUserRepository UsersRepository { get; }
 
 		int Complete();
 	}

@@ -17,7 +17,7 @@ namespace WebApp.Models
 
 		public TicketDefinition TicketDefinition { get; set; }
 
-		public User Korisnik { get; set; }
+		public User User { get; set; }
 
 		public DateTime IssueDate { get; set; }
 

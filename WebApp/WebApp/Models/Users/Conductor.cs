@@ -7,6 +7,7 @@ namespace WebApp.Models.Users
 		public Conductor()
 		{
 			UserType = UserType.Conductor;
+			Blocked = false;
 		}
 	}
 }

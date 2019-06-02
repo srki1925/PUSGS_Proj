@@ -12,13 +12,12 @@ namespace WebApp.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        FirstName = c.String(),
                         LastName = c.String(),
-                        Username = c.String(),
                         Password = c.String(),
                         Email = c.String(),
                         UserType = c.Int(nullable: false),
-                        Active = c.Boolean(nullable: false),
+                        Blocked = c.Boolean(nullable: false),
                         PassengerType = c.Int(),
                         ImageUri = c.String(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
@@ -90,14 +89,14 @@ namespace WebApp.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         IssueDate = c.DateTime(nullable: false),
                         Email = c.String(),
-                        Korisnik_Id = c.Int(),
                         TicketDefinition_Id = c.Int(),
+                        User_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.Korisnik_Id)
                 .ForeignKey("dbo.TicketDefinitions", t => t.TicketDefinition_Id)
-                .Index(t => t.Korisnik_Id)
-                .Index(t => t.TicketDefinition_Id);
+                .ForeignKey("dbo.Users", t => t.User_Id)
+                .Index(t => t.TicketDefinition_Id)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.LineBusStations",
@@ -129,8 +128,8 @@ namespace WebApp.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Tickets", "User_Id", "dbo.Users");
             DropForeignKey("dbo.Tickets", "TicketDefinition_Id", "dbo.TicketDefinitions");
-            DropForeignKey("dbo.Tickets", "Korisnik_Id", "dbo.Users");
             DropForeignKey("dbo.PriceListItems", "TicketDefinition_Id", "dbo.TicketDefinitions");
             DropForeignKey("dbo.PriceListPriceListItems", "PriceListItem_Id", "dbo.PriceListItems");
             DropForeignKey("dbo.PriceListPriceListItems", "PriceList_Id", "dbo.PriceLists");
@@ -140,8 +139,8 @@ namespace WebApp.Migrations
             DropIndex("dbo.PriceListPriceListItems", new[] { "PriceList_Id" });
             DropIndex("dbo.LineBusStations", new[] { "BusStation_Id" });
             DropIndex("dbo.LineBusStations", new[] { "Line_Id" });
+            DropIndex("dbo.Tickets", new[] { "User_Id" });
             DropIndex("dbo.Tickets", new[] { "TicketDefinition_Id" });
-            DropIndex("dbo.Tickets", new[] { "Korisnik_Id" });
             DropIndex("dbo.PriceListItems", new[] { "TicketDefinition_Id" });
             DropTable("dbo.PriceListPriceListItems");
             DropTable("dbo.LineBusStations");

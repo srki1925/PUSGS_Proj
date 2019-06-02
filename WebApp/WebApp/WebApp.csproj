@@ -250,6 +250,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,9 +259,9 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906011947425_FirstMigration.cs" />
-    <Compile Include="Migrations\201906011947425_FirstMigration.Designer.cs">
-      <DependentUpon>201906011947425_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201906021243336_FirstMigration.cs" />
+    <Compile Include="Migrations\201906021243336_FirstMigration.Designer.cs">
+      <DependentUpon>201906021243336_FirstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Finances\Extensions\DateTimeExtension.cs" />
@@ -276,6 +277,7 @@
     <Compile Include="Models\LinesAdministration\BusStation.cs" />
     <Compile Include="Models\LinesAdministration\Departure.cs" />
     <Compile Include="Models\LinesAdministration\Line.cs" />
+    <Compile Include="Models\RequestModel\AdministrationRequests\ConductorCreationRequest.cs" />
     <Compile Include="Models\Security\AccountBindingModels.cs" />
     <Compile Include="Models\Security\AccountViewModels.cs" />
     <Compile Include="Models\Security\ApplicationUser.cs" />
@@ -310,6 +312,8 @@
     <Compile Include="Persistence\Repository\Repository.cs" />
     <Compile Include="Persistence\Repository\BusStationRepo\BusStationRepository.cs" />
     <Compile Include="Persistence\Repository\TicketRepo\TicketRepository.cs" />
+    <Compile Include="Persistence\Repository\UsersRepository\IUserRepository.cs" />
+    <Compile Include="Persistence\Repository\UsersRepository\UserRepository.cs" />
     <Compile Include="Persistence\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -413,8 +417,8 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906011947425_FirstMigration.resx">
-      <DependentUpon>201906011947425_FirstMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906021243336_FirstMigration.resx">
+      <DependentUpon>201906021243336_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
