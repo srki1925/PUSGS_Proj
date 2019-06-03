@@ -11,6 +11,7 @@ import { UserComponent } from './components/user/user.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
 import { NavBarComponent } from './components/view/nav-bar/nav-bar.component';
 import { CreateLineComponent } from './components/view/LineAdministration/create-line/create-line.component';
+import { LineListComponent } from './components/view/LineAdministration/line-list/line-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreateLineComponent } from './components/view/LineAdministration/create
     UserComponent,
     CreateUserComponent,
     NavBarComponent,
-    CreateLineComponent
+    CreateLineComponent,
+    LineListComponent
   ],
   imports: [
     BrowserModule,

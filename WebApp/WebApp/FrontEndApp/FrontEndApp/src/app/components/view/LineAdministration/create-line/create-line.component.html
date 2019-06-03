@@ -1,14 +1,5 @@
 <div>
-  <div class="row well well-sm pre-scrollable">
-    <div class="list-group">
-      <ul *ngFor="let line of lines">
-         <li>{{line.Id}}</li>
-        <li>{{line.Name}}</li>
-        <li>{{getLineTypeString(line.LineType)}}</li>
-        <li>{{line.Active}}</li>
-      </ul>
-    </div>
-  </div>
+
 
   <form [formGroup]="lineForm" (submit)="onSubmit()">
     <div class="form-group">
@@ -16,7 +7,7 @@
       <input type="text" id="Name" formControlName="Name" class="form-control">
     </div>
     <label for="Type">LineType: </label>
-    <select id="Type" formControlName="Type" class="form-control">
+    <select  formControlName="Type" class="form-control">
       <option value=0>City</option>
       <option value=1>Outskirts</option>
     </select>
@@ -24,12 +15,5 @@
     <button type="submit">Add Line</button>
   </form>
 
-  <form [formGroup]="removeForm" (submit)="onRemoveLine()">
-    <div>
-      <label for="LineId">Line id: </label>
-      <input type="number" formControlName="LineId" class="form-control" />
-      <button type="submit">Remove</button>
-    </div>
-  </form>
 
 </div>

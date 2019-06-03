@@ -1,0 +1,19 @@
+
+  <form [formGroup]="removeLineForm" (submit)="onRemove()">
+    <div>
+      <label for="LineId">Line id: </label>
+      <input type="number" formControlName="LineId" class="form-control" />
+      <button type="submit">Remove</button>
+    </div>
+  </form>
+  <div class="row well well-sm pre-scrollable">
+    <div class="list-group">
+      <ul *ngFor="let line of lines">
+         <li>{{line.Id}}</li>
+        <li>{{line.Name}}</li>
+        <li>{{line.LineType}}</li>
+        <li>{{line.Active}}</li>
+      </ul>
+    </div>
+  </div>
+

@@ -11,9 +11,9 @@ import { LineService } from './../../../../services/line.service';
 export class CreateLineComponent implements OnInit {
 
   constructor(private lineService: LineService) { }
-  private lineForm: FormGroup
-  private removeForm: FormGroup
-  private lines: ILine[]
+  public lineForm: FormGroup
+  public removeForm: FormGroup
+
 
   ngOnInit() {
     this.lineForm = new FormGroup({
@@ -21,11 +21,7 @@ export class CreateLineComponent implements OnInit {
       Type: new FormControl("")
     });
 
-    this.lineService.subscriberToLineChanges().subscribe((data: ILine[]) => { this.lines = data; })
-
-    this.removeForm = new FormGroup({
-      LineId: new FormGroup(null, [Validators.required])
-    })
+    
 
   }
 
@@ -43,7 +39,4 @@ export class CreateLineComponent implements OnInit {
     }
   }
 
-  onRemoveLine() {
-    return this.lineService.removeLine(this.removeForm.value.LineId)
-  }
 }
