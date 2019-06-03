@@ -19,3 +19,20 @@ export enum UserType{
     Passenger = 1,
     Conductor = 2
 }
+
+export interface ILineRequest{
+    Name:string,
+    LineType: LineType,
+}
+
+export interface ILine{
+    Id:number,
+    Name:string,
+    LineType: LineType,
+    Active:boolean
+}
+
+export enum LineType{
+    City = 0,
+    Outskirts = 1
+}

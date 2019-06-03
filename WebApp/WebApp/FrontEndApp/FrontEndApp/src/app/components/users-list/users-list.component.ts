@@ -14,7 +14,7 @@ export class UsersListComponent implements OnInit {
   public users : IUser[]
   public conductorForm : FormGroup
   public blockForm : FormGroup
-
+  
   constructor(private adminService : AdminService) { }
 
   ngOnInit() {
@@ -28,6 +28,7 @@ export class UsersListComponent implements OnInit {
     this.blockForm = new FormGroup({
       UserId : new FormControl(null, [Validators.required, Validators.nullValidator])
     })
+
 
      this.adminService.subscriberToUserChanges().subscribe((data : IUser[]) =>{
       this.users = data;
@@ -51,7 +52,7 @@ export class UsersListComponent implements OnInit {
       Email : this.conductorForm.value.Email,
       Password : this.conductorForm.value.Password
     }
-
+    console.log("safa")
     this.adminService.addConductor(conductor)
   }
 
@@ -59,5 +60,11 @@ export class UsersListComponent implements OnInit {
     if(!this.blockForm.valid) return
 
     this.adminService.blockUser(this.blockForm.value.UserId)
+  }
+
+  onUnBlockUser(){
+    if(!this.blockForm.valid) return
+
+    this.adminService.unblockUser(this.blockForm.value.UserId)
   }
 }

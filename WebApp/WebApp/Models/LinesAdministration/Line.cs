@@ -21,6 +21,6 @@ namespace WebApp.Models
 
 		public List<BusStation> Stations { get; set; }
 
-		public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 	}
 }

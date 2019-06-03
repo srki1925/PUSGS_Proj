@@ -30,7 +30,7 @@ namespace WebApp.Controllers
 
 		[HttpPost]
 		[Route("CreateConductor")]
-		public void CreateConductor([FromBody]ConductorCreationRequest createdConductor)
+		public void CreateConductor(ConductorCreationRequest createdConductor)
 		{
 			unitOfWork.ConductorRepository.Add(new Conductor
 			{

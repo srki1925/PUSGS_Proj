@@ -19,7 +19,7 @@ na stranici dodeli privilegiju ko je conductor a ko passenger, ali za sad ima ov
 Takodje nisam nacukao sve kontrolere isao sam vise da uradim primer za svaki tip request-a, da imas uradjeno,
 i baratanje async odgovorima i da imas refresh na validan odgovor -> probaj block da uradis nad nekim likom false -> true
 P.S. Kad budes pravio servise idi sa ng g s --spec false ili --skiptests jer smo ionako rekli da ih necemo, pa da ne gusi src </h3>
-
+Pitanja:Da li iscratavti putanje svih buseva ili samo selektovanih,integrisanje angulara u vs?,
 <form [formGroup]="conductorForm" (submit)="onSubmit()">
   <div class="form-group">
     <label for="FirstName">Firstname: </label>
@@ -46,5 +46,13 @@ P.S. Kad budes pravio servise idi sa ng g s --spec false ili --skiptests jer smo
     <label for="UserId">User id: </label>
     <input type="number" formControlName="UserId" class="form-control"/>
     <button type="submit">Block</button>
+  </div>
+</form>
+
+<form [formGroup]="blockForm" (submit)="onUnBlockUser()">
+  <div>
+    <label for="UserId">User id: </label>
+    <input type="number" formControlName="UserId" class="form-control"/>
+    <button type="submit">UnBlock</button>
   </div>
 </form>

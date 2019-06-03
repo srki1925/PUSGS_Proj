@@ -26,7 +26,7 @@ export class AdminService {
   }
 
   addConductor(newConductor : IConductorRequest){
-    this.http.post(this.externalApis.getDataApiHostname() + '/admin/createConductor', newConductor).subscribe(
+    this.http.post(this.externalApis.getDataApiHostname() + '/admin/createConductor/', newConductor).subscribe(
       ok => this.refreshUsers(),
       error => console.log(error)
     )
@@ -40,7 +40,7 @@ export class AdminService {
   }
 
   unblockUser(userId : number){
-    this.http.get(this.externalApis.getDataApiHostname() + '/admin/unblockUser/' + userId, null).subscribe(
+    this.http.get(this.externalApis.getDataApiHostname() + '/admin/unblockUser/' + userId).subscribe(
       ok => this.refreshUsers(),
       error => console.log(error)
     )
