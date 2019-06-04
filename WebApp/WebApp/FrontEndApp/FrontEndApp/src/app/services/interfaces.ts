@@ -36,3 +36,19 @@ export enum LineType{
     City = 0,
     Outskirts = 1
 }
+
+export interface IBusStation{
+    Id:number,
+    Name:string,
+    Address:string,
+    Longitude:string,
+    Latitude:string,
+    Active:boolean
+}
+
+export interface IBusStationRequest{
+    Name:string,
+    Address:string,
+    Longitude:string,
+    Latitude:string
+}

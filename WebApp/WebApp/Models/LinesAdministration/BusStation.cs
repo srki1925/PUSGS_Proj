@@ -24,6 +24,6 @@ namespace WebApp.Models
 
 		public List<Line> Lines { get; set; }
 
-		public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 	}
 }

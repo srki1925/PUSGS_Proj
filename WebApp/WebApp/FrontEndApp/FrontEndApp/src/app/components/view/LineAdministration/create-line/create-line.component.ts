@@ -12,7 +12,7 @@ export class CreateLineComponent implements OnInit {
 
   constructor(private lineService: LineService) { }
   public lineForm: FormGroup
-  public removeForm: FormGroup
+
 
 
   ngOnInit() {
@@ -32,11 +32,6 @@ export class CreateLineComponent implements OnInit {
     }
     this.lineService.addLine(Line);
   }
-  getLineTypeString(lineType: number) {
-    switch (lineType) {
-      case LineType.City: return 'City'
-      case LineType.Outskirts: return 'Outskirts'
-    }
-  }
+
 
 }

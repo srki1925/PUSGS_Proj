@@ -251,6 +251,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BusStationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Global.asax.cs">
@@ -279,6 +280,7 @@
     <Compile Include="Models\LinesAdministration\Departure.cs" />
     <Compile Include="Models\LinesAdministration\Line.cs" />
     <Compile Include="Models\RequestModel\AdministrationRequests\ConductorCreationRequest.cs" />
+    <Compile Include="Models\RequestModel\BusStationRequest\BusStationCreationRequest.cs" />
     <Compile Include="Models\RequestModel\LineRequests\LineCreationRequest.cs" />
     <Compile Include="Models\Security\AccountBindingModels.cs" />
     <Compile Include="Models\Security\AccountViewModels.cs" />

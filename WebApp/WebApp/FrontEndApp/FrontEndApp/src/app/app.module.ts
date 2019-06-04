@@ -12,6 +12,8 @@ import { CreateUserComponent } from './components/user/create-user/create-user.c
 import { NavBarComponent } from './components/view/nav-bar/nav-bar.component';
 import { CreateLineComponent } from './components/view/LineAdministration/create-line/create-line.component';
 import { LineListComponent } from './components/view/LineAdministration/line-list/line-list.component';
+import { CreateBusStationComponent } from './components/view/LineAdministration/create-bus-station/create-bus-station.component';
+import { ListBusStationComponent } from './components/view/LineAdministration/list-bus-station/list-bus-station.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { LineListComponent } from './components/view/LineAdministration/line-lis
     CreateUserComponent,
     NavBarComponent,
     CreateLineComponent,
-    LineListComponent
+    LineListComponent,
+    CreateBusStationComponent,
+    ListBusStationComponent
   ],
   imports: [
     BrowserModule,

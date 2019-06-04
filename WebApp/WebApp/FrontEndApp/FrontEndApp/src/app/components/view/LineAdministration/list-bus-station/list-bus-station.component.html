@@ -1,0 +1,19 @@
+<form [formGroup]="removeBusStationForm" (submit)="onRemove()">
+  <div>
+    <label for="BusStationId">BusStation Id: </label>
+    <input type="number" formControlName="BusStationId" class="form-control" />
+    <button type="submit">Remove</button>
+  </div>
+</form>
+<div class="row well well-sm pre-scrollable">
+  <div class="list-group">
+    <ul *ngFor="let busStation of busStations">
+       <li>{{busStation.Id}}</li>
+      <li>{{busStation.Name}}</li>
+      <li>{{busStation.Address}}</li>
+      <li>{{busStation.Longitude}}</li>
+      <li>{{busStation.Latitude}}</li>
+      <li>{{busStation.Active}}</li>
+    </ul>
+  </div>
+</div>
