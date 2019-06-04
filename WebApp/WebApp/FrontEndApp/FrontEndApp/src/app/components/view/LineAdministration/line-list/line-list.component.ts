@@ -20,6 +20,7 @@ export class LineListComponent implements OnInit {
     })
     this.lineService.subscriberToLineChanges().subscribe((data:ILine[]) =>{this.lines = data;})
     this.lineService.refreshLines()
+
   }
   getLineTypeString(lineType: number) {
     switch (lineType) {

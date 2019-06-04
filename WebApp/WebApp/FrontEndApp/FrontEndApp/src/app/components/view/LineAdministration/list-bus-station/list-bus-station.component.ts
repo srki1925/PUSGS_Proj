@@ -20,7 +20,7 @@ export class ListBusStationComponent implements OnInit {
     this.removeBusStationForm = new FormGroup({
       BusStationId: new FormControl(null,[Validators.required,Validators.nullValidator])
     })
-    this.busStationService.subscriberToLineChanges().subscribe((data:IBusStation[])=> {this.busStations = data;})
+    this.busStationService.subscriberToBusChanges().subscribe((data:IBusStation[])=> {this.busStations = data;})
     this.busStationService.refreshBusStations()
     
   }
