@@ -21,7 +21,12 @@ export class LineListComponent implements OnInit {
     this.lineService.subscriberToLineChanges().subscribe((data:ILine[]) =>{this.lines = data;})
     this.lineService.refreshLines()
   }
-
+  getLineTypeString(lineType: number) {
+    switch (lineType) {
+      case LineType.City: return 'City'
+      case LineType.Outskirts: return 'Outskirts'
+    }
+  }
 onRemove(){
   this.lineService.removeLine(this.removeLineForm.value.LineId)
   this.lineService.refreshLines()

@@ -11,7 +11,7 @@
       <ul *ngFor="let line of lines">
          <li>{{line.Id}}</li>
         <li>{{line.Name}}</li>
-        <li>{{line.LineType}}</li>
+        <li>{{getLineTypeString(line.LineType)}}</li>
         <li>{{line.Active}}</li>
       </ul>
     </div>

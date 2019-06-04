@@ -43,10 +43,10 @@ namespace WebApp.Controllers
         }
 
         [HttpDelete]
-        [Route("RemoveLine")]
-        public IHttpActionResult RemoveLine(int lineid)
+        [Route("RemoveLine/{id}")]
+        public IHttpActionResult RemoveLine(int id)
         {
-            var line = unitOfWork.LineServices.Get(lineid);
+            var line = unitOfWork.LineServices.Get(id);
             if(line != null)
             {
                 line.Active = false;
