@@ -14,6 +14,8 @@ import { CreateLineComponent } from './components/view/LineAdministration/create
 import { LineListComponent } from './components/view/LineAdministration/line-list/line-list.component';
 import { CreateBusStationComponent } from './components/view/LineAdministration/create-bus-station/create-bus-station.component';
 import { ListBusStationComponent } from './components/view/LineAdministration/list-bus-station/list-bus-station.component';
+import { CreateDepartureComponent } from './components/view/LineAdministration/create-departure/create-departure.component';
+import { ListDepartureComponent } from './components/view/LineAdministration/list-departure/list-departure.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ListBusStationComponent } from './components/view/LineAdministration/li
     CreateLineComponent,
     LineListComponent,
     CreateBusStationComponent,
-    ListBusStationComponent
+    ListBusStationComponent,
+    CreateDepartureComponent,
+    ListDepartureComponent
   ],
   imports: [
     BrowserModule,

@@ -8,5 +8,11 @@ namespace WebApp.Persistence.Repository.LineRepo
 		public LineRepository(DbContext context) : base(context)
 		{
 		}
-	}
+
+        public Line GetLine(string Name)
+        {
+            return  Find(x => x.Name == Name && x.Active == true) as Line;
+
+        }
+    }
 }

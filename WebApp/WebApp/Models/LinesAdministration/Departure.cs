@@ -20,6 +20,6 @@ namespace WebApp.Models
 
 		public Line Line { get; set; }
 
-		public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 	}
 }
