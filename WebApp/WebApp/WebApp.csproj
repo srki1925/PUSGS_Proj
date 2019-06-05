@@ -255,6 +255,7 @@
     <Compile Include="Controllers\DepartureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,6 +266,10 @@
     <Compile Include="Migrations\201906021243336_FirstMigration.cs" />
     <Compile Include="Migrations\201906021243336_FirstMigration.Designer.cs">
       <DependentUpon>201906021243336_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906050843454_Second.cs" />
+    <Compile Include="Migrations\201906050843454_Second.Designer.cs">
+      <DependentUpon>201906050843454_Second.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Finances\Extensions\DateTimeExtension.cs" />
@@ -283,6 +288,7 @@
     <Compile Include="Models\RequestModel\AdministrationRequests\ConductorCreationRequest.cs" />
     <Compile Include="Models\RequestModel\BusStationRequest\BusStationCreationRequest.cs" />
     <Compile Include="Models\RequestModel\DepartureRequest\DepartureCreationRequest.cs" />
+    <Compile Include="Models\RequestModel\DepartureRequest\DepartureResponse.cs" />
     <Compile Include="Models\RequestModel\LineRequests\LineCreationRequest.cs" />
     <Compile Include="Models\Security\AccountBindingModels.cs" />
     <Compile Include="Models\Security\AccountViewModels.cs" />
@@ -425,6 +431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906021243336_FirstMigration.resx">
       <DependentUpon>201906021243336_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906050843454_Second.resx">
+      <DependentUpon>201906050843454_Second.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

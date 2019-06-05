@@ -25,7 +25,7 @@ export class BusstationService {
     }
 
 
-subscriberToLineChanges() : Subject<IBusStation[]>{
+subscriberToBusChanges() : Subject<IBusStation[]>{
   this.refreshBusStations()
   return this.busStationsChanged;
 }

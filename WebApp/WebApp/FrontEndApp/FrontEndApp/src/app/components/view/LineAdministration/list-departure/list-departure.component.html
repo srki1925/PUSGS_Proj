@@ -1,3 +1,19 @@
-<p>
-  list-departure works!
-</p>
+<form [formGroup]="removeDepartureForm" (submit)="onRemove()">
+  <div>
+    <label for="DepId">DepartureId: </label>
+    <input type="number" formControlName="DepId" class="form-control" />
+    <button type="submit">Remove</button>
+  </div>
+</form>
+<div class="row well well-sm pre-scrollable">
+  <div class="list-group">
+    <ul *ngFor="let departure of departures">
+       <li>{{departure.Id}}</li>
+      <li>{{departure.Time}}</li>
+      <li>{{getDayTypeString(departure.DayType)}}</li>
+      <li>{{departure.Name}}</li>
+      <li>{{getLineTypeString(departure.LineType)}}</li>
+      <li>{{departure.Active}}</li>
+    </ul>
+  </div>
+</div>

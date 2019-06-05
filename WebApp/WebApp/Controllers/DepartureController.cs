@@ -27,18 +27,23 @@ namespace WebApp.Controllers
             {
                 DayType = departureCreationRequest.DayType,
                 Time = departureCreationRequest.Time,
-                Line = unitOfWork.LineServices.GetLine(departureCreationRequest.LineName)
+                Line = unitOfWork.LineServices.Get(departureCreationRequest.LineId)
             };
             unitOfWork.DepartureServices.Add(departure);
             unitOfWork.Complete();
         }
 
         [HttpGet]
-        [Route("Departure")]
+        [Route("Departures")]
         public IHttpActionResult GetDeparture()
         {
-
-            return Ok(unitOfWork.DepartureServices.GetAll());
+            var dep = unitOfWork.DepartureServices.GetAllDep();
+            var response = new List<DepartureResponse>();
+            foreach (var item in dep)
+            {
+               // response.Add(new DepartureResponse() { Id = item.Id, DayType = item.DayType, LineType = item.Line.LineType, Name = item.Line.Name, Time = item.Time });
+            }
+            return Ok(dep);
         }
 
         [HttpDelete]

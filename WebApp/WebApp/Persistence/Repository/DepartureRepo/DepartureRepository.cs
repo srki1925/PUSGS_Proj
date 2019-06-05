@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using WebApp.Models;
 
 namespace WebApp.Persistence.Repository.DepartureRepo
@@ -8,5 +9,10 @@ namespace WebApp.Persistence.Repository.DepartureRepo
 		public DepartureRepository(DbContext context) : base(context)
 		{
 		}
-	}
+
+        public IEnumerable<Departure> GetAllDep()
+        {
+            return context.Set<Departure>().Include("Line");
+        }
+    }
 }

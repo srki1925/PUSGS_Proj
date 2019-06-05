@@ -5,6 +5,8 @@ import {CreateLineComponent} from './components/view/LineAdministration/create-l
 import {LineListComponent} from './components/view/LineAdministration/line-list/line-list.component'
 import {CreateBusStationComponent} from './components/view/LineAdministration/create-bus-station/create-bus-station.component'
 import {ListBusStationComponent} from './components/view/LineAdministration/list-bus-station/list-bus-station.component'
+import {CreateDepartureComponent} from './components/view/LineAdministration/create-departure/create-departure.component'
+import {ListDepartureComponent} from './components/view/LineAdministration/list-departure/list-departure.component'
 
 
 const routes: Routes = [
@@ -14,7 +16,9 @@ const routes: Routes = [
   {path: 'createLine',component: CreateLineComponent},
   {path: 'lines',component:LineListComponent},
   {path:'createBusStation',component:CreateBusStationComponent},
-  {path:'busStations',component:ListBusStationComponent}
+  {path:'busStations',component:ListBusStationComponent},
+  {path:'createDeparture',component:CreateDepartureComponent},
+  {path:'departures',component:ListDepartureComponent}
 ];
 
 @NgModule({

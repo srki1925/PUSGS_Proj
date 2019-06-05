@@ -52,3 +52,23 @@ export interface IBusStationRequest{
     Longitude:string,
     Latitude:string
 }
+
+export enum DayType{
+    WorkDay = 0,
+    Saturday = 1,
+    Sunday = 2
+}
+
+export interface IDepartureRequest{
+    Time:string,
+    DayType:DayType,
+    LineId:number
+}
+
+export interface IDeparture{
+    Id:number,
+    TIme:string,
+    DayType:DayType,
+    Name:string,
+    LineType:LineType
+}
