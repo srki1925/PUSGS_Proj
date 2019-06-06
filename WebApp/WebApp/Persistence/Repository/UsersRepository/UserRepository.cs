@@ -8,5 +8,11 @@ namespace WebApp.Persistence.Repository.UsersRepository
 		public UserRepository(DbContext context) : base(context)
 		{
 		}
-	}
+
+        public bool Exist(string email)
+        {
+            var user = Find(x => x.Email == email) as User;
+            return user != null;
+        }
+    }
 }

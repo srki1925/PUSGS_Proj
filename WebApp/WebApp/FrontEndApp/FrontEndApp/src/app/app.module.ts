@@ -16,6 +16,8 @@ import { CreateBusStationComponent } from './components/view/LineAdministration/
 import { ListBusStationComponent } from './components/view/LineAdministration/list-bus-station/list-bus-station.component';
 import { CreateDepartureComponent } from './components/view/LineAdministration/create-departure/create-departure.component';
 import { ListDepartureComponent } from './components/view/LineAdministration/list-departure/list-departure.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
+import { ActivationListComponent } from './components/user/activation-list/activation-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ListDepartureComponent } from './components/view/LineAdministration/lis
     CreateBusStationComponent,
     ListBusStationComponent,
     CreateDepartureComponent,
-    ListDepartureComponent
+    ListDepartureComponent,
+    RegistrationComponent,
+    ActivationListComponent
   ],
   imports: [
     BrowserModule,

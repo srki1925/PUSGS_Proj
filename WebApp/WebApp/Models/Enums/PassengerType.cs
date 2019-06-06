@@ -2,8 +2,8 @@
 {
 	public enum PassengerType
 	{
+		Regular,
 		Student,
-		Retired,
-		Regular
+		Retired
 	}
 }

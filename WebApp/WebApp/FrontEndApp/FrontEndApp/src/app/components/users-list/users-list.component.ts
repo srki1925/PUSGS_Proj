@@ -52,7 +52,6 @@ export class UsersListComponent implements OnInit {
       Email : this.conductorForm.value.Email,
       Password : this.conductorForm.value.Password
     }
-    console.log("safa")
     this.adminService.addConductor(conductor)
   }
 

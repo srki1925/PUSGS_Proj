@@ -1,0 +1,46 @@
+
+<div>
+<!--<table>
+  <th>
+    <tr>FirstName</tr>
+    <tr>LastName</tr>
+    <tr>Email</tr>
+    <tr>Passenger Type</tr>
+    <tr>Image Uri</tr>
+    <tr></tr>
+    <tr></tr>
+  </th>
+  <td *ngFor="let user of activationList">
+      <tr>{{user.FirstName}}</tr>
+      <tr>{{user.LastName}}</tr>
+      <tr>{{user.Email}}</tr>
+      <tr>{{getPassengerTypeString(user.PassengerType)}}</tr>
+      <tr><a [href]={{user.Image}}></a></tr>
+      <tr><button (click)="OnAccept({{user.Email}})">Accept</button></tr>
+      <tr><button (onclick)="OnRefuse({{user.Email}})">Deny</button>
+  </td>
+</table>-->
+<form [formGroup]="acceptenceForm" (submit)="onAccept()">
+    <div>
+      <label for="Email">Email: </label>
+      <input type="text" formControlName="Email" class="form-control"/>
+      <button type="submit">Accept</button>
+    </div>
+  </form>
+  
+  <form [formGroup]="acceptenceForm" (submit)="onDeny()">
+    <div>
+      <label for="Email">Email: </label>
+      <input type="number" formControlName="Email" class="form-control"/>
+      <button type="submit">Deny</button>
+    </div>
+  </form>
+<ul *ngFor="let user of activationList">
+    <li>{{user.FirstName}}</li>
+    <li>{{user.LastName}}</li>
+    <li>{{user.Email}}</li>
+    <li>{{getPassengerTypeString(user.PassengerType)}}</li>
+    <li><a href="{{user.ImageUri}}">Image</a></li>
+   </ul>
+
+</div>

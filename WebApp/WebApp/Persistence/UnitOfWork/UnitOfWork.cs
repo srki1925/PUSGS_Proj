@@ -24,7 +24,7 @@ namespace WebApp.Persistence.UnitOfWork
 		}
 
 		[Dependency]
-		public IPassengerRepository PutnikServices { get; set; }
+		public IPassengerRepository PassengerServices { get; set; }
 
 		[Dependency]
 		public IAdministratorRepository AdministratorServices { get; set; }

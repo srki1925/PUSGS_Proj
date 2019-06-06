@@ -15,7 +15,7 @@ namespace WebApp.Persistence.UnitOfWork
 {
 	public interface IUnitOfWork : IDisposable
 	{
-		IPassengerRepository PutnikServices { get; }
+		IPassengerRepository PassengerServices { get; }
 		IAdministratorRepository AdministratorServices { get; }
 		IBusStationRepository StationServices { get; }
 		ILineRepository LineServices { get; }

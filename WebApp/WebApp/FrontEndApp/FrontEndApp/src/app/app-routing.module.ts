@@ -7,8 +7,8 @@ import {CreateBusStationComponent} from './components/view/LineAdministration/cr
 import {ListBusStationComponent} from './components/view/LineAdministration/list-bus-station/list-bus-station.component'
 import {CreateDepartureComponent} from './components/view/LineAdministration/create-departure/create-departure.component'
 import {ListDepartureComponent} from './components/view/LineAdministration/list-departure/list-departure.component'
-
-
+import {RegistrationComponent} from './components/user/registration/registration.component'
+import {ActivationListComponent} from './components/user/activation-list/activation-list.component'
 const routes: Routes = [
   { path : 'users', component : UsersListComponent },
   { path: '', redirectTo:'home', pathMatch:'full' },
@@ -18,7 +18,9 @@ const routes: Routes = [
   {path:'createBusStation',component:CreateBusStationComponent},
   {path:'busStations',component:ListBusStationComponent},
   {path:'createDeparture',component:CreateDepartureComponent},
-  {path:'departures',component:ListDepartureComponent}
+  {path:'departures',component:ListDepartureComponent},
+  {path:'register',component:RegistrationComponent},
+  {path:'acceptionlist',component:ActivationListComponent}
 ];
 
 @NgModule({

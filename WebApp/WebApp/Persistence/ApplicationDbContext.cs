@@ -17,7 +17,7 @@ namespace WebApp.Persistence
 			return new ApplicationDbContext();
 		}
 
-		public DbSet<Passenger> Passengers { get; set; }
+		public DbSet<Passenger> ActivationList { get; set; }
 
 		public DbSet<Administrator> Administrators { get; set; }
 

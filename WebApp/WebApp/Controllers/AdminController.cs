@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System.Net;
+using System.Net.Mail;
+using System.Web.Http;
 using WebApp.Models.RequestModel;
 using WebApp.Models.Users;
 using WebApp.Persistence.UnitOfWork;
@@ -18,7 +20,8 @@ namespace WebApp.Controllers
 		[Route("Users")]
 		public IHttpActionResult GetUsers()
 		{
-			return Ok(unitOfWork.UsersRepository.Find(x => !(x is Administrator)));
+
+            return Ok(unitOfWork.UsersRepository.Find(x => !(x is Administrator)));
 		}
 
 		[Route("User/{id}")]
@@ -58,7 +61,7 @@ namespace WebApp.Controllers
 			return Ok();
 		}
 
-		[HttpGet]
+		[HttpDelete]
 		[Route("UnblockUser/{id}")]
 		public IHttpActionResult UnblockUser(int id)
 		{
@@ -73,5 +76,6 @@ namespace WebApp.Controllers
 
 			return Ok();
 		}
-	}
+
+    }
 }

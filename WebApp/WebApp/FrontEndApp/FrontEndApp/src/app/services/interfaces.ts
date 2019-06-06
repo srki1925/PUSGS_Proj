@@ -72,3 +72,26 @@ export interface IDeparture{
     Name:string,
     LineType:LineType
 }
+
+export enum PassengerType{
+    Regular = 0,
+    Student = 1,
+    Retired = 2
+}
+
+export interface IRegistrationRequest{
+    FirstName:string,
+    LastName:string,
+    Email:string,
+    Password:string,
+    PassengerType:PassengerType,
+    ImageUri:string
+}
+
+export interface IActivationData{
+    FirstName:string,
+    LastName:string,
+    Email:string,
+    PassengerType:PassengerType,
+    ImageUri:string
+}
