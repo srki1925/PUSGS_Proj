@@ -89,6 +89,7 @@ export interface IRegistrationRequest{
 }
 
 export interface IActivationData{
+    Id:number,
     FirstName:string,
     LastName:string,
     Email:string,

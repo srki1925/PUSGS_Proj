@@ -16,7 +16,7 @@ export class ActivationListComponent implements OnInit {
     this.conductorService.subscribeToListChanged().subscribe((data:IActivationData[])=> {
       this.activationList = data;
       this.acceptenceForm = new FormGroup({
-        Email:new FormControl(null,[Validators.required])
+        Id:new FormControl(null,[Validators.required])
       })
     })
   }
@@ -28,7 +28,7 @@ export class ActivationListComponent implements OnInit {
   }
 
   onAccept(){
-      this.conductorService.accept(this.acceptenceForm.value.Email)
+      this.conductorService.accept(this.acceptenceForm.value.Id)
   }
 
   onDeny(email: string){

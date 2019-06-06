@@ -19,10 +19,14 @@ namespace WebApp.Controllers
         }
 
         [HttpDelete]
-        [Route("Accept/{email}")]
-        public void Accept([FromBody]string email)
+        [Route("Accept/{id}")]
+        public void Accept(int id)
         {
-            SendMail("djavo96iviciak@gmail.com","andrejftniviciak@gmail.com", "Your registration was accepted", "registration");
+            //SendMail("djavo96iviciak@gmail.com","andrejftniviciak@gmail.com", "Your registration was accepted", "registration");
+            var passenger = unitOfWork.PassengerServices.Get(id);
+            unitOfWork.UsersRepository.Add(passenger);
+            unitOfWork.PassengerServices.Remove(passenger);
+            unitOfWork.Complete();
         }
 
         [HttpPost]

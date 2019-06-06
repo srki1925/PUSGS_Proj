@@ -25,8 +25,8 @@ export class ConductorService {
     return this.activationListChanged;
   }
 
-  accept(email:string){
-    this.http.delete(this.externalApis.getDataApiHostname() + '/conductor/accept/'+email).subscribe(
+  accept(id:number){
+    this.http.delete(this.externalApis.getDataApiHostname() + '/conductor/accept/'+id).subscribe(
       error => console.log(error)
     )
   }

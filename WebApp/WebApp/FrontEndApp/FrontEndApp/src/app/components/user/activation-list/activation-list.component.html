@@ -22,20 +22,21 @@
 </table>-->
 <form [formGroup]="acceptenceForm" (submit)="onAccept()">
     <div>
-      <label for="Email">Email: </label>
-      <input type="text" formControlName="Email" class="form-control"/>
+      <label for="Id">Email: </label>
+      <input type="number" formControlName="Id" class="form-control"/>
       <button type="submit">Accept</button>
     </div>
   </form>
   
   <form [formGroup]="acceptenceForm" (submit)="onDeny()">
     <div>
-      <label for="Email">Email: </label>
-      <input type="number" formControlName="Email" class="form-control"/>
+      <label for="Id">Id: </label>
+      <input type="number" formControlName="Id" class="form-control"/>
       <button type="submit">Deny</button>
     </div>
   </form>
 <ul *ngFor="let user of activationList">
+    <li>{{user.Id}}</li>
     <li>{{user.FirstName}}</li>
     <li>{{user.LastName}}</li>
     <li>{{user.Email}}</li>
