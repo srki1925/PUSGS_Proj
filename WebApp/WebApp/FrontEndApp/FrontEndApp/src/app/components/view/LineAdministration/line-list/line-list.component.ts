@@ -29,7 +29,9 @@ export class LineListComponent implements OnInit {
     }
   }
 onRemove(){
+  if(this.removeLineForm.valid){
   this.lineService.removeLine(this.removeLineForm.value.LineId)
   this.lineService.refreshLines()
+  }
 }
 }

@@ -15,7 +15,8 @@ namespace WebApp.Persistence.Repository.DepartureRepo
 		}
         public List<Departure> GetAllDep()
         {
-            return context.Departures.Include(t=>t.Line).ToList();
+            var response = context.Departures.Include(t => t.Line).ToList();
+            return response.Where(x => x.Active).ToList();
         }
     }
 }

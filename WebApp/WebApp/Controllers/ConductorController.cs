@@ -24,7 +24,9 @@ namespace WebApp.Controllers
         {
             SendMail("","andrejftniviciak@gmail.com", "Your registration was accepted", "registration");
             var passenger = unitOfWork.PassengerServices.Get(id);
-            unitOfWork.UsersRepository.Add(passenger);
+            if (!unitOfWork.UsersRepository.Exist(passenger.Email)) {
+                unitOfWork.UsersRepository.Add(passenger);
+            }
             passenger.Blocked = true;
             unitOfWork.Complete();
         }
@@ -43,9 +45,9 @@ namespace WebApp.Controllers
             mail.To.Add(emailTo);
             mail.Subject = subject;
             mail.Body = body;
-            mail.From = new MailAddress("djavo96iviciak@gmail.com");
+            mail.From = new MailAddress("titovrentavehicle@gmail.com");
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("djavo96iviciak@gmail.com", "");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("titovrentavehicle@gmail.com", "drugtito");
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
         }

@@ -39,7 +39,7 @@ namespace WebApp.Controllers
         public IHttpActionResult GetLines()
         {
             var lines = unitOfWork.LineServices.GetAll();
-            return Ok(lines);
+            return Ok(lines.Where(x => x.Active));
         }
 
         [HttpDelete]

@@ -26,11 +26,13 @@ export class CreateLineComponent implements OnInit {
   }
 
   onSubmit() {
+    if(this.lineForm.valid){
     let Line: ILineRequest = {
       Name: this.lineForm.value.Name,
       LineType: this.lineForm.value.Type
     }
     this.lineService.addLine(Line);
+  }
   }
 
 

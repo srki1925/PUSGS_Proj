@@ -69,8 +69,7 @@ export interface IDeparture{
     Id:number,
     TIme:string,
     DayType:DayType,
-    Name:string,
-    LineType:LineType
+    Line:ILine
 }
 
 export enum PassengerType{

@@ -28,7 +28,9 @@ export class ActivationListComponent implements OnInit {
   }
 
   onAccept(){
+    if(this.acceptenceForm.valid){
       this.conductorService.accept(this.acceptenceForm.value.Id)
+    }
   }
 
   onDeny(email: string){

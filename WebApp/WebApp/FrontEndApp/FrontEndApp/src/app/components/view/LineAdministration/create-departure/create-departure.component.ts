@@ -29,7 +29,7 @@ public lines:ILine[]
     }
   }
   onSubmit(){
-    
+    if(this.departureForm.valid){
     let departure:IDepartureRequest = {
       Time:this.departureForm.value.Time,
       DayType:this.departureForm.value.DayType,
@@ -37,6 +37,7 @@ public lines:ILine[]
     }
     this.departureService.addDeparture(departure)
   }
+}
 
   
 }

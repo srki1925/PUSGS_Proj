@@ -36,7 +36,9 @@ export class ListDepartureComponent implements OnInit {
     }
   }
   onRemove(){
+    if(this.removeDepartureForm.valid){
     this.departureService.removeDeparture(this.removeDepartureForm.value.DepId)
     this.departureService.refreshDepartures()
+    }
   }
 }

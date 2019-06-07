@@ -23,6 +23,7 @@ namespace WebApp.Controllers
         [Route("CreateBusStation")]
         public void CreateBusStation(BusStationCreationRequest busStationCreationRequest)
         {
+            
             BusStation busStation = new BusStation()
             {
                 Name = busStationCreationRequest.Name,
@@ -39,7 +40,8 @@ namespace WebApp.Controllers
         [Route("BusStations")]
         public IHttpActionResult GetBusStations()
         {
-            return Ok(unitOfWork.StationServices.GetAll());
+            var response = unitOfWork.StationServices.GetAll();
+            return Ok(response.Where(x => x.Active));
         }
 
         [HttpDelete]

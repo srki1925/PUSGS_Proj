@@ -56,7 +56,8 @@ namespace WebApp.Controllers
         [Route("ActivationList")]
         public IHttpActionResult ActivationList()
         {
-            return Ok(unitOfWork.PassengerServices.GetAll());
+            var response = unitOfWork.PassengerServices.GetAll();
+            return Ok(response.Where(x => !x.Blocked));
         }
 
     }

@@ -38,12 +38,9 @@ namespace WebApp.Controllers
         public IHttpActionResult GetDeparture()
         {
             var dep = unitOfWork.DepartureServices.GetAllDep();
-            var response = new List<DepartureResponse>();
-            foreach (var item in dep)
-            {
-               // response.Add(new DepartureResponse() { Id = item.Id, DayType = item.DayType, LineType = item.Line.LineType, Name = item.Line.Name, Time = item.Time });
-            }
-            return Ok(dep);
+
+
+            return Ok(dep.Where(x => x.Active));
         }
 
         [HttpDelete]

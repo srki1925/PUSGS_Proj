@@ -25,7 +25,9 @@ export class ListBusStationComponent implements OnInit {
     
   }
   onRemove(){
+    if(this.removeBusStationForm.valid){
     this.busStationService.removeBusStation(this.removeBusStationForm.value.BusStationId)
     this.busStationService.refreshBusStations()
+    }
   }
 }

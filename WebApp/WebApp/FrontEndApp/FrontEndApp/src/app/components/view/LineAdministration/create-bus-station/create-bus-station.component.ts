@@ -24,6 +24,7 @@ export class CreateBusStationComponent implements OnInit {
   }
 
   onSubmit(){
+    if(this.busForm.valid){
     let busStation:IBusStationRequest = {
       Name:this.busForm.value.Name,
       Address:this.busForm.value.Address,
@@ -31,5 +32,6 @@ export class CreateBusStationComponent implements OnInit {
       Latitude: this.busForm.value.Latitude
     }
     this.busService.addBusStation(busStation);
+  }
   }
 }
