@@ -16,8 +16,10 @@ namespace WebApp.Models
 		public int Id { get; set; }
 
 		public TicketDefinition TicketDefinition { get; set; }
+        [ForeignKey("User")]
+        public int User_Id { get; set; }
 
-		public User User { get; set; }
+        public User User { get; set; }
 
 		public DateTime IssueDate { get; set; }
 

@@ -20,8 +20,10 @@ namespace WebApp.Models
 
 		[NotMapped]
 		public string Latitude { get; set; }
+        [ForeignKey("Line")]
+        public int Line_Id { get; set; }
 
-		public Line Line { get; set; }
+        public Line Line { get; set; }
 
 		public bool Active { get; set; }
 	}
