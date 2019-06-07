@@ -18,6 +18,8 @@ namespace WebApp.Models
 
 		public DayType DayType { get; set; }
 
+        [ForeignKey("Line")]
+        public int LineId { get; set; }
 		public Line Line { get; set; }
 
         public bool Active { get; set; } = true;

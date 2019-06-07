@@ -15,10 +15,10 @@ export class ActivationListComponent implements OnInit {
   ngOnInit() {
     this.conductorService.subscribeToListChanged().subscribe((data:IActivationData[])=> {
       this.activationList = data;
-      this.acceptenceForm = new FormGroup({
-        Id:new FormControl(null,[Validators.required])
-      })
     })
+        this.acceptenceForm = new FormGroup({
+          Id:new FormControl(null,[Validators.required])
+        })
   }
   getPassengerTypeString(passType:number){
       switch(passType){

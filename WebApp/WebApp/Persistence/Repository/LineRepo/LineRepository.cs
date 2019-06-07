@@ -15,5 +15,7 @@ namespace WebApp.Persistence.Repository.LineRepo
             return  Find(x => x.Name == Name && x.Active == true) as Line;
 
         }
+
+        
     }
 }
