@@ -9,6 +9,8 @@ import {CreateDepartureComponent} from './components/view/LineAdministration/cre
 import {ListDepartureComponent} from './components/view/LineAdministration/list-departure/list-departure.component'
 import {RegistrationComponent} from './components/user/registration/registration.component'
 import {ActivationListComponent} from './components/user/activation-list/activation-list.component'
+import { CreatePriceListItemComponent} from './components/view/Finances/create-price-list-item/create-price-list-item.component'
+
 const routes: Routes = [
   { path : 'users', component : UsersListComponent },
   { path: '', redirectTo:'home', pathMatch:'full' },
@@ -20,7 +22,8 @@ const routes: Routes = [
   {path:'createDeparture',component:CreateDepartureComponent},
   {path:'departures',component:ListDepartureComponent},
   {path:'register',component:RegistrationComponent},
-  {path:'acceptionlist',component:ActivationListComponent}
+  {path:'acceptionlist',component:ActivationListComponent},
+  {path:'CreatePriceListItem',component:CreatePriceListItemComponent}
 ];
 
 @NgModule({

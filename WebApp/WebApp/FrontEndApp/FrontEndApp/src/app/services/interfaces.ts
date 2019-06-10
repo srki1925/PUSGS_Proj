@@ -95,3 +95,17 @@ export interface IActivationData{
     PassengerType:PassengerType,
     ImageUri:string
 }
+
+export enum TicketType{
+    Hour = 0,
+    Day = 1,
+    Month = 2,
+    Year = 3
+}
+
+export interface IPriceListItem{
+    TicketType: TicketType,
+    Price:number
+}
+
+

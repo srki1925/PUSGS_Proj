@@ -257,6 +257,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Controllers\PassengerController.cs" />
+    <Compile Include="Controllers\PriceListItemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -296,6 +297,7 @@
     <Compile Include="Models\RequestModel\DepartureRequest\DepartureResponse.cs" />
     <Compile Include="Models\RequestModel\LineRequests\LineCreationRequest.cs" />
     <Compile Include="Models\RequestModel\PassengerRequest\RegistrationRequest.cs" />
+    <Compile Include="Models\RequestModel\PriceListItemRequest\PriceListItemCreationRequest.cs" />
     <Compile Include="Models\Security\AccountBindingModels.cs" />
     <Compile Include="Models\Security\AccountViewModels.cs" />
     <Compile Include="Models\Security\ApplicationUser.cs" />
