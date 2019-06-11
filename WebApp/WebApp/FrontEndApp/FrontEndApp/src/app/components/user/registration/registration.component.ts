@@ -19,6 +19,7 @@ export class RegistrationComponent implements OnInit {
       Email: new FormControl(null,[Validators.required,Validators.nullValidator]),
       Password: new FormControl(null,[Validators.required,Validators.nullValidator]),
       PassengerType: new FormControl(),
+      DoB: new FormControl(null,[Validators.required]),
       ImageUri: new FormControl(null,[Validators.required,Validators.nullValidator])
     })
   }
@@ -31,6 +32,7 @@ export class RegistrationComponent implements OnInit {
         Password: this.registrationForm.value.Password,
         PassengerType: this.registrationForm.value.PassengerType,
         ImageUri: this.registrationForm.value.ImageUri,
+        DoB:this.registrationForm.value.DoB
       }
       this.passengerService.register(passenger)
     }

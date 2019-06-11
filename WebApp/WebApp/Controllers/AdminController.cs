@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Mail;
+using System.Web.Http;
 using WebApp.Models.RequestModel;
 using WebApp.Models.Users;
 using WebApp.Persistence.UnitOfWork;
@@ -29,21 +30,6 @@ namespace WebApp.Controllers
 			return user != null ? Ok(user) : (IHttpActionResult)NotFound();
 		}
 
-		[HttpPost]
-		[Route("CreateConductor")]
-		public void CreateConductor(ConductorCreationRequest createdConductor)
-		{
-			unitOfWork.ConductorRepository.Add(new Conductor
-			{
-				Email = createdConductor.Email,
-				FirstName = createdConductor.FirstName,
-				LastName = createdConductor.LastName,
-				PasswordHash = createdConductor.Password,
-			});
-
-			unitOfWork.Complete();
-            SendMail("drugtitosevracakuci@gmail.com","vinjak10", createdConductor.Email, $"Your password for account is {createdConductor.Password}", "New Account");
-		}
 
 		[HttpDelete]
 		[Route("BlockUser/{id}")]

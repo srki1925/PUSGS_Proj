@@ -1,22 +1,22 @@
 
 <div>
-<table>
-  <th>
-    <tr>FirstName</tr>
-    <tr>LastName</tr>
-    <tr>Email</tr>
-    <tr>Passenger Type</tr>
-    <tr>Image Uri</tr>
-    <tr></tr>
-    <tr></tr>
-  </th>
-  <td *ngFor="let user of activationList">
-      <tr>{{user.FirstName}}</tr>
-      <tr>{{user.LastName}}</tr>
-      <tr>{{user.Email}}</tr>
-      <tr>{{getPassengerTypeString(user.PassengerType)}}</tr>
-      <tr><a href={{user.Image}}></a></tr>
-  </td>
+<table border="1">
+  <tr>
+    <th>FirstName</th>
+    <th>LastName</th>
+    <th>Email</th>
+    <th>PassengerType</th>
+    <th>Date of Birth</th>
+    <th>Image</th>
+  </tr>
+  <tr *ngFor="let user of activationList">
+      <td>{{user.FirstName}}</td>
+      <td>{{user.LastName}}</td>
+      <td>{{user.Email}}</td>
+      <td>{{getPassengerTypeString(user.PassengerType)}}</td>
+      <td>{{user.DoB}}</td>
+      <td><a href={{user.Image}}></a></td>
+  </tr>
 </table>
 <form [formGroup]="acceptenceForm" (submit)="onAccept()">
     <div>

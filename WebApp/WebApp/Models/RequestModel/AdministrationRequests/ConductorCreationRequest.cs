@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApp.Models.RequestModel
 {
@@ -10,7 +11,8 @@ namespace WebApp.Models.RequestModel
 
 		[EmailAddress]
 		public string Email { get; set; }
+        public DateTime DoB { get; set; }
 
-		public string Password { get; set; }
+        public string Password { get; set; }
 	}
 }
