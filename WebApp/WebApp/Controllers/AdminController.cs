@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Net.Mail;
-using System.Web.Http;
+﻿using System.Web.Http;
 using WebApp.Models.RequestModel;
 using WebApp.Models.Users;
 using WebApp.Persistence.UnitOfWork;
@@ -18,14 +16,14 @@ namespace WebApp.Controllers
 		}
 
 		[Route("Users")]
+		[Authorize(Roles = "Admin")]
 		public IHttpActionResult GetUsers()
 		{
-
-            return Ok(unitOfWork.UsersRepository.Find(x => !(x is Administrator)));
+			return Ok(unitOfWork.UsersRepository.Find(x => !(x is Administrator)));
 		}
 
 		[Route("User/{id}")]
-		public IHttpActionResult GetUser(int id)
+		public IHttpActionResult GetUser(string id)
 		{
 			var user = unitOfWork.UsersRepository.Find(x => !(x is Administrator) && x.Id == id);
 			return user != null ? Ok(user) : (IHttpActionResult)NotFound();
@@ -40,13 +38,14 @@ namespace WebApp.Controllers
 				Email = createdConductor.Email,
 				FirstName = createdConductor.FirstName,
 				LastName = createdConductor.LastName,
-				Password = createdConductor.Password,
+				PasswordHash = createdConductor.Password,
 			});
 			unitOfWork.Complete();
 		}
 
 		[HttpDelete]
 		[Route("BlockUser/{id}")]
+		[Authorize(Roles = "Admin")]
 		public IHttpActionResult BlockUser(int id)
 		{
 			var user = unitOfWork.UsersRepository.Get(id);
@@ -63,6 +62,7 @@ namespace WebApp.Controllers
 
 		[HttpDelete]
 		[Route("UnblockUser/{id}")]
+		[Authorize(Roles = "Admin")]
 		public IHttpActionResult UnblockUser(int id)
 		{
 			var user = unitOfWork.UsersRepository.Get(id);
@@ -76,6 +76,5 @@ namespace WebApp.Controllers
 
 			return Ok();
 		}
-
-    }
+	}
 }
