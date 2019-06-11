@@ -113,9 +113,21 @@ export enum TicketType{
     Year = 3
 }
 
-export interface IPriceListItem{
+export interface IPriceListItemRequest{
     TicketType: TicketType,
     Price:number
 }
+
+export interface IPriceListItem{
+    Id:number,
+    TicketDefinition:ITicketDefinition,
+    Price:number
+}
+
+export interface ITicketDefinition{
+    TicketType: TicketType
+}
+
+
 
 

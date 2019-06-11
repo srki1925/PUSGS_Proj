@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { IPriceListItem } from './../../../../services/interfaces';
+import {IPriceListItemRequest } from './../../../../services/interfaces';
 import { PriceListItemService } from './../../../../services/price-list-item.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class CreatePriceListItemComponent implements OnInit {
   }
   onSubmit(){
     if(this.priceListItemForm.valid){
-    let item:IPriceListItem = {
+    let item:IPriceListItemRequest = {
       Price:this.priceListItemForm.value.Price,
       TicketType:this.priceListItemForm.value.TicketType,
     }

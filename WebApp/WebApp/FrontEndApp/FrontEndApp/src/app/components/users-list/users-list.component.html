@@ -1,16 +1,21 @@
-<div class=" row well well-sm pre-scrollable">
-  <div class="list-group">
-  <ul *ngFor="let user of users">
-    <li>{{user.FirstName}}</li>
-    <li>{{user.LastName}}</li>
-    <li>{{user.Email}}</li>
-    <li>{{user.Password}}</li>
-    <li>{{user.Blocked}}</li>
-    <li>{{getUserTypeString(user.UserType)}}</li>
-  </ul>
-  </div>
-</div>
-
+<table border="1">
+  <tr>
+    <th>FirstName</th>
+    <th>LastName</th>
+    <th>Email</th>
+    <th>UserType</th>
+    <th>Date of Birth</th>
+    <th>Blocked</th>
+  </tr>
+  <tr *ngFor="let user of users">
+      <td>{{user.FirstName}}</td>
+      <td>{{user.LastName}}</td>
+      <td>{{user.Email}}</td>
+      <td>{{getUserTypeString(user.PassengerType)}}</td>
+      <td>{{user.DoB}}</td>
+      <td>{{user.Blocked}}</td>
+  </tr>
+</table>
 
 
 <form [formGroup]="blockForm" (submit)="onBlockUser()">

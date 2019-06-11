@@ -269,6 +269,10 @@
     <Compile Include="Migrations\201906111118522_First.Designer.cs">
       <DependentUpon>201906111118522_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906111459006_adsa.cs" />
+    <Compile Include="Migrations\201906111459006_adsa.Designer.cs">
+      <DependentUpon>201906111459006_adsa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Finances\Extensions\DateTimeExtension.cs" />
     <Compile Include="Models\Finances\PriceList.cs" />
@@ -431,6 +435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906111118522_First.resx">
       <DependentUpon>201906111118522_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906111459006_adsa.resx">
+      <DependentUpon>201906111459006_adsa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

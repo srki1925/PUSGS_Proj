@@ -16,4 +16,18 @@
       </ul>
     </div>
   </div>
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>LineType</th>
+      <th>Active</th>
+    </tr>
+    <tr *ngFor="let line of lines">
+        <td>{{line.Id}}</td>
+        <td>{{line.Name}}</td>
+        <td>{{getLineTypeString(line.LineType)}}</td>
+        <td>{{line.Active}}</td>
+    </tr>
+  </table>
 

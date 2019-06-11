@@ -11,6 +11,22 @@ namespace WebApp.Controllers
 	{
 		private readonly IUnitOfWork unitOfWork;
 
+      
+
+        [Route("PriceListItems/{ticketType}")]
+        [HttpGet]
+        public IHttpActionResult GetAllForType(int ticketType)
+        {
+            return Ok(unitOfWork.PriceListItemServices.GetPriceListItems(x => x.Active && x.TicketDefinition.TicketType == (TicketType)ticketType));
+        }
+
+        [Route("PriceListItems")]
+        [HttpGet]
+        public IHttpActionResult GetAll()
+        {
+            var items = unitOfWork.PriceListItemServices.GetPriceListItems(x=> x.Active);
+            return Ok(items);
+        }
 		public PriceListItemController(IUnitOfWork unitOfWork)
 		{
 			this.unitOfWork = unitOfWork;
@@ -47,15 +63,9 @@ namespace WebApp.Controllers
 				default:
 					return NotFound();
 			}
+            priceList.Active = true;
 			unitOfWork.PriceListItemServices.Add(priceList);
 			unitOfWork.Complete();
-			return Ok();
-		}
-
-		[Route("PriceListItems")]
-		[HttpGet]
-		public IHttpActionResult GetAll()
-		{
 			return Ok();
 		}
 

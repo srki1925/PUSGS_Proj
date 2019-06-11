@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Linq.Expressions;
 using WebApp.Models;
 
@@ -16,8 +17,8 @@ namespace WebApp.Persistence.Repository.PriceListItemRepo
 
         public List<PriceListItem> GetPriceListItems(Expression<Func<PriceListItem, bool>> predicate)
         {
-          
-            return null;
+
+            return _context.PriceListItems.Where(predicate).Include(x => x.TicketDefinition).ToList();
         }
     }
 }

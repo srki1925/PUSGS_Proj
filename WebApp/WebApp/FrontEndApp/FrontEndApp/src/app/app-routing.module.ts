@@ -22,6 +22,7 @@ import {UserComponent} from './components/user/user.component'
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
 import { ConductorComponent} from './components/conductor/conductor.component'
 import {ValidateTicketComponent} from './components/conductor/validate-ticket/validate-ticket.component'
+import { PriceListItemsComponent} from './components/view/Finances/price-list-items/price-list-items.component'
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
@@ -45,9 +46,11 @@ const routes: Routes = [
       {path:'new',component:CreateDepartureComponent}
     ]},
     {path:'pricelist',component:PriceListsComponent ,children:[
-      {path:'newItem',component:CreatePriceListItemComponent},
       {path:'newPriceList',component:CreatePriceListComponent},
       
+    ]},
+    {path:'pricelistitem',component:PriceListItemsComponent ,children:[
+      {path:'newItem',component:CreatePriceListItemComponent}
     ]},
     {path:'conductor',component:ConductorComponent,children:[
       {path:'activationlist',component:ActivationListComponent},
