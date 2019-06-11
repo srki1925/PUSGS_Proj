@@ -8,11 +8,17 @@ export interface IUser{
     Blocked : boolean
 }
 
+export interface ILoginData{
+    Email : string,
+    Password : string
+}
+
 export interface IConductorRequest{
     FirstName : string,
     LastName : string,
     Email : string,
     Password : string,
+    ConfirmPassword : string,
     DoB:Date
 }
 

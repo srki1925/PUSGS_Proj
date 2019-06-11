@@ -26,7 +26,8 @@ export class AdminService {
   }
 
   addConductor(newConductor : IConductorRequest){
-    this.http.post(this.externalApis.getDataApiHostname() + '/admin/createConductor/', newConductor).subscribe(
+    console.log('dsaidjasio')
+    this.http.post(this.externalApis.getDataApiHostname() + '/Account/AddConductor', newConductor).subscribe(
       ok => this.refreshUsers(),
       error => console.log(error)
     )

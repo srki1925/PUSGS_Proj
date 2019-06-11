@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +32,7 @@ import { PriceListsComponent } from './components/view/Finances/price-lists/pric
 import { ConductorComponent } from './components/conductor/conductor.component';
 import { ValidateTicketComponent } from './components/conductor/validate-ticket/validate-ticket.component';
 import { PriceListItemsComponent } from './components/view/Finances/price-list-items/price-list-items.component';
-
+import { TokenInterceptor } from './interceptors/token.interceptor'
 
 @NgModule({
   declarations: [
@@ -72,7 +72,7 @@ import { PriceListItemsComponent } from './components/view/Finances/price-list-i
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
