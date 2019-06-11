@@ -13,7 +13,7 @@ export class PriceListService {
     private priceListChanged = new  Subject<IPriceList[]>()
 
     refreshList(){
-      this.http.get(this.externalApis.getDataApiHostname() + '/pricelist/pricelists').subscribe(
+      this.http.get(this.externalApis.getDataApiUrl() + '/pricelist/pricelists').subscribe(
         (data: IPriceList[])=> { this.priceListChanged.next(data);}
       )
     }
@@ -27,13 +27,13 @@ export class PriceListService {
 
 
     createPriceList(list:IPriceListRequest){
-      this.http.post(this.externalApis.getDataApiHostname() + '/pricelist/createpricelist',list).subscribe(
+      this.http.post(this.externalApis.getDataApiUrl() + '/pricelist/createpricelist',list).subscribe(
         ok => this.refreshList(),
         error=> console.log('There is no such type of ticket type')
       )
     }
     removePriceList(id:number){
-      this.http.delete(this.externalApis.getDataApiHostname()+ '/pricelist/removepricelis/'+ id).subscribe(
+      this.http.delete(this.externalApis.getDataApiUrl()+ '/pricelist/removepricelis/'+ id).subscribe(
         ok => this.refreshList(),
         error => console.log('There is no PriceList with that id')
       )
