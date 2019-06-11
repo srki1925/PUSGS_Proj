@@ -333,7 +333,7 @@ namespace WebApp.Controllers
 
 			if (unitOfWork.UsersRepository.Exist(model.Email))
 			{
-				return BadRequest($"Conductor with email {model.Email} already exists.");
+				return BadRequest($"Passenger with email {model.Email} already exists.");
 			}
 
 			var user = new Passenger()
@@ -346,6 +346,8 @@ namespace WebApp.Controllers
 				LastName = model.LastName,
 				PassengerType = model.PassengerType.HasValue ? model.PassengerType.Value : Models.Enums.PassengerType.Regular
 			};
+
+			UserManager.AddToRole(user.Id, "Passenger");
 
 			try
 			{
@@ -387,6 +389,8 @@ namespace WebApp.Controllers
 				FirstName = model.FirstName,
 				LastName = model.LastName
 			};
+
+			UserManager.AddToRole(user.Id, "Controller");
 
 			try
 			{
