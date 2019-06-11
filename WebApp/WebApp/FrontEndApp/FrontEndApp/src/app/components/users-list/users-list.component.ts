@@ -12,18 +12,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class UsersListComponent implements OnInit {
 
   public users : IUser[]
-  public conductorForm : FormGroup
   public blockForm : FormGroup
   
   constructor(private adminService : AdminService) { }
 
   ngOnInit() {
-    this.conductorForm = new FormGroup({
-      FirstName: new FormControl(null, [ Validators.required, Validators.nullValidator]),
-      LastName: new  FormControl(null, [ Validators.required, Validators.nullValidator]),
-      Email: new FormControl(null, [ Validators.required, Validators.email, Validators.nullValidator]),
-      Password: new FormControl(null, [ Validators.required, Validators.minLength(8), Validators.maxLength(16), Validators.nullValidator])
-    })
+
 
     this.blockForm = new FormGroup({
       UserId : new FormControl(null, [Validators.required, Validators.nullValidator])
@@ -43,17 +37,7 @@ export class UsersListComponent implements OnInit {
     }
   }
 
-  onSubmit(){
-    if(!this.conductorForm.valid) return
-
-    let conductor : IConductorRequest = {
-      FirstName : this.conductorForm.value.FirstName,
-      LastName : this.conductorForm.value.LastName,
-      Email : this.conductorForm.value.Email,
-      Password : this.conductorForm.value.Password
-    }
-    this.adminService.addConductor(conductor)
-  }
+  
 
   onBlockUser(){
     if(!this.blockForm.valid) return
