@@ -21,6 +21,7 @@ import { ActivationListComponent } from './components/user/activation-list/activ
 import { CreatePriceListItemComponent } from './components/view/Finances/create-price-list-item/create-price-list-item.component';
 import { LoginComponent } from './components/login/login.component';
 import { DropdownDirective } from './directives/dropdown.directive';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DropdownDirective } from './directives/dropdown.directive';
     ActivationListComponent,
     CreatePriceListItemComponent,
     LoginComponent,
-    DropdownDirective
+    DropdownDirective,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
