@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,9 @@ export class HomeComponent implements OnInit {
 
   userBlocked = false;
   username = '';
-  constructor() { }
+  constructor(private authService : AuthService) { }
 
   ngOnInit() {
-    this.userBlocked = false
-    this.username = 'user'
+    
   }
 }

@@ -4,11 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ExternalApisDataService {
-  private readonly dataServiceHostname = 'http://localhost:52295/api'
   
+  private readonly base_url = "http://localhost:52295"
+
   constructor() { }
 
-  getDataApiHostname() : string{
-    return this.dataServiceHostname;
+  getDataApiUrl() : string{
+    return this.base_url + '/api';
+  }
+
+  getTGSUrl() : string{
+    return this.base_url + '/oauth/token'
   }
 }

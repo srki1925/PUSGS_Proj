@@ -91,6 +91,7 @@ export interface IRegistrationRequest{
     LastName:string,
     Email:string,
     Password:string,
+    ConfirmPassword: string,
     PassengerType:PassengerType,
     ImageUri:string,
     DoB:Date

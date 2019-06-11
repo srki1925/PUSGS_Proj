@@ -19,7 +19,7 @@ export class DepartureService {
 
 
     addDeparture(newDeparture:IDepartureRequest){
-      this.http.post(this.externalApis.getDataApiHostname() + '/departure/createdeparture',newDeparture).subscribe(
+      this.http.post(this.externalApis.getDataApiUrl() + '/departure/createdeparture',newDeparture).subscribe(
       ok => console.log("polazak kreiran"),
       error => console.log("error polazak ")
       )
@@ -30,11 +30,11 @@ export class DepartureService {
     }
 
     refreshDepartures(){
-      this.http.get(this.externalApis.getDataApiHostname() + '/departure/departures').subscribe((data:IDeparture[])=>{this.departuresChanged.next(data)})
+      this.http.get(this.externalApis.getDataApiUrl() + '/departure/departures').subscribe((data:IDeparture[])=>{this.departuresChanged.next(data)})
     }
 
     removeDeparture(departureId:number){
-      this.http.delete(this.externalApis.getDataApiHostname() + '/departure/removedeparture/'+departureId).subscribe(
+      this.http.delete(this.externalApis.getDataApiUrl() + '/departure/removedeparture/'+departureId).subscribe(
         ok => this.refreshDepartures(),
         error => console.log(error)
       )

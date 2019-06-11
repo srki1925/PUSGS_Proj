@@ -15,7 +15,7 @@ export class PassengerService {
     private externalApis: ExternalApisDataService ) { }
     
     register(passenger:IRegistrationRequest){
-      this.http.post(this.externalApis.getDataApiHostname() + '/passenger/register',passenger).subscribe(
+      this.http.post(this.externalApis.getDataApiUrl() + '/Account/Register',passenger).subscribe(
         error => console.log(error)       
       )
     }

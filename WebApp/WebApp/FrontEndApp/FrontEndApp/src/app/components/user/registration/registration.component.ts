@@ -23,6 +23,7 @@ export class RegistrationComponent implements OnInit {
       ImageUri: new FormControl(null,[Validators.required,Validators.nullValidator])
     })
   }
+  
   onSubmit(){
     if(this.registrationForm.valid){
       let passenger : IRegistrationRequest ={
@@ -30,6 +31,7 @@ export class RegistrationComponent implements OnInit {
         LastName: this.registrationForm.value.LastName,
         Email: this.registrationForm.value.Email,
         Password: this.registrationForm.value.Password,
+        ConfirmPassword: this.registrationForm.value.Password,
         PassengerType: this.registrationForm.value.PassengerType,
         ImageUri: this.registrationForm.value.ImageUri,
         DoB:this.registrationForm.value.DoB
@@ -37,5 +39,4 @@ export class RegistrationComponent implements OnInit {
       this.passengerService.register(passenger)
     }
   }
-
 }

@@ -17,12 +17,11 @@ export class LoginComponent implements OnInit {
       Password : 'Admin123!'
     }
 
-    //if(!this.authService.checkLoggedIn){
-
+    if(!this.authService.checkLoggedIn()){
       this.authService.logIn(loginData, () =>{
         console.log('Finished login')
       });
-    //}
+    }
   }
 
 }

@@ -15,7 +15,7 @@ export class ConductorService {
     private externalApis: ExternalApisDataService) { }
 
   refreshList(){
-    this.http.get(this.externalApis.getDataApiHostname() + '/passenger/activationlist').subscribe((data: IActivationData[])=>{
+    this.http.get(this.externalApis.getDataApiUrl() + '/passenger/activationlist').subscribe((data: IActivationData[])=>{
       this.activationListChanged.next(data)
     })
   }
@@ -26,7 +26,7 @@ export class ConductorService {
   }
 
   accept(id:number){
-    this.http.delete(this.externalApis.getDataApiHostname() + '/conductor/accept/'+id).subscribe(
+    this.http.delete(this.externalApis.getDataApiUrl() + '/conductor/accept/'+id).subscribe(
       error => console.log(error)
     )
   }

@@ -20,28 +20,28 @@ export class AdminService {
   }
 
   refreshUsers(){
-    this.http.get(this.externalApis.getDataApiHostname() + '/admin/users').subscribe((data:IUser[]) =>{
+    this.http.get(this.externalApis.getDataApiUrl() + '/admin/users').subscribe((data:IUser[]) =>{
       this.usersChanged.next(data)
     })
   }
 
   addConductor(newConductor : IConductorRequest){
     console.log('dsaidjasio')
-    this.http.post(this.externalApis.getDataApiHostname() + '/Account/AddConductor', newConductor).subscribe(
+    this.http.post(this.externalApis.getDataApiUrl() + '/Account/AddConductor', newConductor).subscribe(
       ok => this.refreshUsers(),
       error => console.log(error)
     )
   }
 
   blockUser(userId : number){
-    this.http.delete(this.externalApis.getDataApiHostname() + '/admin/blockUser/' + userId).subscribe(
+    this.http.delete(this.externalApis.getDataApiUrl() + '/admin/blockUser/' + userId).subscribe(
       ok => this.refreshUsers(),
       error => console.log(error)
     )
   }
 
   unblockUser(userId : number){
-    this.http.get(this.externalApis.getDataApiHostname() + '/admin/unblockUser/' + userId).subscribe(
+    this.http.get(this.externalApis.getDataApiUrl() + '/admin/unblockUser/' + userId).subscribe(
       ok => this.refreshUsers(),
       error => console.log(error)
     )

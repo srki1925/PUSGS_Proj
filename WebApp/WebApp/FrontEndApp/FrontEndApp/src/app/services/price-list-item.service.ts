@@ -16,7 +16,7 @@ export class PriceListItemService {
     private priceListItemsChanged = new  Subject<IPriceListItem[]>()
 
     refreshItems(){
-      this.http.get(this.externalApis.getDataApiHostname() + 'api/pricelistitem/pricelistitems').subscribe(
+      this.http.get(this.externalApis.getDataApiUrl() + 'api/pricelistitem/pricelistitems').subscribe(
         (data: IPriceListItem[])=> { this.priceListItemsChanged.next(data);}
       )
     }
@@ -26,14 +26,14 @@ export class PriceListItemService {
       return this.priceListItemsChanged;
     }
     createPriceListItem(item:IPriceListItem){
-      this.http.post(this.externalApis.getDataApiHostname() + 'api/pricelistitem/createpricelistitem',item).subscribe(
+      this.http.post(this.externalApis.getDataApiUrl() + 'api/pricelistitem/createpricelistitem',item).subscribe(
         ok => this.refreshItems(),
         error=> console.log('There is no such type of ticket type')
       )
     }
 
     removePriceListItem(id:number){
-      this.http.delete(this.externalApis.getDataApiHostname()+ 'api/pricelistitem/removepricelistitem/'+ id).subscribe(
+      this.http.delete(this.externalApis.getDataApiUrl()+ 'api/pricelistitem/removepricelistitem/'+ id).subscribe(
         ok => this.refreshItems(),
         error => console.log('There is no PriceListItem with that id')
       )

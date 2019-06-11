@@ -17,7 +17,7 @@ export class LineService {
 
     addLine(newLine:ILineRequest){
       let line = newLine;
-      this.http.post(this.externalApis.getDataApiHostname() + '/Line/CreateLine/', line).subscribe(
+      this.http.post(this.externalApis.getDataApiUrl() + '/Line/CreateLine/', line).subscribe(
         ok => console.log("kreirana linija"),
         error => console.log("error kreiranje")
       )
@@ -31,12 +31,12 @@ subscriberToLineChanges() : Subject<ILine[]>{
 }
 
 refreshLines(){
-this.http.get(this.externalApis.getDataApiHostname() + '/line/lines').subscribe((data:ILine[]) =>{
+this.http.get(this.externalApis.getDataApiUrl() + '/line/lines').subscribe((data:ILine[]) =>{
   this.lineChanged.next(data)
 })
 }
 removeLine(lineId : number){
-  this.http.delete(this.externalApis.getDataApiHostname() + '/line/removeLine/' + lineId).subscribe(
+  this.http.delete(this.externalApis.getDataApiUrl() + '/line/removeLine/' + lineId).subscribe(
     ok => this.refreshLines(),
     error => console.log(error)
   )
