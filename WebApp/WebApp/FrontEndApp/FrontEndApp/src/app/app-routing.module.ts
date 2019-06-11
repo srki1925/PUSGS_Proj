@@ -9,12 +9,19 @@ import {CreateDepartureComponent} from './components/view/LineAdministration/cre
 import {ListDepartureComponent} from './components/view/LineAdministration/list-departure/list-departure.component'
 import {RegistrationComponent} from './components/user/registration/registration.component'
 import {ActivationListComponent} from './components/user/activation-list/activation-list.component'
-import { CreatePriceListItemComponent} from './components/view/Finances/create-price-list-item/create-price-list-item.component'
+import {CreatePriceListItemComponent} from './components/view/Finances/create-price-list-item/create-price-list-item.component'
+import {LoginComponent} from './components/login/login.component'
 
 const routes: Routes = [
-  { path : 'users', component : UsersListComponent },
   { path: '', redirectTo:'home', pathMatch:'full' },
   { path: '**', redirectTo:'home'},
+  { path: 'login', component: LoginComponent},
+  { path: 'home', children: [
+    { path: 'users', component: UsersListComponent },
+    { path: 'lines', component: LineListComponent },
+    
+  ]},
+  { path : 'users', component : UsersListComponent },
   {path: 'createLine',component: CreateLineComponent},
   {path: 'lines',component:LineListComponent},
   {path:'createBusStation',component:CreateBusStationComponent},

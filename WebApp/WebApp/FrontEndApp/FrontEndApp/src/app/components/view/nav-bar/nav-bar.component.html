@@ -1,3 +1,48 @@
-<p>
-  nav-bar works!
-</p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a routerLink="/home" class="navbar-brand" style="cursor:pointer">Bus Service</a>
+      </div>
+      <div class="navbar-collapse" #responsiveNavbar >
+          <ul class="nav navbar-nav">
+              <li routerLinkActive="active">
+                  <a routerLink="/login" style="cursor: pointer;">Login</a>
+              </li>
+              <li routerLinkActive="active" class="dropdown">
+                  <a routerLink="/register" class="dropdown-toggle" role="button" style="cursor: pointer;">Registration</a>
+              </li>
+              <li class="dropdown" appDropdown>
+                  <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Users<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a [routerLink]="['/home','users','addConductor']" style="cursor: pointer;">Add Conductor</a></li>
+                      <li><a style="cursor: pointer;" [routerLink]="['/home','users']" routerLinkActive="router-link-active" >All Users</a></li>
+                  </ul>
+              </li>
+              <li class="dropdown" appDropdown>
+                  <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Lines<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a [routerLink]="['/home','lines','new']" style="cursor: pointer;">Add New</a></li>
+                      <li><a [routerLink]="['/home','lines']" style="cursor: pointer;">All Lines</a></li>
+                  </ul>
+              </li>
+              <li class="dropdown" appDropdown>
+                      <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Stations<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a [routerLink]="['/home','stations','new']" style="cursor: pointer;">Add new</a></li>
+                          <li><a [routerLink]="['/home','stations']" style="cursor: pointer;">All stations</a></li>
+                      </ul>
+                  </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown" appDropdown>
+                  <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Settings<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a routerLink="/profile" style="cursor: pointer;">User Profile</a></li>
+                      <li><a routerLink="/password-change" style="cursor: pointer;">Change Password</a></li>
+                      <li><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>

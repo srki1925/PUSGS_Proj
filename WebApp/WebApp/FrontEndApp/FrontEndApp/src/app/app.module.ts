@@ -19,6 +19,8 @@ import { ListDepartureComponent } from './components/view/LineAdministration/lis
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ActivationListComponent } from './components/user/activation-list/activation-list.component';
 import { CreatePriceListItemComponent } from './components/view/Finances/create-price-list-item/create-price-list-item.component';
+import { LoginComponent } from './components/login/login.component';
+import { DropdownDirective } from './directives/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CreatePriceListItemComponent } from './components/view/Finances/create-
     ListDepartureComponent,
     RegistrationComponent,
     ActivationListComponent,
-    CreatePriceListItemComponent
+    CreatePriceListItemComponent,
+    LoginComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
