@@ -4,6 +4,7 @@ import { ILoginData } from './interfaces'
 import { ExternalApisDataService } from './external-apis-data.service';
 import { Subject } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,11 @@ export class AuthService {
   private logginChanged = new Subject<boolean>()
 
   constructor(private http: HttpClient,
-              private externalApisService:ExternalApisDataService){}
+              private externalApisService:ExternalApisDataService,
+              private router:Router){}
 
   getUserRole() : string {
-    return this.role
+    return localStorage.getItem('role')
   }
 
   getLoginChangeSubscriber() : Subject<boolean>{
@@ -42,7 +44,7 @@ export class AuthService {
     this.logginChanged.next(false)
   }
 
-  logIn(loginData: ILoginData, callback: any){
+  logIn(loginData: ILoginData){
 
     if(this.checkLoggedIn()) return
 
@@ -76,6 +78,7 @@ export class AuthService {
       
       this.role = role
       this.logginChanged.next(true)
+      this.router.navigate(['home'])
     } );
   }
 }

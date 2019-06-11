@@ -47,25 +47,24 @@
                   </ul>
               </li>
               <li class="dropdown" appDropdown>
-                  <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Price list items<span class="caret"></span></a>
+                  <a class="dropdown-toggle" role="button" style="cursor: pointer;" *ngIf="loggedIn && role === 'Admin'" >Price list items<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li><a [routerLink]="['/home','pricelistitem','newItem']" style="cursor: pointer;">Add new price list item</a></li>
                       <li><a [routerLink]="['/home','pricelistitem']" style="cursor: pointer;">All price list items</a></li>                      
                   </ul>
               </li>
-              <li class="dropdown" *ngIf="!loggedIn || (loggedIn && role === 'Passenger')" appDropdown>
-              <li class="dropdown" appDropdown>
+              <li class="dropdown" appDropdown *ngIf="loggedIn && role === 'Admin'">
                 <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Price lists<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a [routerLink]="['/home','pricelist','newPriceList']" style="cursor: pointer;">Add new price list</a></li>   
                     <li><a [routerLink]="['/home','pricelist']" style="cursor: pointer;">All price lists</a></li>
                 </ul>
             </li>
-              <li class="dropdown" appDropdown>
+              <li class="dropdown" appDropdown *ngIf="!loggedIn || (loggedIn && role === 'Passenger')">
                   <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Tickets<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li><a [routerLink]="['/home','tickets','buy']" style="cursor: pointer;">Buy</a></li>
-                      <li><a [routerLink]="['/home','tickets']" style="cursor: pointer;">Active tickets</a></li>
+                      <li><a [routerLink]="['/home','tickets']" style="cursor: pointer;" *ngIf="loggedIn">Active tickets</a></li>
                   </ul>
               </li>
           </ul>

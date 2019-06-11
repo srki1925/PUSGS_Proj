@@ -8,23 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void {
-    this.authService.getLoginChangeSubscriber().unsubscribe()
-  }
-
   public loggedIn = false
   public role : string 
 
   constructor(private authService : AuthService,
-              private router : Router) { }
+              private router : Router) {}
 
   ngOnInit() {
+    // Get first values and subscribe to future changes
     this.loggedIn = this.authService.checkLoggedIn()
+    this.role = this.authService.getUserRole();
+
     this.authService.getLoginChangeSubscriber().subscribe((data:boolean) =>{
       this.loggedIn = data
       this.role = this.authService.getUserRole()
       console.log('Role: ' + this.role)
     })
+  }
+
+  ngOnDestroy(): void {
+    this.authService.getLoginChangeSubscriber().unsubscribe()
   }
 
   onLogout(){

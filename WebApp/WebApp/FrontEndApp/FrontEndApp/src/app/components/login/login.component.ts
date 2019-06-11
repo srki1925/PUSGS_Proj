@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ILoginData } from 'src/app/services/interfaces';
+import { FormGroup, ControlContainer, FormControl, Validators } from '@angular/forms';
+import { ValidateTicketComponent } from '../conductor/validate-ticket/validate-ticket.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +12,20 @@ import { ILoginData } from 'src/app/services/interfaces';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  public loginForm : FormGroup;
+
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
-    let loginData : ILoginData = {
-      Email : 'admin@yahoo.com',
-      Password : 'Admin123!'
-    }
-
-    if(!this.authService.checkLoggedIn()){
-      this.authService.logIn(loginData, () =>{
-        console.log('Finished login')
-      });
-    }
+    this.loginForm = new FormGroup({
+      Email : new FormControl(null, [Validators.nullValidator, Validators.email]),
+      Password : new FormControl(null, [Validators.nullValidator, Validators.minLength(8), Validators.maxLength(16)])
+    })
   }
 
+  onSubmit(){
+    if(!this.loginForm.valid) return
+    this.authService.logIn({ Email : this.loginForm.value.Email, Password: this.loginForm.value.Password})
+  }
 }
