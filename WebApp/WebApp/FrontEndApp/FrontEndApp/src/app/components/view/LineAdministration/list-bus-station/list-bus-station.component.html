@@ -5,15 +5,21 @@
     <button type="submit">Remove</button>
   </div>
 </form>
-<div class="row well well-sm pre-scrollable">
-  <div class="list-group">
-    <ul *ngFor="let busStation of busStations">
-       <li>{{busStation.Id}}</li>
-      <li>{{busStation.Name}}</li>
-      <li>{{busStation.Address}}</li>
-      <li>{{busStation.Longitude}}</li>
-      <li>{{busStation.Latitude}}</li>
-      <li>{{busStation.Active}}</li>
-    </ul>
-  </div>
-</div>
+<table border="1">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
+    <th>Active</th>
+  </tr>
+  <tr  *ngFor="let busStation of busStations">
+      <td>{{busStation.Id}}</td>
+      <td>{{busStation.Name}}</td>
+      <td>{{busStation.Address}}</td>
+      <td>{{busStation.Longitude}}</td>
+      <td>{{busStation.Latitude}}</td>
+      <td>{{busStation.Active}}</td>
+  </tr>
+</table>

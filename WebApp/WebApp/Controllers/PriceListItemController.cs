@@ -44,18 +44,26 @@ namespace WebApp.Controllers
                     priceList.TicketDefinition.Price = priceListItem.Price;
                     break;
                 default:
-                    return NotFound();                 
+                    return NotFound();
             }
             unitOfWork.PriceListItemServices.Add(priceList);
             unitOfWork.Complete();
             return Ok();
         }
 
+        [Route("PriceListItems/{ticketType}")]
+        [HttpGet]
+        public IHttpActionResult GetAllForType(int ticketType)
+        {
+            return Ok(unitOfWork.PriceListItemServices.GetPriceListItems(x => x.Active && x.TicketDefinition.TicketType == (TicketType)ticketType));
+        }
+
         [Route("PriceListItems")]
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            return Ok();
+            var items = unitOfWork.PriceListItemServices.GetAll();
+            return Ok(items);
         }
 
         [Route("RemovePriceListItem/{id}")]

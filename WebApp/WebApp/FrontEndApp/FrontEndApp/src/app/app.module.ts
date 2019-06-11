@@ -31,6 +31,7 @@ import { DeparturesComponent } from './components/view/LineAdministration/depart
 import { PriceListsComponent } from './components/view/Finances/price-lists/price-lists.component';
 import { ConductorComponent } from './components/conductor/conductor.component';
 import { ValidateTicketComponent } from './components/conductor/validate-ticket/validate-ticket.component';
+import { PriceListItemsComponent } from './components/view/Finances/price-list-items/price-list-items.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { ValidateTicketComponent } from './components/conductor/validate-ticket/
     PriceListsComponent,
     ConductorComponent,
     ValidateTicketComponent,
+    PriceListItemsComponent,
 
   ],
   imports: [

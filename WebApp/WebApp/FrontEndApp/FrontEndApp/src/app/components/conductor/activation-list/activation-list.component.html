@@ -20,7 +20,7 @@
 </table>
 <form [formGroup]="acceptenceForm" (submit)="onAccept()">
     <div>
-      <label for="Id">Email: </label>
+      <label for="Id">Id: </label>
       <input type="number" formControlName="Id" class="form-control"/>
       <button type="submit">Accept</button>
     </div>
@@ -33,13 +33,3 @@
       <button type="submit">Deny</button>
     </div>
   </form>
-<ul *ngFor="let user of activationList">
-    <li>{{user.Id}}</li>
-    <li>{{user.FirstName}}</li>
-    <li>{{user.LastName}}</li>
-    <li>{{user.Email}}</li>
-    <li>{{getPassengerTypeString(user.PassengerType)}}</li>
-    <li><a href="{{user.ImageUri}}">Image</a></li>
-   </ul>
-
-</div>

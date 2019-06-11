@@ -14,8 +14,10 @@ namespace WebApp.Models
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
+        [ForeignKey("TicketDefinition")]
+        public int TicketDefinition_Id { get; set; }
+        public TicketDefinition TicketDefinition { get; set; }
 
-		public TicketDefinition TicketDefinition { get; set; }
 
 		public List<PriceList> PrileLists { get; set; }
 

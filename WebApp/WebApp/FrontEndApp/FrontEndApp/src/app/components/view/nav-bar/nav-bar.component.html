@@ -47,13 +47,19 @@
                   </ul>
               </li>
               <li class="dropdown" appDropdown>
-                  <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Price lists<span class="caret"></span></a>
+                  <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Price lists item<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                      <li><a [routerLink]="['/home','pricelist','newItem']" style="cursor: pointer;">Add new price list item</a></li>
-                      <li><a [routerLink]="['/home','pricelist','newPriceList']" style="cursor: pointer;">Add new price list</a></li>
-                      <li><a [routerLink]="['/home','pricelist']" style="cursor: pointer;">All price lists</a></li>
+                      <li><a [routerLink]="['/home','pricelistitem','newItem']" style="cursor: pointer;">Add new price list item</a></li>
+                      <li><a [routerLink]="['/home','pricelistitem']" style="cursor: pointer;">All price list items</a></li>                      
                   </ul>
               </li>
+              <li class="dropdown" appDropdown>
+                <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Price lists<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a [routerLink]="['/home','pricelist','newPriceList']" style="cursor: pointer;">Add new price list</a></li>   
+                    <li><a [routerLink]="['/home','pricelist']" style="cursor: pointer;">All price lists</a></li>
+                </ul>
+            </li>
               <li class="dropdown" appDropdown>
                   <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Tickets<span class="caret"></span></a>
                   <ul class="dropdown-menu">
