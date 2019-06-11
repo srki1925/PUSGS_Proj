@@ -13,16 +13,22 @@ import {CreatePriceListItemComponent} from './components/view/Finances/create-pr
 import {LoginComponent} from './components/login/login.component'
 import{ListPriceListItemComponent} from './components/view/Finances/list-price-list-item/list-price-list-item.component'
 import{ListPriceListComponent} from './components/view/Finances/list-price-list/list-price-list.component'
+import { StationsComponent } from './components/view/LineAdministration/stations/stations.component'
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
+  { path:'register',component:RegistrationComponent },
+  { path:'createDeparture',component:CreateDepartureComponent },
+  { path:'departures',component:ListDepartureComponent },
+  { path:'acceptionlist',component:ActivationListComponent },
+  { path:'CreatePriceListItem',component:CreatePriceListItemComponent } ,
   { path: 'home', children: [
     { path: 'users', component: UsersListComponent },
     { path: 'lines', component: LineListComponent,children:[
           {path: 'new',component:CreateLineComponent}
     ]},
-    { path:'stations',component:ListBusStationComponent,children:[
+    { path:'stations',component:StationsComponent ,children:[
       {path:'new',component:CreateBusStationComponent}
     ]},
     {path:'departures',component:ListDepartureComponent,children:[
@@ -32,12 +38,6 @@ const routes: Routes = [
       {path:'newItem',component:CreateLineComponent}
     ]}
   ]},
-  {path:'registration',component:RegistrationComponent},
-  {path:'createDeparture',component:CreateDepartureComponent},
-  {path:'departures',component:ListDepartureComponent},
-
-  {path:'acceptionlist',component:ActivationListComponent},
-  {path:'CreatePriceListItem',component:CreatePriceListItemComponent} ,
    { path: '**', redirectTo:'home'}
 ];
 

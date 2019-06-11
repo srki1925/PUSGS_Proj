@@ -23,7 +23,8 @@ import { LoginComponent } from './components/login/login.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { ListPriceListItemComponent } from './components/view/Finances/list-price-list-item/list-price-list-item.component';
 import { ListPriceListComponent } from './components/view/Finances/list-price-list/list-price-list.component';
-import { HomeComponent } from './components/home/home.component'
+import { HomeComponent } from './components/home/home.component';
+import { StationsComponent } from './components/view/LineAdministration/stations/stations.component'
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { HomeComponent } from './components/home/home.component'
     DropdownDirective,
     HomeComponent,
     ListPriceListItemComponent,
-    ListPriceListComponent
+    ListPriceListComponent,
+    StationsComponent
   ],
   imports: [
     BrowserModule,
