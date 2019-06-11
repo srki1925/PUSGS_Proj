@@ -4,6 +4,7 @@ export interface IUser{
     Email : string,
     Password : string,
     UserType : UserType,
+    DoB:Date,
     Blocked : boolean
 }
 
@@ -11,7 +12,8 @@ export interface IConductorRequest{
     FirstName : string,
     LastName : string,
     Email : string,
-    Password : string
+    Password : string,
+    DoB:Date
 }
 
 export enum UserType{
@@ -84,7 +86,8 @@ export interface IRegistrationRequest{
     Email:string,
     Password:string,
     PassengerType:PassengerType,
-    ImageUri:string
+    ImageUri:string,
+    DoB:Date
 }
 
 export interface IActivationData{

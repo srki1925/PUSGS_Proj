@@ -18,7 +18,8 @@ export class CreateUserComponent implements OnInit {
       FirstName: new FormControl(null, [ Validators.required, Validators.nullValidator]),
       LastName: new  FormControl(null, [ Validators.required, Validators.nullValidator]),
       Email: new FormControl(null, [ Validators.required, Validators.email, Validators.nullValidator]),
-      Password: new FormControl(null, [ Validators.required, Validators.minLength(8), Validators.maxLength(16), Validators.nullValidator])
+      Password: new FormControl(null, [ Validators.required, Validators.minLength(8), Validators.maxLength(16), Validators.nullValidator]),
+      DoB:new FormControl(null,[Validators.required])
     })
   }
   onSubmit(){
@@ -28,7 +29,8 @@ export class CreateUserComponent implements OnInit {
       FirstName : this.conductorForm.value.FirstName,
       LastName : this.conductorForm.value.LastName,
       Email : this.conductorForm.value.Email,
-      Password : this.conductorForm.value.Password
+      Password : this.conductorForm.value.Password,
+      DoB:this.conductorForm.value.DoB
     }
     this.adminService.addConductor(conductor)
   }
