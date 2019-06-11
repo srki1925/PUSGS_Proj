@@ -11,26 +11,34 @@ import {RegistrationComponent} from './components/user/registration/registration
 import {ActivationListComponent} from './components/user/activation-list/activation-list.component'
 import {CreatePriceListItemComponent} from './components/view/Finances/create-price-list-item/create-price-list-item.component'
 import {LoginComponent} from './components/login/login.component'
+import{ListPriceListItemComponent} from './components/view/Finances/list-price-list-item/list-price-list-item.component'
+import{ListPriceListComponent} from './components/view/Finances/list-price-list/list-price-list.component'
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
-  { path: '**', redirectTo:'home'},
   { path: 'login', component: LoginComponent},
   { path: 'home', children: [
     { path: 'users', component: UsersListComponent },
-    { path: 'lines', component: LineListComponent },
-    
+    { path: 'lines', component: LineListComponent,children:[
+          {path: 'new',component:CreateLineComponent}
+    ]},
+    { path:'stations',component:ListBusStationComponent,children:[
+      {path:'new',component:CreateBusStationComponent}
+    ]},
+    {path:'departures',component:ListDepartureComponent,children:[
+      {path:'new',component:CreateDepartureComponent}
+    ]},
+    {path:'pricelist',component:ListPriceListComponent ,children:[
+      {path:'newItem',component:CreateLineComponent}
+    ]}
   ]},
-  { path : 'users', component : UsersListComponent },
-  {path: 'createLine',component: CreateLineComponent},
-  {path: 'lines',component:LineListComponent},
-  {path:'createBusStation',component:CreateBusStationComponent},
-  {path:'busStations',component:ListBusStationComponent},
+  {path:'registration',component:RegistrationComponent},
   {path:'createDeparture',component:CreateDepartureComponent},
   {path:'departures',component:ListDepartureComponent},
-  {path:'register',component:RegistrationComponent},
+
   {path:'acceptionlist',component:ActivationListComponent},
-  {path:'CreatePriceListItem',component:CreatePriceListItemComponent}
+  {path:'CreatePriceListItem',component:CreatePriceListItemComponent} ,
+   { path: '**', redirectTo:'home'}
 ];
 
 @NgModule({

@@ -21,6 +21,8 @@ import { ActivationListComponent } from './components/user/activation-list/activ
 import { CreatePriceListItemComponent } from './components/view/Finances/create-price-list-item/create-price-list-item.component';
 import { LoginComponent } from './components/login/login.component';
 import { DropdownDirective } from './directives/dropdown.directive';
+import { ListPriceListItemComponent } from './components/view/Finances/list-price-list-item/list-price-list-item.component';
+import { ListPriceListComponent } from './components/view/Finances/list-price-list/list-price-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { DropdownDirective } from './directives/dropdown.directive';
     ActivationListComponent,
     CreatePriceListItemComponent,
     LoginComponent,
-    DropdownDirective
+    DropdownDirective,
+    ListPriceListItemComponent,
+    ListPriceListComponent
   ],
   imports: [
     BrowserModule,
