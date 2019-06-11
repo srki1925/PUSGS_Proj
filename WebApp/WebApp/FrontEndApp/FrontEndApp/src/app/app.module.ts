@@ -26,6 +26,10 @@ import { ListPriceListComponent } from './components/view/Finances/list-price-li
 import { HomeComponent } from './components/home/home.component';
 import { StationsComponent } from './components/view/LineAdministration/stations/stations.component'
 import { CreatePriceListComponent } from './components/view/Finances/create-price-list/create-price-list.component';
+import { LinesComponent } from './components/view/LineAdministration/lines/lines.component';
+import { DeparturesComponent } from './components/view/LineAdministration/departures/departures.component';
+import { PriceListsComponent } from './components/view/Finances/price-lists/price-lists.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +55,10 @@ import { CreatePriceListComponent } from './components/view/Finances/create-pric
     ListPriceListComponent,
     StationsComponent,
     CreatePriceListComponent,
+    LinesComponent,
+    DeparturesComponent,
+    PriceListsComponent,
+
   ],
   imports: [
     BrowserModule,

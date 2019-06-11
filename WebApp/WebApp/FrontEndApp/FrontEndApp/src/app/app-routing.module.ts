@@ -15,8 +15,11 @@ import{ListPriceListItemComponent} from './components/view/Finances/list-price-l
 import{ListPriceListComponent} from './components/view/Finances/list-price-list/list-price-list.component'
 import { StationsComponent } from './components/view/LineAdministration/stations/stations.component'
 import{CreatePriceListComponent} from './components/view/Finances/create-price-list/create-price-list.component'
-
-
+import{LinesComponent} from './components/view/LineAdministration/lines/lines.component'
+import{DeparturesComponent} from './components/view/LineAdministration/departures/departures.component'
+import{PriceListsComponent} from './components/view/Finances/price-lists/price-lists.component'
+import {UserComponent} from './components/user/user.component'
+import { CreateUserComponent } from './components/user/create-user/create-user.component';
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
   { path: 'login', component: LoginComponent },
@@ -26,19 +29,22 @@ const routes: Routes = [
   { path:'acceptionlist',component:ActivationListComponent },
   { path:'CreatePriceListItem',component:CreatePriceListItemComponent } ,
   { path: 'home', children: [
-    { path: 'users', component: UsersListComponent },
-    { path: 'lines', component: LineListComponent,children:[
+    { path: 'users', component: UserComponent ,children:[
+      {path:'addConductor',component:CreateUserComponent}
+    ]},
+    { path: 'lines', component: LinesComponent,children:[
           {path: 'new',component:CreateLineComponent}
     ]},
     { path:'stations',component:StationsComponent ,children:[
       {path:'new',component:CreateBusStationComponent}
     ]},
-    {path:'departures',component:ListDepartureComponent,children:[
+    {path:'departures',component:DeparturesComponent,children:[
       {path:'new',component:CreateDepartureComponent}
     ]},
-    {path:'pricelist',component:ListPriceListComponent ,children:[
+    {path:'pricelist',component:PriceListsComponent ,children:[
       {path:'newItem',component:CreatePriceListItemComponent},
-      {path:'newList',component:CreatePriceListComponent}
+      {path:'newPriceList',component:CreatePriceListComponent},
+      
     ]}
   ]},
    { path: '**', redirectTo:'home'}
