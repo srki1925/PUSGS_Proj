@@ -11,6 +11,8 @@ namespace WebApp.Models.Users
 
 		public PassengerType PassengerType { get; set; }
 
-        public string ImageUri { get; set; }
+		public bool Activated { get; set; } = false;
+
+		public string ImageUri { get; set; }
 	}
 }

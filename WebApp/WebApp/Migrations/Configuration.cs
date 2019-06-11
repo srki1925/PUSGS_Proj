@@ -5,6 +5,7 @@ namespace WebApp.Migrations
 	using Microsoft.AspNet.Identity;
 	using Microsoft.AspNet.Identity.EntityFramework;
 	using WebApp.Models;
+	using WebApp.Models.Users;
 
 	internal sealed class Configuration : DbMigrationsConfiguration<WebApp.Persistence.ApplicationDbContext>
 	{
@@ -39,11 +40,11 @@ namespace WebApp.Migrations
 				manager.Create(role);
 			}
 
-			if (!context.Roles.Any(r => r.Name == "AppUser"))
+			if (!context.Roles.Any(r => r.Name == "Passenger"))
 			{
 				var store = new RoleStore<IdentityRole>(context);
 				var manager = new RoleManager<IdentityRole>(store);
-				var role = new IdentityRole { Name = "AppUser" };
+				var role = new IdentityRole { Name = "Passenger" };
 
 				manager.Create(role);
 			}
@@ -53,16 +54,16 @@ namespace WebApp.Migrations
 
 			if (!context.Users.Any(u => u.UserName == "admin@yahoo.com"))
 			{
-				var user = new ApplicationUser() { Id = "admin", UserName = "admin@yahoo.com", Email = "admin@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Admin123!") };
+				var user = new Administrator() { Id = "admin", UserName = "admin@yahoo.com", Email = "admin@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Admin123!") };
 				userManager.Create(user);
 				userManager.AddToRole(user.Id, "Admin");
 			}
 
 			if (!context.Users.Any(u => u.UserName == "appu@yahoo.com"))
 			{
-				var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!") };
+				var user = new Administrator() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!") };
 				userManager.Create(user);
-				userManager.AddToRole(user.Id, "AppUser");
+				userManager.AddToRole(user.Id, "Passenger");
 			}
 		}
 	}

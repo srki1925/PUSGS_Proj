@@ -1,26 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using WebApp.Models.Enums;
 
 namespace WebApp.Models.Users
 {
-	public abstract class User
+	public abstract class User : ApplicationUser
 	{
 		public User()
 		{
 		}
 
-		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int Id { get; set; }
-
 		public string FirstName { get; set; }
 
 		public string LastName { get; set; }
 
-		public string Password { get; set; }
-
-		public string Email { get; set; }
+		public DateTime DoB { get; set; }
 
 		public UserType UserType { get; set; }
 
