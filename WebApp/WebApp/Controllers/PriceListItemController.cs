@@ -11,36 +11,7 @@ namespace WebApp.Controllers
 	{
 		private readonly IUnitOfWork unitOfWork;
 
-        [Route("CreatePriceListItem")]
-        [HttpPost]
-        public IHttpActionResult CreatePriceListItem(PriceListItemCreationRequest priceListItem)
-        {
-            var priceList = new PriceListItem();
-            switch (priceListItem.TicketType)
-            {
-                case Models.TicketType.Hour:
-                    priceList.TicketDefinition = new HourTicketDefinition();
-                    priceList.TicketDefinition.Price = priceListItem.Price;
-                    break;
-                case Models.TicketType.Day:
-                    priceList.TicketDefinition = new DayTicketDefinition();
-                    priceList.TicketDefinition.Price = priceListItem.Price;
-                    break;
-                case Models.TicketType.Month:
-                    priceList.TicketDefinition = new MonthTicketDefinition();
-                    priceList.TicketDefinition.Price = priceListItem.Price;
-                    break;
-                case Models.TicketType.Year:
-                    priceList.TicketDefinition = new YearTicketDefinition();
-                    priceList.TicketDefinition.Price = priceListItem.Price;
-                    break;
-                default:
-                    return NotFound();
-            }
-            unitOfWork.PriceListItemServices.Add(priceList);
-            unitOfWork.Complete();
-            return Ok();
-        }
+      
 
         [Route("PriceListItems/{ticketType}")]
         [HttpGet]
@@ -53,7 +24,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            var items = unitOfWork.PriceListItemServices.GetAll();
+            var items = unitOfWork.PriceListItemServices.GetPriceListItems(x=> x.Active);
             return Ok(items);
         }
 		public PriceListItemController(IUnitOfWork unitOfWork)
@@ -92,15 +63,9 @@ namespace WebApp.Controllers
 				default:
 					return NotFound();
 			}
+            priceList.Active = true;
 			unitOfWork.PriceListItemServices.Add(priceList);
 			unitOfWork.Complete();
-			return Ok();
-		}
-
-		[Route("PriceListItems")]
-		[HttpGet]
-		public IHttpActionResult GetAll()
-		{
 			return Ok();
 		}
 
