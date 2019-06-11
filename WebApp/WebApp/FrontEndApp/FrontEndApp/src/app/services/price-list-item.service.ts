@@ -15,15 +15,45 @@ export class PriceListItemService {
     private externalApis:ExternalApisDataService) { }
     private priceListItemsChanged = new  Subject<IPriceListItem[]>()
     private priceLsitItems = new Subject<IPriceListItem[]>()
+    private HourItemChanged = new  Subject<IPriceListItem[]>()
+    private DayItemChanged = new  Subject<IPriceListItem[]>()
+    private MothItemChanged = new  Subject<IPriceListItem[]>()
+    private YearItemChanged = new  Subject<IPriceListItem[]>()
     refreshItems(){
       this.http.get(this.externalApis.getDataApiHostname() + '/pricelistitem/pricelistitems').subscribe(
         (data: IPriceListItem[])=> { this.priceListItemsChanged.next(data);}
       )
     }
 
-    getAllPriceItemsForType(ticketType:number){
-      this.http.get(this.externalApis.getDataApiHostname() + '/pricelistitem/pricelistitems/'+ ticketType).subscribe((data:IPriceListItem[])=>{this.priceLsitItems.next(data)})
+    subscribeToHourItemsChanged():Subject<IPriceListItem[]>{
+      this.refreshHourItems()
+      return this.HourItemChanged;
     }
+    subscribeToDayItemsChanged():Subject<IPriceListItem[]>{
+      this.refreshDayItems()
+      return this.DayItemChanged;
+    }
+    subscribeToMonthItemsChanged():Subject<IPriceListItem[]>{
+      this.refreshMonthItems()
+      return this.MothItemChanged;
+    }
+    subscribeToYeartemsChanged():Subject<IPriceListItem[]>{
+      this.refreshYearItems()
+      return this.YearItemChanged;
+    }
+    refreshHourItems(){
+      this.http.get(this.externalApis.getDataApiHostname() + '/pricelistitem/pricelistitems/'+ 0).subscribe((data:IPriceListItem[])=>{this.HourItemChanged.next(data)})    
+    }
+    refreshDayItems(){
+      this.http.get(this.externalApis.getDataApiHostname() + '/pricelistitem/pricelistitems/'+ 1).subscribe((data:IPriceListItem[])=>{this.DayItemChanged.next(data)})    
+    }
+    refreshMonthItems(){
+      this.http.get(this.externalApis.getDataApiHostname() + '/pricelistitem/pricelistitems/'+ 2).subscribe((data:IPriceListItem[])=>{this.MothItemChanged.next(data)})    
+    }
+    refreshYearItems(){
+      this.http.get(this.externalApis.getDataApiHostname() + '/pricelistitem/pricelistitems/'+ 3).subscribe((data:IPriceListItem[])=>{this.YearItemChanged.next(data)})    
+    }
+
     subscribeToItemsChanged():Subject<IPriceListItem[]>{
       this.refreshItems()
       return this.priceListItemsChanged;

@@ -120,13 +120,26 @@ export interface IPriceListItemRequest{
 export interface IPriceListItem{
     Id:number,
     TicketDefinition:ITicketDefinition,
-    Price:number
 }
 
 export interface ITicketDefinition{
-    TicketType: TicketType
+    TicketType: TicketType,
+    Price:number
+
 }
 
+export interface IPriceListRequest{
+    From:Date,
+    To:Date,
+    PriceListItems:number[]
+}
+
+export interface IPriceList{
+    Id:number,
+    From:Date,
+    To:Date,
+    PriceList:IPriceListItem[]
+}
 
 
 
