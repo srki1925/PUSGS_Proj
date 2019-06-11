@@ -24,6 +24,7 @@ import { DropdownDirective } from './directives/dropdown.directive';
 import { ListPriceListItemComponent } from './components/view/Finances/list-price-list-item/list-price-list-item.component';
 import { ListPriceListComponent } from './components/view/Finances/list-price-list/list-price-list.component';
 import { CreatePriceListComponent } from './components/view/Finances/create-price-list/create-price-list.component';
+import { HomeComponent } from './components/home/home.component'
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CreatePriceListComponent } from './components/view/Finances/create-pric
     CreatePriceListItemComponent,
     LoginComponent,
     DropdownDirective,
+    HomeComponent,
     ListPriceListItemComponent,
     ListPriceListComponent,
     CreatePriceListComponent
