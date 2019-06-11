@@ -13,6 +13,8 @@ import {CreatePriceListItemComponent} from './components/view/Finances/create-pr
 import {LoginComponent} from './components/login/login.component'
 import{ListPriceListItemComponent} from './components/view/Finances/list-price-list-item/list-price-list-item.component'
 import{ListPriceListComponent} from './components/view/Finances/list-price-list/list-price-list.component'
+import{CreatePriceListComponent} from './components/view/Finances/create-price-list/create-price-list.component'
+
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
@@ -29,7 +31,8 @@ const routes: Routes = [
       {path:'new',component:CreateDepartureComponent}
     ]},
     {path:'pricelist',component:ListPriceListComponent ,children:[
-      {path:'newItem',component:CreateLineComponent}
+      {path:'newItem',component:CreatePriceListItemComponent},
+      {path:'newList',component:CreatePriceListComponent}
     ]}
   ]},
   {path:'registration',component:RegistrationComponent},
