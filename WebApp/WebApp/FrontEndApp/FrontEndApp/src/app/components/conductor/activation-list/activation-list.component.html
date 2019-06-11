@@ -1,6 +1,6 @@
 
 <div>
-<!--<table>
+<table>
   <th>
     <tr>FirstName</tr>
     <tr>LastName</tr>
@@ -15,11 +15,9 @@
       <tr>{{user.LastName}}</tr>
       <tr>{{user.Email}}</tr>
       <tr>{{getPassengerTypeString(user.PassengerType)}}</tr>
-      <tr><a [href]={{user.Image}}></a></tr>
-      <tr><button (click)="OnAccept({{user.Email}})">Accept</button></tr>
-      <tr><button (onclick)="OnRefuse({{user.Email}})">Deny</button>
+      <tr><a href={{user.Image}}></a></tr>
   </td>
-</table>-->
+</table>
 <form [formGroup]="acceptenceForm" (submit)="onAccept()">
     <div>
       <label for="Id">Email: </label>

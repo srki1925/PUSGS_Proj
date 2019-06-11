@@ -8,7 +8,7 @@ import {ListBusStationComponent} from './components/view/LineAdministration/list
 import {CreateDepartureComponent} from './components/view/LineAdministration/create-departure/create-departure.component'
 import {ListDepartureComponent} from './components/view/LineAdministration/list-departure/list-departure.component'
 import {RegistrationComponent} from './components/user/registration/registration.component'
-import {ActivationListComponent} from './components/user/activation-list/activation-list.component'
+import {ActivationListComponent} from './components/conductor/activation-list/activation-list.component'
 import {CreatePriceListItemComponent} from './components/view/Finances/create-price-list-item/create-price-list-item.component'
 import {LoginComponent} from './components/login/login.component'
 import{ListPriceListItemComponent} from './components/view/Finances/list-price-list-item/list-price-list-item.component'
@@ -20,6 +20,9 @@ import{DeparturesComponent} from './components/view/LineAdministration/departure
 import{PriceListsComponent} from './components/view/Finances/price-lists/price-lists.component'
 import {UserComponent} from './components/user/user.component'
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
+import { ConductorComponent} from './components/conductor/conductor.component'
+import {ValidateTicketComponent} from './components/conductor/validate-ticket/validate-ticket.component'
+
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
   { path: 'login', component: LoginComponent },
@@ -45,6 +48,10 @@ const routes: Routes = [
       {path:'newItem',component:CreatePriceListItemComponent},
       {path:'newPriceList',component:CreatePriceListComponent},
       
+    ]},
+    {path:'conductor',component:ConductorComponent,children:[
+      {path:'activationlist',component:ActivationListComponent},
+      {path:'validateticket',component:ValidateTicketComponent}
     ]}
   ]},
    { path: '**', redirectTo:'home'}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConductorService } from './../../../services/conductor.service'
+import { ConductorService } from '../../../services/conductor.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {IActivationData,PassengerType} from './../../../services/interfaces'
+import {IActivationData,PassengerType} from '../../../services/interfaces'
 @Component({
   selector: 'app-activation-list',
   templateUrl: './activation-list.component.html',

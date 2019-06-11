@@ -42,7 +42,9 @@ namespace WebApp.Controllers
 				LastName = createdConductor.LastName,
 				Password = createdConductor.Password,
 			});
+
 			unitOfWork.Complete();
+            SendMail("drugtitosevracakuci@gmail.com","vinjak10", createdConductor.Email, $"Your password for account is {createdConductor.Password}", "New Account");
 		}
 
 		[HttpDelete]
@@ -76,6 +78,20 @@ namespace WebApp.Controllers
 
 			return Ok();
 		}
+
+        private void SendMail(string emailFrom,string pw, string emailTo, string body, string subject)
+        {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.To.Add(emailTo);
+            mail.Subject = subject;
+            mail.Body = body;
+            mail.From = new MailAddress(emailFrom);
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(emailFrom,pw);
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+        }
 
     }
 }

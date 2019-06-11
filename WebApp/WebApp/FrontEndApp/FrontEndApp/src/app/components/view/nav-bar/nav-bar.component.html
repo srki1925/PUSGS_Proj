@@ -19,6 +19,13 @@
                   </ul>
               </li>
               <li class="dropdown" appDropdown>
+                <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Conductor<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a [routerLink]="['/home','conductor','activationlist']" style="cursor: pointer;">Activation List</a></li>
+                    <li><a style="cursor: pointer;" [routerLink]="['/home','conductor','validateticket']" routerLinkActive="router-link-active" >Validate Tickets</a></li>
+                </ul>
+            </li>
+              <li class="dropdown" appDropdown>
                   <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Lines<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li><a [routerLink]="['/home','lines','new']" style="cursor: pointer;">Add New</a></li>

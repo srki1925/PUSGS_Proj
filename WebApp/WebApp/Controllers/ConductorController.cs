@@ -22,7 +22,7 @@ namespace WebApp.Controllers
         [Route("Accept/{id}")]
         public void Accept(int id)
         {
-            SendMail("","andrejftniviciak@gmail.com", "Your registration was accepted", "registration");
+            SendMail("drugtitosevracakuci@gmail.com","vinjak10","andrejftniviciak@gmail.com", "Your registration was accepted", "registration");
             var passenger = unitOfWork.PassengerServices.Get(id);
             if (!unitOfWork.UsersRepository.Exist(passenger.Email)) {
                 unitOfWork.UsersRepository.Add(passenger);
@@ -35,19 +35,19 @@ namespace WebApp.Controllers
         [Route("Refuse")]
         public void Refuse(string email)
         {
-
+            SendMail("drugtitosevracakuci@gmail.com", "vinjak10", "", "Your registration was denied", "registration");
         }
 
-        private void SendMail(string emailFrom,string emailTo,string body,string subject)
+        private void SendMail(string emailFrom,string pw,string emailTo,string body,string subject)
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
             mail.To.Add(emailTo);
             mail.Subject = subject;
             mail.Body = body;
-            mail.From = new MailAddress("titovrentavehicle@gmail.com");
+            mail.From = new MailAddress(emailFrom);
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("titovrentavehicle@gmail.com", "drugtito");
+            SmtpServer.Credentials = new System.Net.NetworkCredential(emailFrom, pw);
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
         }

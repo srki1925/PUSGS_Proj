@@ -17,7 +17,7 @@ import { ListBusStationComponent } from './components/view/LineAdministration/li
 import { CreateDepartureComponent } from './components/view/LineAdministration/create-departure/create-departure.component';
 import { ListDepartureComponent } from './components/view/LineAdministration/list-departure/list-departure.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
-import { ActivationListComponent } from './components/user/activation-list/activation-list.component';
+import { ActivationListComponent } from './components/conductor/activation-list/activation-list.component';
 import { CreatePriceListItemComponent } from './components/view/Finances/create-price-list-item/create-price-list-item.component';
 import { LoginComponent } from './components/login/login.component';
 import { DropdownDirective } from './directives/dropdown.directive';
@@ -29,6 +29,8 @@ import { CreatePriceListComponent } from './components/view/Finances/create-pric
 import { LinesComponent } from './components/view/LineAdministration/lines/lines.component';
 import { DeparturesComponent } from './components/view/LineAdministration/departures/departures.component';
 import { PriceListsComponent } from './components/view/Finances/price-lists/price-lists.component';
+import { ConductorComponent } from './components/conductor/conductor.component';
+import { ValidateTicketComponent } from './components/conductor/validate-ticket/validate-ticket.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { PriceListsComponent } from './components/view/Finances/price-lists/pric
     LinesComponent,
     DeparturesComponent,
     PriceListsComponent,
+    ConductorComponent,
+    ValidateTicketComponent,
 
   ],
   imports: [
