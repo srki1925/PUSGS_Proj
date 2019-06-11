@@ -23,6 +23,7 @@ export class CreateUserComponent implements OnInit {
     })
   }
   onSubmit(){
+    console.log(this.conductorForm.errors)
     if(!this.conductorForm.valid) return
 
     let conductor : IConductorRequest = {
@@ -30,6 +31,7 @@ export class CreateUserComponent implements OnInit {
       LastName : this.conductorForm.value.LastName,
       Email : this.conductorForm.value.Email,
       Password : this.conductorForm.value.Password,
+      ConfirmPassword : this.conductorForm.value.Password,
       DoB:this.conductorForm.value.DoB
     }
     this.adminService.addConductor(conductor)

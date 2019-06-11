@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +31,7 @@ import { DeparturesComponent } from './components/view/LineAdministration/depart
 import { PriceListsComponent } from './components/view/Finances/price-lists/price-lists.component';
 import { ConductorComponent } from './components/conductor/conductor.component';
 import { ValidateTicketComponent } from './components/conductor/validate-ticket/validate-ticket.component';
-
+import { TokenInterceptor } from './interceptors/token.interceptor'
 
 @NgModule({
   declarations: [
@@ -62,7 +62,6 @@ import { ValidateTicketComponent } from './components/conductor/validate-ticket/
     PriceListsComponent,
     ConductorComponent,
     ValidateTicketComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -70,7 +69,7 @@ import { ValidateTicketComponent } from './components/conductor/validate-ticket/
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

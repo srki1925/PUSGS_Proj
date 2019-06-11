@@ -347,8 +347,6 @@ namespace WebApp.Controllers
 				PassengerType = model.PassengerType.HasValue ? model.PassengerType.Value : Models.Enums.PassengerType.Regular
 			};
 
-			UserManager.AddToRole(user.Id, "Passenger");
-
 			try
 			{
 				IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -356,6 +354,8 @@ namespace WebApp.Controllers
 				{
 					return GetErrorResult(result);
 				}
+
+				UserManager.AddToRole(user.Id, "Passenger");
 			}
 			catch (Exception ex)
 			{
@@ -390,8 +390,6 @@ namespace WebApp.Controllers
 				LastName = model.LastName
 			};
 
-			UserManager.AddToRole(user.Id, "Controller");
-
 			try
 			{
 				IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -399,6 +397,8 @@ namespace WebApp.Controllers
 				{
 					return GetErrorResult(result);
 				}
+
+				UserManager.AddToRole(user.Id, "Controller");
 			}
 			catch (Exception ex)
 			{
