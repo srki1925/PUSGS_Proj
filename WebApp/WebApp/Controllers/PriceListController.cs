@@ -66,5 +66,5 @@ namespace WebApp.Controllers
 			}
 			return StatusCode(HttpStatusCode.Gone);
 		}
-	}
+    }
 }

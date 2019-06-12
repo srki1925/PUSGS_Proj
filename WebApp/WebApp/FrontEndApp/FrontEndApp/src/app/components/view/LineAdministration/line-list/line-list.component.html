@@ -6,16 +6,6 @@
       <button type="submit">Remove</button>
     </div>
   </form>
-  <div class="row well well-sm pre-scrollable">
-    <div class="list-group">
-      <ul *ngFor="let line of lines">
-         <li>{{line.Id}}</li>
-        <li>{{line.Name}}</li>
-        <li>{{getLineTypeString(line.LineType)}}</li>
-        <li>{{line.Active}}</li>
-      </ul>
-    </div>
-  </div>
   <table border="1">
     <tr>
       <th>Id</th>

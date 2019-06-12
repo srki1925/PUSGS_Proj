@@ -38,6 +38,7 @@ import { TicketsComponent } from './components/tickets/tickets/tickets.component
 import { BuyTicketComponent } from './components/tickets/buy-ticket/buy-ticket.component';
 import { AllTicketsComponent } from './components/tickets/all-tickets/all-tickets.component';
 import { TicketsListComponent } from './components/tickets/buy-ticket/tickets-list/tickets-list.component'
+import { ScheduleComponent } from './components/view/schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,7 @@ import { TicketsListComponent } from './components/tickets/buy-ticket/tickets-li
     BuyTicketComponent,
     AllTicketsComponent,
     TicketsListComponent,
-
+    ScheduleComponent,
   ],
   imports: [
     BrowserModule,

@@ -148,6 +148,11 @@ export interface ITicketDefinitionResponse{
     Price : number
 }
 
+export interface IScheduleRequest{
+    DayType:DayType,
+    LineId:number
+}
+
 export interface ITicketResponse{
     Id : number,
     TicketType : string,

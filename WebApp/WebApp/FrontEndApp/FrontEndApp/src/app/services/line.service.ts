@@ -18,7 +18,7 @@ export class LineService {
     addLine(newLine:ILineRequest){
       let line = newLine;
       this.http.post(this.externalApis.getDataApiUrl() + '/Line/CreateLine/', line).subscribe(
-        ok => console.log("kreirana linija"),
+        ok => this.refreshLines(),
         error => console.log("error kreiranje")
       )
       this.refreshLines()

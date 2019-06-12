@@ -260,6 +260,7 @@
     <Compile Include="Controllers\PriceListController.cs" />
     <Compile Include="Controllers\PriceListItemController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -304,6 +305,7 @@
     <Compile Include="Models\RequestModel\TicketRequestModel\TicketRequestModel.cs" />
     <Compile Include="Models\ResponseModel\TicketDefinitionResponse.cs" />
     <Compile Include="Models\ResponseModel\TicketResponseModel.cs" />
+    <Compile Include="Models\RequestModel\ScheduleRequest\ScheduleRequestModel.cs" />
     <Compile Include="Models\Security\AccountBindingModels.cs" />
     <Compile Include="Models\Security\AccountViewModels.cs" />
     <Compile Include="Models\Security\ApplicationUser.cs" />

@@ -19,8 +19,9 @@ export class DepartureService {
 
 
     addDeparture(newDeparture:IDepartureRequest){
+      console.log("sasa")
       this.http.post(this.externalApis.getDataApiUrl() + '/departure/createdeparture',newDeparture).subscribe(
-      ok => console.log("polazak kreiran"),
+      ok => this.refreshDepartures(),
       error => console.log("error polazak ")
       )
     }
