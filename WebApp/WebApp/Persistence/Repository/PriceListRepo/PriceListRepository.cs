@@ -15,6 +15,15 @@ namespace WebApp.Persistence.Repository.PriceListRepo
             _context = context as ApplicationDbContext;
 		}
 
+        public PriceList GetPriceList(Expression<Func<PriceList, bool>> predicate)
+        {
+            if (_context.PriceLists.Any(predicate))
+            {
+                return _context.PriceLists.Where(predicate).Include(x => x.PriceListItems).Include("PriceListItems.TicketDefinition").First();
+            }
+            return null;
+        }
+
         public List<PriceList> GetPriceLists(Expression<Func<PriceList, bool>> predicate)
         {
             return _context.PriceLists.Where(predicate).ToList();

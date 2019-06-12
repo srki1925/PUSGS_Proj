@@ -22,13 +22,13 @@
     </div>
     <div class="form-group">
       <label for="MonthId">Month items: </label>
-      <select  formControlName="MonthId" class="form-control" *ngFor="let item of hourItems">
+      <select  formControlName="MonthId" class="form-control" *ngFor="let item of monthItems">
         <option value={{item.Id}}>{{item.TicketDefinition.Price}}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="YearId">Year items: </label>
-      <select  formControlName="YearId" class="form-control" *ngFor="let item of hourItems">
+      <select  formControlName="YearId" class="form-control" *ngFor="let item of yearItems">
         <option value={{item.Id}}>{{item.TicketDefinition.Price}}</option>
       </select>
     </div>

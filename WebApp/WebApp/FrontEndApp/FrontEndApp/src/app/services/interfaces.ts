@@ -139,7 +139,7 @@ export interface IPriceList{
     Id:number,
     From:Date,
     To:Date,
-    PriceList:IPriceListItem[]
+    PriceListItems:IPriceListItem[]
 }
 
 

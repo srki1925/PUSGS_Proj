@@ -42,7 +42,17 @@ namespace WebApp.Controllers
             unitOfWork.PriceListServices.Add(priceList);
             unitOfWork.Complete();
         }
-
+        [HttpGet]
+        [Route("{id}")]
+        public IHttpActionResult Get(int id)
+        {
+            var list = unitOfWork.PriceListServices.GetPriceList(x => x.Id == id && x.Active);
+            if(list != null)
+            {
+                return Ok(list);
+            }
+            return NotFound();
+        }
         [HttpDelete]
         [Route("removePriceList/{id}")]
         public IHttpActionResult Remove(int id)

@@ -5,18 +5,6 @@
     <button type="submit">Remove</button>
   </div>
 </form>
-<div class="row well well-sm pre-scrollable">
-  <div class="list-group">
-    <ul *ngFor="let departure of departures">
-       <li>{{departure.Id}}</li>
-      <li>{{departure.Time}}</li>
-      <li>{{getDayTypeString(departure.DayType)}}</li>
-      <li>{{departure.Line.Name}}</li>
-      <li>{{getLineTypeString(departure.Line.LineType)}}</li>
-      <li>{{departure.Active}}</li>
-    </ul>
-  </div>
-</div>
 
 <table border="1">
   <tr>

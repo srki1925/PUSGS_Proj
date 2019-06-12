@@ -1,3 +1,22 @@
-<p>
-  list-price-list works!
-</p>
+<div>
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>From</th>
+      <th>To</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of list">
+        <td>{{item.Id}}</td>
+        <td>{{item.To}}</td>
+        <td>{{item.From}}</td>
+        <td><a [routerLink]="['/home','pricelist',item.Id]" class="button">Select</a></td>
+    </tr>
+  </table>
+  <form [formGroup]="blockForm" (submit)="onBlock()">
+      <div>
+        <label for="ListId">Id: </label>
+        <input type="number" formControlName="ListId" class="form-control"/>
+        <button type="submit">Block</button>
+      </div>
+    </form>
