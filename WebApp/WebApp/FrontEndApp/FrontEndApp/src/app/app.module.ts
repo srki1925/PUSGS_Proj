@@ -38,6 +38,8 @@ import { TicketsComponent } from './components/tickets/tickets/tickets.component
 import { BuyTicketComponent } from './components/tickets/buy-ticket/buy-ticket.component';
 import { AllTicketsComponent } from './components/tickets/all-tickets/all-tickets.component';
 import { ScheduleComponent } from './components/view/schedule/schedule.component';
+import { AddStationsComponent } from './components/view/LineAdministration/lines/add-stations/add-stations.component';
+import { LineDetailsComponent } from './components/view/LineAdministration/lines/line-details/line-details.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { ScheduleComponent } from './components/view/schedule/schedule.component
     BuyTicketComponent,
     AllTicketsComponent,
     ScheduleComponent,
+    AddStationsComponent,
+    LineDetailsComponent,
 
 
   ],

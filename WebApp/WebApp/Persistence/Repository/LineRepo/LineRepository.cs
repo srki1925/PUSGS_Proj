@@ -15,10 +15,13 @@ namespace WebApp.Persistence.Repository.LineRepo
             _context = context as ApplicationDbContext;
 		}
 
-        public Line GetLine(string Name)
+        public Line GetLine(Expression<Func<Line, bool>> predicate)
         {
-            
-            return  Find(x => x.Name == Name && x.Active == true) as Line;
+            if (_context.Lines.Any(predicate))
+            {
+                return _context.Lines.Where(predicate).Include(x => x.Stations).First();
+            }
+            return null;
 
         }
 

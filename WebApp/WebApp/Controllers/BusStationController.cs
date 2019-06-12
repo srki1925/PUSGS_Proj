@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using WebApp.Models;
 using WebApp.Models.RequestModel.BusStationRequest;
@@ -42,7 +43,18 @@ namespace WebApp.Controllers
 			return Ok(response.Where(x => x.Active));
 		}
 
-		[HttpDelete]
+        [HttpGet]
+        [Route("BusStations/{id}")]
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult GetStations(int id)
+        {
+            var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
+            var stations = unitOfWork.StationServices.GetStations(x => x.Active);
+             return Ok(stations.Where(x => x.Lines.Find(y => y.Id == id) == null).ToList());
+            
+        }
+
+        [HttpDelete]
 		[Route("RemoveBusStation/{id}")]
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult RemoveBusStation(int id)

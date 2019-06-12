@@ -7,7 +7,7 @@ namespace WebApp.Persistence.Repository.LineRepo
 {
 	public interface ILineRepository : IRepository<Line, int>
 	{
-        Line GetLine(string Name);
+        Line GetLine(Expression<Func<Line, bool>> predicate);
         List<Line> GetLines(Expression<Func<Line, bool>> predicate);
 	}
 }
