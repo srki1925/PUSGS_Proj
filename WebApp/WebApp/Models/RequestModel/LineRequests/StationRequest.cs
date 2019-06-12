@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebApp.Models.RequestModel.LineRequests
 {
-    public class AddStationRequest
+    public class StationRequest
     {
         public int LineId { get; set; }
         public int StationId { get; set; }
