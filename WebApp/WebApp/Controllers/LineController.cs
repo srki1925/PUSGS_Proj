@@ -47,7 +47,7 @@ namespace WebApp.Controllers
         [Route("AddStation")]
         [Authorize(Roles = "Admin")]
 
-        public IHttpActionResult AddStation(AddStationRequest addStationRequest)
+        public IHttpActionResult AddStation(StationRequest addStationRequest)
         {
             var line = unitOfWork.LineServices.GetLine(x => x.Id ==  addStationRequest.LineId && x.Active);
             var station = unitOfWork.StationServices.GetStation( x=> x.Id == addStationRequest.StationId && x.Active);
@@ -61,6 +61,26 @@ namespace WebApp.Controllers
                     return Ok();
                 }
                 return NotFound();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpDelete]
+        [Route("RemoveStation")]
+        [Authorize(Roles ="Admin")]
+        public IHttpActionResult RemoveStation(StationRequest stationRequest)
+        {
+            var line = unitOfWork.LineServices.GetLine(x => x.Id == stationRequest.LineId && x.Active);
+
+            var station = line.Stations.Where(x => x.Id == stationRequest.StationId).First();
+            if (line != null && station != null)
+            {
+                line.Stations.Remove(station);
+                unitOfWork.Complete();
+                return Ok();
             }
             else
             {
