@@ -1,0 +1,13 @@
+<div>
+  <table border="1">
+      <tr>
+        <th>Ticket type</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let item of ticketTypes">
+          <td>{{item.TicketType}}</td>
+          <td>{{item.Price}}</td>
+      </tr>
+    </table>
+</div>

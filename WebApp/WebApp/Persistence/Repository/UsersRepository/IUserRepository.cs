@@ -2,8 +2,8 @@
 
 namespace WebApp.Persistence.Repository.UsersRepository
 {
-	public interface IUserRepository : IRepository<User, int>
+	public interface IUserRepository : IRepository<User, string>
 	{
-        bool Exist(string email);
+		bool Exist(string email);
 	}
 }

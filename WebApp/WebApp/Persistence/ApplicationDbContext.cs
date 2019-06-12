@@ -29,11 +29,13 @@ namespace WebApp.Persistence
 
 		public DbSet<Ticket> Tickets { get; set; }
 
+		public DbSet<TicketDefinition> TicketDefinitions { get; set; }
+
 		public DbSet<PriceList> PriceLists { get; set; }
 
 		public DbSet<PriceListItem> PriceListItems { get; set; }
-        public DbSet<Departure> Departures { get; set; }
+		public DbSet<Departure> Departures { get; set; }
 
-        public DbSet<User> ApplicationUsers { get; set; }
+		public DbSet<User> ApplicationUsers { get; set; }
 	}
 }

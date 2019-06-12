@@ -1,5 +1,9 @@
-﻿using System.Net.Mail;
+﻿using System.Linq;
+using System.Net.Http;
+using System.Net.Mail;
+using System.Web;
 using System.Web.Http;
+using Microsoft.AspNet.Identity.Owin;
 using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
@@ -17,16 +21,18 @@ namespace WebApp.Controllers
 		[HttpDelete]
 		[Route("Accept/{id}")]
 		[Authorize(Roles = "Admin")]
-		public void Accept(int id)
+		public void Accept(string id)
 		{
-			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", "andrejftniviciak@gmail.com", "Your registration was accepted", "registration");
-			var passenger = unitOfWork.PassengerServices.Get(id);
-			if (!unitOfWork.UsersRepository.Exist(passenger.Email))
-			{
-				unitOfWork.UsersRepository.Add(passenger);
-			}
-			passenger.Blocked = true;
+			var user = unitOfWork.UsersRepository.Find(x => x.Id == id).First();
+			user.Blocked = false;
+
+			// After user is accepted add him to role
+			Request.GetOwinContext().GetUserManager<ApplicationUserManager>()
+				.AddToRoleAsync(user.Id, user.UserType.ToString());
+
 			unitOfWork.Complete();
+
+			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", user.Email, "Your registration was accepted", "registration");
 		}
 
 		[HttpPost]
@@ -34,7 +40,7 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Controller")]
 		public void Refuse(string email)
 		{
-			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", "", "Your registration was denied", "registration");
+			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", email, "Your registration was denied", "registration");
 		}
 
 		private void SendMail(string emailFrom, string pw, string emailTo, string body, string subject)
@@ -44,9 +50,9 @@ namespace WebApp.Controllers
 			mail.To.Add(emailTo);
 			mail.Subject = subject;
 			mail.Body = body;
-			mail.From = new MailAddress(emailFrom);
+			mail.From = new MailAddress("titovrentavehicle@gmail.com");
 			SmtpServer.Port = 587;
-			SmtpServer.Credentials = new System.Net.NetworkCredential(emailFrom, pw);
+			SmtpServer.Credentials = new System.Net.NetworkCredential("titovrentavehicle@gmail.com", "drugtito");
 			SmtpServer.EnableSsl = true;
 			SmtpServer.Send(mail);
 		}

@@ -8,6 +8,7 @@ using WebApp.Persistence.Repository.PriceListItemRepo;
 using WebApp.Persistence.Repository.PriceListRepo;
 using WebApp.Persistence.Repository.PutnikRepo;
 using WebApp.Persistence.Repository.StationRepo;
+using WebApp.Persistence.Repository.TicketDefinitionRepo;
 using WebApp.Persistence.Repository.TicketRepo;
 using WebApp.Persistence.Repository.UsersRepository;
 
@@ -26,6 +27,7 @@ namespace WebApp.Persistence.UnitOfWork
 		IPriceListItemRepository PriceListItemServices { get; }
 		IConductorRepository ConductorRepository { get; }
 		IUserRepository UsersRepository { get; }
+		ITicketDefinitionRepository TicketDefinitionRepository { get; }
 
 		int Complete();
 	}

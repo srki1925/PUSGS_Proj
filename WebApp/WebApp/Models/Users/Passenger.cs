@@ -1,4 +1,5 @@
-﻿using WebApp.Models.Enums;
+﻿using System.Collections.Generic;
+using WebApp.Models.Enums;
 
 namespace WebApp.Models.Users
 {
@@ -10,6 +11,8 @@ namespace WebApp.Models.Users
 		}
 
 		public PassengerType PassengerType { get; set; }
+
+		public List<Ticket> Tickets { get; set; }
 
 		public bool Activated { get; set; } = false;
 

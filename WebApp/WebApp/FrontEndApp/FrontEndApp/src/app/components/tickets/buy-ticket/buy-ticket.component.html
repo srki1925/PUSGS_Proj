@@ -1,3 +1,22 @@
-<p>
-  buy-ticket works!
-</p>
+<div class="row">
+    <div class="col-md-5">
+      <h3>All Price Lists</h3>
+      <app-tickets-list></app-tickets-list>
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+      <form [formGroup]="buyTicketForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <label for="TicketId">Tickets: </label>
+          <select  formControlName="TicketId" class="form-control">
+            <option *ngFor="let item of ticketItems" value={{item.Id}}>{{item.TicketType}} -> {{item.Price}}</option>
+          </select>
+        </div>
+        <div *ngIf="!loggedIn" class="form-group">
+            <label for="Email">Email: </label>
+            <input type="email" id="Email" formControlName="Email" class="form-control">
+        </div>
+        <hr>
+        <button type="submit">Buy</button>
+      </form>
+    </div>
+  </div>

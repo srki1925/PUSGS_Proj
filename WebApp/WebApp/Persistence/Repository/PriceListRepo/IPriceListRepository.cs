@@ -7,7 +7,8 @@ namespace WebApp.Persistence.Repository.PriceListRepo
 {
 	public interface IPriceListRepository : IRepository<PriceList, int>
 	{
-        List<PriceList> GetPriceLists(Expression<Func<PriceList, bool>> predicate);
-        PriceList GetPriceList(Expression<Func<PriceList, bool>> predicate);
+		List<PriceList> GetPriceLists(Expression<Func<PriceList, bool>> predicate = null);
+
+		PriceList GetPriceList(Expression<Func<PriceList, bool>> predicate);
 	}
 }

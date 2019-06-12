@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ITicketResponse } from 'src/app/services/interfaces';
+import { TicketService } from 'src/app/services/ticket.service';
 
 @Component({
   selector: 'app-all-tickets',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllTicketsComponent implements OnInit {
 
-  constructor() { }
+  public tickets : ITicketResponse[]
+
+  constructor(private ticketService : TicketService) { }
 
   ngOnInit() {
+    this.ticketService.getTicketsForUser().subscribe((data : ITicketResponse[]) =>{
+      this.tickets = data
+    })
   }
 
 }

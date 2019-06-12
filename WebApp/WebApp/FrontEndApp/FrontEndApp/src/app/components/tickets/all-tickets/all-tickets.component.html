@@ -1,3 +1,15 @@
-<p>
-  all-tickets works!
-</p>
+<div>
+    <table border="1">
+      <tr>
+        <th>Id</th>
+        <th>Ticket type</th>
+        <th>Issue date</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let item of tickets">
+        <td>{{item.Id}}</td>
+        <td>{{item.TicketType}}</td>
+        <td>{{item.IssueDate}}</td>
+      </tr>
+      </table>
+  </div>
