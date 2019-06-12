@@ -25,10 +25,12 @@ import { BuyTicketComponent } from './components/tickets/buy-ticket/buy-ticket.c
 import { AllTicketsComponent } from './components/tickets/all-tickets/all-tickets.component';
 import { PassengerGuard } from './route-guards/passenger.guard';
 import { PriceListDetailsComponent} from './components/view/Finances/price-lists/price-list-details/price-list-details.component'
+import { ScheduleComponent} from './components/view/schedule/schedule.component'
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'register',component: RegistrationComponent, canActivate: [LoginGuard] },
+  { path: 'schedule',component: ScheduleComponent},
   { path: 'home', children: [
     { path: 'users', component: UserComponent ,children:[
       { path:'addConductor',component: CreateUserComponent, canActivate: [AdminGuard] }

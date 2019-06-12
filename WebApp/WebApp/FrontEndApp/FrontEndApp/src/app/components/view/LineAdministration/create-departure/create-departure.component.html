@@ -10,13 +10,11 @@
         <option value=1>Saturday</option>
         <option value=2>Sunday</option>
       </select>
-      <label for="Line">LineId: </label>
-      <input type="text" id="Line" formControlName="Line" class="form-control">
-      <ul *ngFor="let line of lines">
-        <li>{{line.Id}}</li>
-       <li>{{line.Name}}</li>
-       <li>{{getLineTypeString(line.LineType)}}</li>
-     </ul>
+      <label for="LineId">LineId: </label>
+     <select formControlName="LineId"> 
+        <option *ngFor="let line of lines" value={{line.Id}}>{{line.Name}} {{getLineTypeString(line.LineType)}}</option>
+      </select>
+
       <hr>
       <button type="submit">Add Departure</button>
     </form>

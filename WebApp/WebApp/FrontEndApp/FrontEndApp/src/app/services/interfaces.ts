@@ -142,5 +142,9 @@ export interface IPriceList{
     PriceListItems:IPriceListItem[]
 }
 
+export interface IScheduleRequest{
+    DayType:DayType,
+    LineId:number
+}
 
 

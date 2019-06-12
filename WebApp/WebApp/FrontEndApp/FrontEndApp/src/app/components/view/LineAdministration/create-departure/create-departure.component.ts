@@ -17,7 +17,7 @@ public lines:ILine[]
     this.departureForm = new FormGroup({
       Time: new FormControl(null,[Validators.required,Validators.nullValidator]),
       DayType:new FormControl(null,[Validators.required]),
-      Line: new FormControl(null,[Validators.required])
+      LineId: new FormControl(null,[Validators.required])
     });
     this.lineService.subscriberToLineChanges().subscribe((data:ILine[]) => {this.lines = data;})
     this.lineService.refreshLines();
@@ -29,12 +29,14 @@ public lines:ILine[]
     }
   }
   onSubmit(){
+    console.log('valid?')
     if(this.departureForm.valid){
     let departure:IDepartureRequest = {
       Time:this.departureForm.value.Time,
       DayType:this.departureForm.value.DayType,
-      LineId:this.departureForm.value.Line
+      LineId:this.departureForm.value.LineId
     }
+    console.log('create Depa')
     this.departureService.addDeparture(departure)
   }
 }

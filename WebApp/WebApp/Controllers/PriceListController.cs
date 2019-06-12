@@ -36,7 +36,7 @@ namespace WebApp.Controllers
             priceList.To = priceListCreationRequest.To;
             priceList.From = priceListCreationRequest.From;
             foreach (var item in priceListCreationRequest.PriceListItems)
-            {//ako pukne add item.list.add(priceList)
+            {
                 priceList.PriceListItems.Add(unitOfWork.PriceListItemServices.Get(item));
             }
             unitOfWork.PriceListServices.Add(priceList);

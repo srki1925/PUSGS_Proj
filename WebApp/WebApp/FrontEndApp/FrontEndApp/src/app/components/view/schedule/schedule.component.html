@@ -1,0 +1,34 @@
+<div>
+    <form [formGroup]="scheduleForm" (submit)="onSubmit()">
+        <div class="form-group">
+        <label for="DayType">DayType: </label>
+          <select  formControlName="DayType" class="form-control">
+            <option  value=0>WorkDay</option>
+            <option value=1>Saturday</option>
+            <option value=2>Sunday</option>
+          </select> </div>
+          <div class="form-group">
+              <label for="LineType">LineType: </label>
+                <select  formControlName="LineType" class="form-control">
+                  <option  value=0 selected>City</option>
+                  <option value=1>OutSkirts</option>
+                </select> 
+                <button (click)="onSelect()">Select</button>
+          </div>
+
+          <div class="form-group">
+                <label for="LineType">Line: </label>
+                    <select  formControlName="LineId" class="form-control" >
+                      <option *ngFor="let line of lines" value={{line.Id}}>{{line.Name}}</option>
+                  </select>
+          </div>
+        <hr>
+        <button type="submit">Show</button>
+      </form>
+      <div  *ngIf="selected" class="form-group">
+      <br><br>
+              <ul *ngFor="let item of departures">
+                  <li>{{item.Time}}</li>
+              </ul>
+    </div>
+    </div>

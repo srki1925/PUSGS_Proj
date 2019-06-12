@@ -60,6 +60,9 @@
                     <li><a [routerLink]="['/home','pricelist']" style="cursor: pointer;">All price lists</a></li>
                 </ul>
             </li>
+            <li class="dropdown" *ngIf="loggedIn">
+                    <a routerLink="/schedule" class="dropdown-toggle" role="button" style="cursor: pointer;">Schedule</a>
+                </li>
               <li class="dropdown" appDropdown *ngIf="!loggedIn || (loggedIn && role === 'Passenger')">
                   <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Tickets<span class="caret"></span></a>
                   <ul class="dropdown-menu">
