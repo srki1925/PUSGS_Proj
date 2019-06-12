@@ -45,8 +45,9 @@ export class PriceListService {
         error=> console.log('There is no such type of ticket type')
       )
     }
+
     removePriceList(id:number){
-      this.http.delete(this.externalApis.getDataApiUrl()+ '/pricelist/removepricelis/'+ id).subscribe(
+      this.http.delete(this.externalApis.getDataApiUrl()+ '/pricelist/'+ id).subscribe(
         ok => this.refreshList(),
         error => console.log('There is no PriceList with that id')
       )

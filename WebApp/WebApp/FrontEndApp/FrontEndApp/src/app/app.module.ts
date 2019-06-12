@@ -37,6 +37,7 @@ import { PriceListDetailsComponent } from './components/view/Finances/price-list
 import { TicketsComponent } from './components/tickets/tickets/tickets.component';
 import { BuyTicketComponent } from './components/tickets/buy-ticket/buy-ticket.component';
 import { AllTicketsComponent } from './components/tickets/all-tickets/all-tickets.component';
+import { TicketsListComponent } from './components/tickets/buy-ticket/tickets-list/tickets-list.component'
 import { ScheduleComponent } from './components/view/schedule/schedule.component';
 import { AddStationsComponent } from './components/view/LineAdministration/lines/add-stations/add-stations.component';
 import { LineDetailsComponent } from './components/view/LineAdministration/lines/line-details/line-details.component';
@@ -75,6 +76,7 @@ import { LineDetailsComponent } from './components/view/LineAdministration/lines
     TicketsComponent,
     BuyTicketComponent,
     AllTicketsComponent,
+    TicketsListComponent,
     ScheduleComponent,
     AddStationsComponent,
     LineDetailsComponent,

@@ -49,7 +49,7 @@ namespace WebApp.Controllers
 		[HttpDelete]
 		[Route("BlockUser/{id}")]
 		[Authorize(Roles = "Admin")]
-		public IHttpActionResult BlockUser(int id)
+		public IHttpActionResult BlockUser(string id)
 		{
 			var user = unitOfWork.UsersRepository.Get(id);
 			if (user == null) return NotFound();
@@ -66,7 +66,7 @@ namespace WebApp.Controllers
 		[HttpDelete]
 		[Route("UnblockUser/{id}")]
 		[Authorize(Roles = "Admin")]
-		public IHttpActionResult UnblockUser(int id)
+		public IHttpActionResult UnblockUser(string id)
 		{
 			var user = unitOfWork.UsersRepository.Get(id);
 			if (user == null) return NotFound();

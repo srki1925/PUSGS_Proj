@@ -142,6 +142,12 @@ export interface IPriceList{
     PriceListItems:IPriceListItem[]
 }
 
+export interface ITicketDefinitionResponse{
+    Id : number,
+    TicketType : string,
+    Price : number
+}
+
 export interface IScheduleRequest{
     DayType:DayType,
     LineId:number
@@ -150,4 +156,14 @@ export interface IScheduleRequest{
 export interface IStationLineRequest{
     LineId:number,
     StationId:number
+}
+export interface ITicketResponse{
+    Id : number,
+    TicketType : string,
+    IssueDate : Date
+}
+
+export interface IRegularTicketRequest{
+    Email : string,
+    TicketDefinitionId : number
 }
