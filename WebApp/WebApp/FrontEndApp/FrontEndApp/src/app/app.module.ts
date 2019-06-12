@@ -34,6 +34,9 @@ import { ValidateTicketComponent } from './components/conductor/validate-ticket/
 import { PriceListItemsComponent } from './components/view/Finances/price-list-items/price-list-items.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { PriceListDetailsComponent } from './components/view/Finances/price-lists/price-list-details/price-list-details.component'
+import { TicketsComponent } from './components/tickets/tickets/tickets.component';
+import { BuyTicketComponent } from './components/tickets/buy-ticket/buy-ticket.component';
+import { AllTicketsComponent } from './components/tickets/all-tickets/all-tickets.component'
 
 @NgModule({
   declarations: [
@@ -66,6 +69,9 @@ import { PriceListDetailsComponent } from './components/view/Finances/price-list
     ValidateTicketComponent,
     PriceListItemsComponent,
     PriceListDetailsComponent,
+    TicketsComponent,
+    BuyTicketComponent,
+    AllTicketsComponent,
 
   ],
   imports: [
