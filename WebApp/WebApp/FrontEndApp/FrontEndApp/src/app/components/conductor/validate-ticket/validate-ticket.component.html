@@ -1,3 +1,15 @@
-<p>
-  validate-ticket works!
-</p>
+<div class="row">
+    <div class="col-md-5 col-md-offset-1">
+        <form [formGroup]="validationForm" (submit)="onValidate()">
+        <div class="form-group">
+            <label for="TicketId">Ticket id: </label>
+            <input type="number" formControlName="TicketId" class="form-control"/>
+        </div>
+        <hr>
+        <button type="submit">Validate</button>
+        </form>
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+        <h4>{{message}}</h4>
+    </div>
+</div>

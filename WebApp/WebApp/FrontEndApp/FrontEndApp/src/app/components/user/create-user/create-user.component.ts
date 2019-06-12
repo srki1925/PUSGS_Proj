@@ -23,13 +23,14 @@ export class CreateUserComponent implements OnInit {
       DoB:new FormControl(null,[Validators.required])
     })
   }
-  
+
   onSubmit(){
     console.log(this.conductorForm.errors)
     if(!this.conductorForm.valid) return
 
+    console.log('here')
     // For now like this add validator to check if both passwords match
-    if(!this.conductorForm.value.Password !== this.conductorForm.value.ConfirmPassword) return
+    if(this.conductorForm.value.Password !== this.conductorForm.value.ConfirmPassword) return
 
     let conductor : IConductorRequest = {
       FirstName : this.conductorForm.value.FirstName,
@@ -39,6 +40,7 @@ export class CreateUserComponent implements OnInit {
       ConfirmPassword : this.conductorForm.value.ConfirmPassword,
       DoB:this.conductorForm.value.DoB
     }
+    console.log('before service call')
     this.adminService.addConductor(conductor)
   }
 }

@@ -23,5 +23,15 @@ namespace WebApp.Persistence.Repository.TicketRepo
 			}
 			return new List<Ticket>();
 		}
+
+		public Ticket GetTicketWithDefinition(int id)
+		{
+			var query = _context.Tickets.Include(x => x.TicketDefinition).Where(x => x.Id == id);
+			if (query.Any())
+			{
+				return query.First();
+			}
+			return null;
+		}
 	}
 }

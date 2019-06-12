@@ -43,6 +43,20 @@ namespace WebApp.Controllers
 			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", email, "Your registration was denied", "registration");
 		}
 
+		[HttpGet]
+		[Route("validate/{id}")]
+		[Authorize(Roles = "Controller")]
+		public IHttpActionResult Validate(int id)
+		{
+			var ticket = unitOfWork.TicketServices.GetTicketWithDefinition(id);
+			if (ticket != null)
+			{
+				var msg = ticket.Valid ? "Valid" : "Not Valid";
+				return Ok(msg);
+			}
+			return NotFound();
+		}
+
 		private void SendMail(string emailFrom, string pw, string emailTo, string body, string subject)
 		{
 			MailMessage mail = new MailMessage();

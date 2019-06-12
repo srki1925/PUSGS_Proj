@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConductorService } from 'src/app/services/conductor.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-validate-ticket',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidateTicketComponent implements OnInit {
 
-  constructor() { }
+  public message : string
+  public validationForm : FormGroup
+
+  constructor(private conductorService : ConductorService) { }
 
   ngOnInit() {
+    this.message = null
+
+    this.validationForm = new FormGroup({
+      TicketId : new FormControl(null, [Validators.nullValidator, Validators.required])
+    })
+
+    this.conductorService.subscriberToValidationMessages().subscribe((data : string) => {
+      this.message = data
+    })
+  }
+
+  onValidate(){
+    if(!this.validationForm.valid) return
+    this.conductorService.validateTicket(this.validationForm.value.TicketId)
   }
 
 }
