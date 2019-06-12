@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-lines',
   templateUrl: './lines.component.html',
@@ -10,6 +11,8 @@ export class LinesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
+

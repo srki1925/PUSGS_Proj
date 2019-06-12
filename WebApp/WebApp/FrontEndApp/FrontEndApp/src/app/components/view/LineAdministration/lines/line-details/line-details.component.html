@@ -1,0 +1,17 @@
+<div>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+
+      </tr>
+      <tr *ngFor="let item of stations">
+          <td>{{item.Name}}</td>
+          <td>{{item.Address}}</td>
+          <td>{{item.Latitude}}</td>
+          <td>{{item.Longitude}}</td>
+      </tr>
+    </table>
+    </div>

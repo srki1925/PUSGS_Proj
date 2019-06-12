@@ -153,6 +153,10 @@ export interface IScheduleRequest{
     LineId:number
 }
 
+export interface IStationLineRequest{
+    LineId:number,
+    StationId:number
+}
 export interface ITicketResponse{
     Id : number,
     TicketType : string,

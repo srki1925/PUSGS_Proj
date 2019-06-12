@@ -26,6 +26,10 @@ import { AllTicketsComponent } from './components/tickets/all-tickets/all-ticket
 import { PassengerGuard } from './route-guards/passenger.guard';
 import { PriceListDetailsComponent} from './components/view/Finances/price-lists/price-list-details/price-list-details.component'
 import { ScheduleComponent} from './components/view/schedule/schedule.component'
+import {AddStationsComponent} from './components/view/LineAdministration/lines/add-stations/add-stations.component'
+import {LineDetailsComponent} from './components/view/LineAdministration/lines/line-details/line-details.component'
+
+
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
@@ -36,7 +40,9 @@ const routes: Routes = [
       { path:'addConductor',component: CreateUserComponent, canActivate: [AdminGuard] }
     ]},
     { path: 'lines', component: LinesComponent,children:[
-      { path: 'new',component: CreateLineComponent, canActivate: [AdminGuard] }
+      { path: 'new',component: CreateLineComponent, canActivate: [AdminGuard] },
+      {path: ':id/add',component:AddStationsComponent},
+      {path: ':id/details',component:LineDetailsComponent}
     ]},
     { path:'stations',component: StationsComponent, canActivate: [AdminGuard] ,children:[
       { path:'new',component: CreateBusStationComponent }

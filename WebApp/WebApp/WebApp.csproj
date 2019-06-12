@@ -298,6 +298,7 @@
     <Compile Include="Models\RequestModel\BusStationRequest\BusStationCreationRequest.cs" />
     <Compile Include="Models\RequestModel\DepartureRequest\DepartureCreationRequest.cs" />
     <Compile Include="Models\RequestModel\DepartureRequest\DepartureResponse.cs" />
+    <Compile Include="Models\RequestModel\LineRequests\StationRequest.cs" />
     <Compile Include="Models\RequestModel\LineRequests\LineCreationRequest.cs" />
     <Compile Include="Models\RequestModel\PassengerRequest\RegistrationRequest.cs" />
     <Compile Include="Models\RequestModel\PriceListItemRequest\PriceListItemCreationRequest.cs" />

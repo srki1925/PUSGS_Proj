@@ -14,17 +14,27 @@ export class BusstationService {
   constructor(private http:HttpClient,
     private externalApis : ExternalApisDataService) { }
     private busStationsChanged = new Subject<IBusStation[]>()
-
+    private stations = new Subject<IBusStation[]>()
     addBusStation(newBusStation:IBusStationRequest){
       let line = newBusStation;
       this.http.post(this.externalApis.getDataApiUrl() + '/busstation/createbusstation/', line).subscribe(
-        ok => console.log("statnica kreirana"),
+        ok => this.refreshBusStations(),
         error => console.log("error kreiranje")
       )
 
     }
 
+    subscriberToFilterBusStations(id:number){
+      this.getStationsFilter(id)
+      return this.stations
+    }
 
+    getStationsFilter(id:number){
+      this.http.get(this.externalApis.getDataApiUrl() + '/busstation/busstations/'+id).subscribe(
+        ok => this.stations.next(<IBusStation[]>ok),
+        error => console.log(error)
+      )
+    }
 subscriberToBusChanges() : Subject<IBusStation[]>{
   this.refreshBusStations()
   return this.busStationsChanged;
