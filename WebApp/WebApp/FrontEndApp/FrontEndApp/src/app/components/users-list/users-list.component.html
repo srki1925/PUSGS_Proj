@@ -16,20 +16,3 @@
       <td>{{user.Blocked}}</td>
   </tr>
 </table>
-
-
-<form [formGroup]="blockForm" (submit)="onBlockUser()">
-  <div>
-    <label for="UserId">User id: </label>
-    <input type="number" formControlName="UserId" class="form-control"/>
-    <button type="submit">Block</button>
-  </div>
-</form>
-
-<form [formGroup]="blockForm" (submit)="onUnBlockUser()">
-  <div>
-    <label for="UserId">User id: </label>
-    <input type="number" formControlName="UserId" class="form-control"/>
-    <button type="submit">UnBlock</button>
-  </div>
-</form>

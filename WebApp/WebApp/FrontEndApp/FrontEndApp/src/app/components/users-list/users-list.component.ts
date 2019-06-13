@@ -12,16 +12,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class UsersListComponent implements OnInit {
 
   public users : IUser[]
-  public blockForm : FormGroup
   
   constructor(private adminService : AdminService) { }
 
   ngOnInit() {
 
 
-    this.blockForm = new FormGroup({
-      UserId : new FormControl(null, [Validators.required, Validators.nullValidator])
-    })
+
 
 
      this.adminService.subscriberToUserChanges().subscribe((data : IUser[]) =>{
@@ -39,15 +36,5 @@ export class UsersListComponent implements OnInit {
 
   
 
-  onBlockUser(){
-    if(!this.blockForm.valid) return
 
-    this.adminService.blockUser(this.blockForm.value.UserId)
-  }
-
-  onUnBlockUser(){
-    if(!this.blockForm.valid) return
-
-    this.adminService.unblockUser(this.blockForm.value.UserId)
-  }
 }
