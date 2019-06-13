@@ -10,12 +10,14 @@ import { TicketService } from 'src/app/services/ticket.service';
 export class AllTicketsComponent implements OnInit {
 
   public tickets : ITicketResponse[]
+  public hasData = false
 
   constructor(private ticketService : TicketService) { }
 
   ngOnInit() {
     this.ticketService.getTicketsForUser().subscribe((data : ITicketResponse[]) =>{
       this.tickets = data
+      this.hasData = this.tickets != undefined && this.tickets.length > 0
     })
   }
 

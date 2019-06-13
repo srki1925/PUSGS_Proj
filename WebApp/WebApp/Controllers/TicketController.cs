@@ -34,7 +34,7 @@ namespace WebApp.Controllers
 				var type = (user as Passenger).PassengerType;
 				return Ok(priceList.PriceListItems.ConvertAll(x => new TicketDefinitionResponse(x.TicketDefinition, type)));
 			}
-			return NotFound();
+			return Ok(new List<TicketDefinitionResponse>(0));
 		}
 
 		[Route("regular")]
