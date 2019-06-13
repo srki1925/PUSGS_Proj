@@ -25,6 +25,7 @@
                 </div>
         <hr>
         <button type="submit">Show</button>
+      </div>
       </form>
       <div  *ngIf="selected && deparures != undifned && departures.length >0 " class="form-group">
       <br><br>
@@ -32,10 +33,9 @@
         <li>{{item.Time}}</li>
       </ul>
     </div>
-    <div *ngIf="departues == undefined | departues.length == 0">
+    <div *ngIf="departues == undefined || departues.length == 0">
         <h4>Selected Line does not contain any departures at the moment.</h4>
     </div>
-</div>
 <div>
   <h4>There are no active lines for selected LineType at the moment.</h4>
 </div>
