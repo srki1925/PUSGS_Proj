@@ -67,10 +67,10 @@ export class AuthService {
       let role = decodedJwtData.role
       let exp = decodedJwtData.exp
 
-      console.log('jwtData: ' + jwtData)
-      console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
-      console.log('decodedJwtData: ' + decodedJwtData)
-      console.log('Role ' + role)
+      // console.log('jwtData: ' + jwtData)
+      // console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
+      // console.log('decodedJwtData: ' + decodedJwtData)
+      // console.log('Role ' + role)
 
       localStorage.setItem('jwt', jwt)
       localStorage.setItem('role', role);

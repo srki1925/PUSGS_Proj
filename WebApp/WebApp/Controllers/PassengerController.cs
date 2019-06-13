@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
+using WebApp.Models.ResponseModel;
 using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
@@ -19,8 +21,13 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Controller")]
 		public IHttpActionResult ActivationList()
 		{
-			var response = unitOfWork.PassengerServices.GetAll();
-			return Ok(response.Where(x => !x.Blocked));
+			var response = unitOfWork.PassengerServices.Find(x => x.PassengerState == Models.Users.PassengerState.Waiting);
+			if (response.Any())
+			{
+				return Ok(response.Select(x => new ActivationListItemResponse(x)));
+			}
+
+			return Ok(new List<ActivationListItemResponse>(0));
 		}
 	}
 }

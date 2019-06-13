@@ -344,8 +344,11 @@ namespace WebApp.Controllers
 				DoB = model.DoB,
 				FirstName = model.FirstName,
 				LastName = model.LastName,
-				PassengerType = model.PassengerType.HasValue ? model.PassengerType.Value : Models.Enums.PassengerType.Regular
+				PassengerType = model.PassengerType.HasValue ? model.PassengerType.Value : Models.Enums.PassengerType.Regular,
+				ImageUri = model.EncodedImage
 			};
+
+			user.PassengerState = user.PassengerType == Models.Enums.PassengerType.Regular ? PassengerState.Accepted : PassengerState.Waiting;
 
 			try
 			{

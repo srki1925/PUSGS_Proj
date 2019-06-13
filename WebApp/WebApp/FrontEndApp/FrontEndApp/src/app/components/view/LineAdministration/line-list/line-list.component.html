@@ -1,5 +1,4 @@
-
-  <form [formGroup]="removeLineForm" (submit)="onRemove()">
+  <form  *ngIf="isAdmin" [formGroup]="removeLineForm" (submit)="onRemove()">
     <div>
       <label for="LineId">Line id: </label>
       <input type="number" formControlName="LineId" class="form-control" />
@@ -12,17 +11,17 @@
       <th>Name</th>
       <th>LineType</th>
       <th>Active</th>
-      <th colspan = 4 halign = Central>Options</th>
+      <th *ngIf="isAdmin" colspan = 4 halign = Central>Options</th>
     </tr>
     <tr *ngFor="let line of lines">
         <td>{{line.Id}}</td>
         <td>{{line.Name}}</td>
         <td>{{getLineTypeString(line.LineType)}}</td>
         <td>{{line.Active}}</td>
-        <td><a [routerLink]="['/home','lines',line.Id,'add']" class="button">Add</a></td>
-        <td><a [routerLink]="['/home','lines',line.Id,'details']" class="button">Details</a></td>
-        <td><a [routerLink]="['/home','lines',line.Id,'update']" class="button">Update</a></td>
-        <td><a [routerLink]="['/home','lines',line.Id,'remove']" class="button">Remove</a></td>
+        <td *ngIf="isAdmin"><a [routerLink]="['/home','lines',line.Id,'add']" class="button">Add</a></td>
+        <td *ngIf="isAdmin"><a [routerLink]="['/home','lines',line.Id,'details']" class="button">Details</a></td>
+        <td *ngIf="isAdmin"><a [routerLink]="['/home','lines',line.Id,'update']" class="button">Update</a></td>
+        <td *ngIf="isAdmin"><a [routerLink]="['/home','lines',line.Id,'remove']" class="button">Remove</a></td>
 
       </tr>
   </table>
