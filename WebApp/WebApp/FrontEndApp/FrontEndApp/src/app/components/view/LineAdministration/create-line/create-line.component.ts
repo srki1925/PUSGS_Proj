@@ -12,7 +12,7 @@ export class CreateLineComponent implements OnInit {
 
   constructor(private lineService: LineService) { }
   public lineForm: FormGroup
-
+  public validationMessage:string = ""
 
 
   ngOnInit() {
@@ -27,12 +27,14 @@ export class CreateLineComponent implements OnInit {
 
   onSubmit() {
     if(this.lineForm.valid){
+      this.validationMessage = "";
     let Line: ILineRequest = {
       Name: this.lineForm.value.Name,
       LineType: this.lineForm.value.Type
     }
     this.lineService.addLine(Line);
   }
+  this.validationMessage = "All fields are required!!"
   }
 
 

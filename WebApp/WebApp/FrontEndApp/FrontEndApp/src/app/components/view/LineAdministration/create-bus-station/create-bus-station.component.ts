@@ -13,7 +13,7 @@ export class CreateBusStationComponent implements OnInit {
 
   constructor(private busService:BusstationService) { }
   public busForm:FormGroup
-
+  public validationMessage:string =""
   ngOnInit() {
     this.busForm = new FormGroup({
       Name: new FormControl("",[Validators.required,Validators.nullValidator]),
@@ -25,6 +25,7 @@ export class CreateBusStationComponent implements OnInit {
 
   onSubmit(){
     if(this.busForm.valid){
+      this.validationMessage = "";
     let busStation:IBusStationRequest = {
       Name:this.busForm.value.Name,
       Address:this.busForm.value.Address,
@@ -33,5 +34,6 @@ export class CreateBusStationComponent implements OnInit {
     }
     this.busService.addBusStation(busStation);
   }
+  this.validationMessage = "All fields are required!!"
   }
 }
