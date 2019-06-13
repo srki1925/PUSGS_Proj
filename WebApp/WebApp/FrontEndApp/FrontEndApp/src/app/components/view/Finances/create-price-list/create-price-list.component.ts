@@ -17,6 +17,7 @@ export class CreatePriceListComponent implements OnInit {
   public monthItems :IPriceListItem[]
   public yearItems :IPriceListItem[]
   public priceListForm:FormGroup
+  public validationMessage:string = ""
   ngOnInit() {
     this.priceListForm = new FormGroup({
       To:new FormControl(null,[Validators.required]),
@@ -42,6 +43,7 @@ export class CreatePriceListComponent implements OnInit {
 
   onSubmit(){
     if(this.priceListForm.valid){
+      this.validationMessage = "";
       let priceList:IPriceListRequest ={
         To:this.priceListForm.value.To,
         From:this.priceListForm.value.From,
@@ -49,5 +51,6 @@ export class CreatePriceListComponent implements OnInit {
       }
       this.priceListService.createPriceList(priceList)
     }
+    this.validationMessage = "All fields are required!!";
   }
 }

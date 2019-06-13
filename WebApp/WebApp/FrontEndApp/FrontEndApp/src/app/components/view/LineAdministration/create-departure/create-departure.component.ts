@@ -13,6 +13,7 @@ export class CreateDepartureComponent implements OnInit {
   constructor(private departureService:DepartureService,private lineService:LineService) { }
 public departureForm:FormGroup
 public lines:ILine[]
+public validationMessage:string = ""
   ngOnInit() {
     this.departureForm = new FormGroup({
       Time: new FormControl(null,[Validators.required,Validators.nullValidator]),
@@ -29,16 +30,17 @@ public lines:ILine[]
     }
   }
   onSubmit(){
-    console.log('valid?')
+
     if(this.departureForm.valid){
     let departure:IDepartureRequest = {
       Time:this.departureForm.value.Time,
       DayType:this.departureForm.value.DayType,
       LineId:this.departureForm.value.LineId
     }
-    console.log('create Depa')
+    this.validationMessage=""
     this.departureService.addDeparture(departure)
   }
+  this.validationMessage = "All fields are required!!"
 }
 
   
