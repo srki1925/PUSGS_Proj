@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ILoginData } from './interfaces'
+import { ILoginData, IPasswordChangeRequest, IUserProfileResponse, IUser } from './interfaces'
 import { ExternalApisDataService } from './external-apis-data.service';
 import { Subject } from 'rxjs';
-import { ThrowStmt } from '@angular/compiler';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -12,6 +11,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   private role : string
   private logginChanged = new Subject<boolean>()
+  private userDataChanged = new Subject<IUserProfileResponse>()
 
   constructor(private http: HttpClient,
               private externalApisService:ExternalApisDataService,
@@ -31,6 +31,24 @@ export class AuthService {
       return true
     }
     return false
+  }
+
+  changePassword(data : IPasswordChangeRequest){
+    this.http.post(this.externalApisService.getDataApiUrl() + '/Account/ChangePassword', data).subscribe(
+      ok => this.router.navigate(['home']),
+      error => console.log(error)
+    )
+  }
+
+  getUserData(){
+    this.http.get(this.externalApisService.getDataApiUrl() + '/Account/UserData').subscribe(
+      ok => this.userDataChanged.next(<IUserProfileResponse>ok),
+      error => console.log(error.status)
+    )
+  }
+
+  subscribeToUserDataChanges(){
+    return this.userDataChanged;
   }
 
   logOut(){

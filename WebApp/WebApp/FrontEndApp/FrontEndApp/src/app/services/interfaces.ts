@@ -173,3 +173,17 @@ export interface IRegularTicketRequest{
     Email : string,
     TicketDefinitionId : number
 }
+
+export interface IPasswordChangeRequest{
+    OldPassword : string,
+    NewPassword : string,
+    ConfirmPassword : string
+}
+
+export interface IUserProfileResponse{
+    FirstName : string,
+    LastName : string,
+    EncodedImage : string,
+    UserType : string
+    PassengerType : string
+}

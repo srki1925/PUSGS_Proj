@@ -314,6 +314,7 @@
     <Compile Include="Models\ResponseModel\TicketDefinitionResponse.cs" />
     <Compile Include="Models\ResponseModel\TicketResponseModel.cs" />
     <Compile Include="Models\RequestModel\ScheduleRequest\ScheduleRequestModel.cs" />
+    <Compile Include="Models\ResponseModel\UserDetailsResponse.cs" />
     <Compile Include="Models\Security\AccountBindingModels.cs" />
     <Compile Include="Models\Security\AccountViewModels.cs" />
     <Compile Include="Models\Security\ApplicationUser.cs" />

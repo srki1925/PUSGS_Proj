@@ -11,6 +11,7 @@ export class ValidateTicketComponent implements OnInit {
 
   public message : string
   public validationForm : FormGroup
+  public classBinding = 'text-success'
 
   constructor(private conductorService : ConductorService) { }
 
@@ -23,6 +24,7 @@ export class ValidateTicketComponent implements OnInit {
 
     this.conductorService.subscriberToValidationMessages().subscribe((data : string) => {
       this.message = data
+      this.classBinding = this.message === 'Valid' ? 'text-success' : 'text-danger'
     })
   }
 

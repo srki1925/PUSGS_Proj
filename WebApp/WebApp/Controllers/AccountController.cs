@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -13,6 +14,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using WebApp.Models;
+using WebApp.Models.ResponseModel;
 using WebApp.Models.Users;
 using WebApp.Persistence.UnitOfWork;
 using WebApp.Providers;
@@ -135,6 +137,16 @@ namespace WebApp.Controllers
 			}
 
 			return Ok();
+		}
+
+		[Route("UserData")]
+		[Authorize(Roles = "Admin, Controller, Passenger")]
+		public IHttpActionResult GetUserData()
+		{
+			var users = unitOfWork.UsersRepository.Find(x => x.Email == HttpContext.Current.User.Identity.Name);
+			if (!users.Any()) return NotFound();
+
+			return Ok(new UserDetailsResponse(users.First()));
 		}
 
 		// POST api/Account/SetPassword

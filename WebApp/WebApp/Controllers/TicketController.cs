@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -112,7 +113,7 @@ namespace WebApp.Controllers
 			{
 				return Ok(tickets.Where(x => x.Valid).Select(x => new TicketResponseModel(x)));
 			}
-			return NotFound();
+			return Ok(new List<TicketResponseModel>(0));
 		}
 
 		private void SendMail(string emailFrom, string pw, string emailTo, string body, string subject)

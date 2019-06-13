@@ -45,6 +45,9 @@ import { RemoveStationComponent } from './components/view/LineAdministration/lin
 import { UpdateLineComponent } from './components/view/LineAdministration/lines/update-line/update-line.component';
 import { DetailsStationComponent } from './components/view/LineAdministration/stations/details-station/details-station.component';
 import { UpdatePriceListComponent } from './components/view/Finances/price-lists/update-price-list/update-price-list.component';
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { EditProfileComponent } from './components/user/user-profile/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +91,9 @@ import { UpdatePriceListComponent } from './components/view/Finances/price-lists
     UpdateLineComponent,
     DetailsStationComponent,
     UpdatePriceListComponent,
+    ChangePasswordComponent,
+    UserProfileComponent,
+    EditProfileComponent,
 
 
   ],

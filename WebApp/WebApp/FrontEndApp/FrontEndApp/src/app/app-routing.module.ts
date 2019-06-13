@@ -31,13 +31,19 @@ import {LineDetailsComponent} from './components/view/LineAdministration/lines/l
 import {RemoveStationComponent} from './components/view/LineAdministration/lines/remove-station/remove-station.component'
 import {UpdateLineComponent} from './components/view/LineAdministration/lines/update-line/update-line.component'
 import {DetailsStationComponent} from './components/view/LineAdministration/stations/details-station/details-station.component'
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { EditProfileComponent } from './components/user/user-profile/edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'register',component: RegistrationComponent, canActivate: [LoginGuard] },
-  { path: 'schedule',component: ScheduleComponent},
+  { path: 'change-password', component : ChangePasswordComponent},
+  { path: 'user-profile', component : UserProfileComponent, children: [
+    {path: 'edit', component : EditProfileComponent}
+  ]},
   { path: 'home', children: [
     { path: 'users', component: UserComponent ,children:[
       { path:'addConductor',component: CreateUserComponent, canActivate: [AdminGuard] }
@@ -53,6 +59,7 @@ const routes: Routes = [
       { path:'new',component: CreateBusStationComponent },
       {path:':id/details',component:DetailsStationComponent}
     ]},
+    { path: 'schedule',component: ScheduleComponent},
     { path:'departures',component: DeparturesComponent,children:[
       { path:'new',component: CreateDepartureComponent, canActivate : [AdminGuard] }
     ]},

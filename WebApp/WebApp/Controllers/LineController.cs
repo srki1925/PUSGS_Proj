@@ -22,17 +22,17 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Admin")]
 		public void CreateLine([FromBody]LineCreationRequest line)
 		{
-            var Line = unitOfWork.LineServices.GetLine(x => x.Active && x.Name == line.Name);
-            if (Line == null)
-            {
-                Line newline = new Line()
-                {
-                    Name = line.Name,
-                    LineType = line.LineType
-                };
-                unitOfWork.LineServices.Add(newline);
-                unitOfWork.Complete();
-            }
+			var Line = unitOfWork.LineServices.GetLine(x => x.Active && x.Name == line.Name);
+			if (Line == null)
+			{
+				Line newline = new Line()
+				{
+					Name = line.Name,
+					LineType = line.LineType
+				};
+				unitOfWork.LineServices.Add(newline);
+				unitOfWork.Complete();
+			}
 		}
 
 		[HttpGet]
@@ -43,102 +43,100 @@ namespace WebApp.Controllers
 			return Ok(lines.Where(x => x.Active));
 		}
 
-        [HttpPost]
-        [Route("AddStation")]
-        [Authorize(Roles = "Admin")]
+		[HttpPost]
+		[Route("AddStation")]
+		[Authorize(Roles = "Admin")]
+		public IHttpActionResult AddStation(StationRequest addStationRequest)
+		{
+			var line = unitOfWork.LineServices.GetLine(x => x.Id == addStationRequest.LineId && x.Active);
+			var station = unitOfWork.StationServices.GetStation(x => x.Id == addStationRequest.StationId && x.Active);
+			if (line != null && station != null)
+			{
+				if (line.Stations == null) line.Stations = new List<BusStation>();
+				if (!line.Stations.Contains(station))
+				{
+					line.Stations.Add(station);
+					unitOfWork.Complete();
+					return Ok();
+				}
+				return NotFound();
+			}
+			else
+			{
+				return NotFound();
+			}
+		}
 
-        public IHttpActionResult AddStation(StationRequest addStationRequest)
-        {
-            var line = unitOfWork.LineServices.GetLine(x => x.Id ==  addStationRequest.LineId && x.Active);
-            var station = unitOfWork.StationServices.GetStation( x=> x.Id == addStationRequest.StationId && x.Active);
-            if(line != null && station != null)
-            {
-                if (line.Stations == null) line.Stations = new List<BusStation>();
-                if (!line.Stations.Contains(station))
-                {
-                    line.Stations.Add(station);
-                    unitOfWork.Complete();
-                    return Ok();
-                }
-                return NotFound();
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
+		[HttpPost]
+		[Route("RemoveStation")]
+		[Authorize(Roles = "Admin")]
+		public IHttpActionResult RemoveStation(StationRequest stationRequest)
+		{
+			var line = unitOfWork.LineServices.GetLine(x => x.Id == stationRequest.LineId && x.Active);
 
-        [HttpPost]
-        [Route("RemoveStation")]
-        [Authorize(Roles ="Admin")]
-        public IHttpActionResult RemoveStation(StationRequest stationRequest)
-        {
-            var line = unitOfWork.LineServices.GetLine(x => x.Id == stationRequest.LineId && x.Active);
+			var station = line.Stations.Where(x => x.Id == stationRequest.StationId).First();
+			if (line != null && station != null)
+			{
+				line.Stations.Remove(station);
+				unitOfWork.Complete();
+				return Ok();
+			}
+			else
+			{
+				return NotFound();
+			}
+		}
 
-            var station = line.Stations.Where(x => x.Id == stationRequest.StationId).First();
-            if (line != null && station != null)
-            {
-                line.Stations.Remove(station);
-                unitOfWork.Complete();
-                return Ok();
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
-        [HttpPut]
-        [Route("Update")]
-        [Authorize(Roles ="Admin")]
-        public IHttpActionResult UpdateLine(LineUpdateRequest lineUpdateRequest)
-        {
-            var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == lineUpdateRequest.Id);
-            var check =unitOfWork.LineServices.GetLine(x => x.Active && x.Name == lineUpdateRequest.Name);
-            if (line != null && check == null)
-            {
+		[HttpPut]
+		[Route("Update")]
+		[Authorize(Roles = "Admin")]
+		public IHttpActionResult UpdateLine(LineUpdateRequest lineUpdateRequest)
+		{
+			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == lineUpdateRequest.Id);
+			var check = unitOfWork.LineServices.GetLine(x => x.Active && x.Name == lineUpdateRequest.Name);
+			if (line != null && check == null)
+			{
+				line.Name = lineUpdateRequest.Name;
+				line.LineType = lineUpdateRequest.LineType;
+				unitOfWork.Complete();
+				return Ok();
+			}
+			else if (line == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				return BadRequest($"Line with name {lineUpdateRequest.Name} already exist!!!");
+			}
+		}
 
-                line.Name = lineUpdateRequest.Name;
-                line.LineType = lineUpdateRequest.LineType;
-                unitOfWork.Complete();
-                return Ok();
+		[HttpGet]
+		[Route("getline/{id}")]
+		public IHttpActionResult GetLine(int id)
+		{
+			var line = unitOfWork.LineServices.Get(id);
+			if (line != null)
+			{
+				return Ok(line);
+			}
+			return NotFound();
+		}
 
-            }
-            else if (line == null)
-            {
-                return NotFound();
-                //return BadRequest($"Line with id {lineUpdateRequest.LineType} doesnt exist!!!");
-            }else
-            {
-                return BadRequest($"Line with name {lineUpdateRequest.Name} already exist!!!");
-            }
+		[HttpGet]
+		[Route("getstations/{id}")]
+		[Authorize(Roles = "Admin")]
+		public IHttpActionResult GetStations(int id)
+		{
+			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
+			if (line != null)
+			{
+				return Ok(line.Stations);
+			}
+			return NotFound();
+		}
 
-        }
-        [HttpGet]
-        [Route("getline/{id}")]
-        public IHttpActionResult GetLine(int id)
-        {
-            var line = unitOfWork.LineServices.Get(id);
-            if(line != null)
-            {
-                return Ok(line);
-            }
-            return NotFound();
-
-        }
-        [HttpGet]
-        [Route("getstations/{id}")]
-        [Authorize(Roles = "Admin")]
-        public IHttpActionResult GetStations(int id)
-        {
-            var line = unitOfWork.LineServices.GetLine(x=> x.Active && x.Id == id);
-            if (line != null)
-            {
-                return Ok(line.Stations);
-            }
-            return NotFound();
-        }
-
-        [HttpDelete]
+		[HttpDelete]
 		[Route("RemoveLine/{id}")]
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult RemoveLine(int id)
@@ -147,7 +145,7 @@ namespace WebApp.Controllers
 			if (line != null)
 			{
 				line.Active = false;
-                line.Stations.Clear();
+				line.Stations.Clear();
 				unitOfWork.Complete();
 				return Ok();
 			}
