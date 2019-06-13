@@ -1,12 +1,10 @@
  <table class="table table-striped custab" *ngIf="lines != undefined && lines.length > 0">
     <tr>
-      <th>Id</th>
       <th>Name</th>
       <th>LineType</th>
       <th colspan = 5 class="text-center" *ngIf="isAdmin">Options</th>
     </tr>
     <tr *ngFor="let line of lines">
-        <td>{{line.Id}}</td>
         <td>{{line.Name}}</td>
         <td>{{getLineTypeString(line.LineType)}}</td>
         <td *ngIf="isAdmin"><a [routerLink]="['/home','lines',line.Id,'add']" class="btn btn-primary btn-xs pull-right">Add Station</a></td>
