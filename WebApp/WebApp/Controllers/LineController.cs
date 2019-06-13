@@ -68,7 +68,7 @@ namespace WebApp.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("RemoveStation")]
         [Authorize(Roles ="Admin")]
         public IHttpActionResult RemoveStation(StationRequest stationRequest)
@@ -87,7 +87,51 @@ namespace WebApp.Controllers
                 return NotFound();
             }
         }
+        [HttpPut]
+        [Route("Update")]
+        [Authorize(Roles ="Admin")]
+        public IHttpActionResult UpdateLine(LineUpdateRequest lineUpdateRequest)
+        {
+            var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == lineUpdateRequest.Id);
+            var check =unitOfWork.LineServices.GetLine(x => x.Active && x.Name == lineUpdateRequest.Name);
+            if (line != null && check == null)
+            {
+                try
+                {
+                line.Name = lineUpdateRequest.Name;
+                line.LineType = lineUpdateRequest.LineType;
+                unitOfWork.Complete();
+                return Ok();
 
+                }
+                catch (System.Exception ex)
+                {
+                    return BadRequest();
+                    System.Console.WriteLine(ex.Message);
+                }
+            }
+            else if (line == null)
+            {
+                return NotFound();
+                //return BadRequest($"Line with id {lineUpdateRequest.LineType} doesnt exist!!!");
+            }else
+            {
+                return BadRequest($"Line with name {lineUpdateRequest.Name} already exist!!!");
+            }
+
+        }
+        [HttpGet]
+        [Route("getline/{id}")]
+        public IHttpActionResult GetLine(int id)
+        {
+            var line = unitOfWork.LineServices.Get(id);
+            if(line != null)
+            {
+                return Ok(line);
+            }
+            return NotFound();
+
+        }
         [HttpGet]
         [Route("getstations/{id}")]
         [Authorize(Roles = "Admin")]

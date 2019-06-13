@@ -1,0 +1,15 @@
+<div>
+    <form [formGroup]="updateForm" (submit)="onUpdate()">
+      <div class="form-group">
+        <label for="Name">Name: </label>
+        <input type="text" id="Name" formControlName="Name" class="form-control">
+      </div>
+      <label for="LineType">LineType: </label>
+      <select  formControlName="LineType" class="form-control">
+        <option value=0>City</option>
+        <option value=1>Outskirts</option>
+      </select>
+      <hr>
+      <button type="submit">Update Line</button>
+    </form> 
+  </div>

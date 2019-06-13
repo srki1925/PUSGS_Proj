@@ -28,7 +28,8 @@ import { PriceListDetailsComponent} from './components/view/Finances/price-lists
 import { ScheduleComponent} from './components/view/schedule/schedule.component'
 import {AddStationsComponent} from './components/view/LineAdministration/lines/add-stations/add-stations.component'
 import {LineDetailsComponent} from './components/view/LineAdministration/lines/line-details/line-details.component'
-
+import {RemoveStationComponent} from './components/view/LineAdministration/lines/remove-station/remove-station.component'
+import {UpdateLineComponent} from './components/view/LineAdministration/lines/update-line/update-line.component'
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
@@ -42,7 +43,9 @@ const routes: Routes = [
     { path: 'lines', component: LinesComponent,children:[
       { path: 'new',component: CreateLineComponent, canActivate: [AdminGuard] },
       {path: ':id/add',component:AddStationsComponent},
-      {path: ':id/details',component:LineDetailsComponent}
+      {path: ':id/details',component:LineDetailsComponent},
+      {path: ':id/remove',component:RemoveStationComponent},
+      {path: ':id/update',component:UpdateLineComponent}
     ]},
     { path:'stations',component: StationsComponent, canActivate: [AdminGuard] ,children:[
       { path:'new',component: CreateBusStationComponent }

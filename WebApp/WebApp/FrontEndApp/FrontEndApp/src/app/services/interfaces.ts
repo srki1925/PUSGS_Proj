@@ -33,6 +33,12 @@ export interface ILineRequest{
     LineType: LineType,
 }
 
+export interface ILineUpdateRequest{
+    Id:number,
+    Name:string,
+    LineType:LineType
+}
+
 export interface ILine{
     Id:number,
     Name:string,
