@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IBusStation, IStationLineRequest} from './../../../../../services/interfaces'
+import { IBusStation, IStationLineRequest, ILine} from './../../../../../services/interfaces'
 import { BusstationService } from './../../../../../services/busstation.service'
 import { LineService } from './../../../../../services/line.service'
 import {FormControl,FormGroup,Validator, Validators} from '@angular/forms'
@@ -15,9 +15,11 @@ export class AddStationsComponent implements OnInit {
     private lineService:LineService,private router:Router,
     private route:ActivatedRoute
     ) { }
-private Id:number;
-public stations:IBusStation[]
-public selectForm:FormGroup
+
+  private Id:number;
+  private line : ILine;
+  public stations:IBusStation[]
+  public selectForm:FormGroup
   ngOnInit() {
     this.route.params.subscribe((params:Params)=>{
       this.Id = +params['id'];
@@ -25,6 +27,9 @@ public selectForm:FormGroup
         {
           this.stations = data;
         })
+      this.lineService.subToGetLine(this.Id).subscribe((data:ILine) =>{
+        this.line = data
+      })
     })
     this.selectForm = new FormGroup({
       StationId: new FormControl(null,[Validators.required])
@@ -32,9 +37,12 @@ public selectForm:FormGroup
   }
 
   onSubmit(){
+    console.log('enter')
     let request:IStationLineRequest ={
         LineId:this.Id,
-        StationId:this.selectForm.value.StationId
+        StationId:this.selectForm.value.StationId,
+        StationVersion : this.stations.find((station) => station.Id == this.selectForm.value.StationId).VersionId ,
+        LineVersion : this.line.VersionId
     }
     this.lineService.addStation(request)
   }

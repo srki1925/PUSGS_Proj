@@ -38,7 +38,7 @@ import {ErrorComponent} from './components/view/error/error.component'
 import { UpdatePriceListComponent} from './components/view/Finances/price-lists/update-price-list/update-price-list.component'
 
 const routes: Routes = [
-  { path: '', redirectTo:'home', pathMatch:'full' },
+  { path: '', redirectTo:'home/lines', pathMatch:'full' },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'register',component: RegistrationComponent, canActivate: [LoginGuard] },
   { path: 'change-password', component : ChangePasswordComponent},
@@ -82,7 +82,7 @@ const routes: Routes = [
     ]},
     {path:'error',component:ErrorComponent}
   ]},
-  { path: '**', redirectTo:'home'}
+  { path: '**', redirectTo:'home/lines'}
 ];
 
 @NgModule({

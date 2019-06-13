@@ -63,7 +63,7 @@
             <li class="dropdown" *ngIf="loggedIn">
                     <a [routerLink]="['/home', 'schedule']" class="dropdown-toggle" role="button" style="cursor: pointer;">Schedule</a>
                 </li>
-              <li class="dropdown" appDropdown *ngIf="!loggedIn || (loggedIn && role === 'Passenger')">
+              <li class="dropdown" appDropdown *ngIf="!loggedIn || (loggedIn && role === 'Passenger' && state === 'Accepted')">
                   <a class="dropdown-toggle" role="button" style="cursor: pointer;" >Tickets<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li><a [routerLink]="['/home','tickets','buy']" style="cursor: pointer;">Buy</a></li>

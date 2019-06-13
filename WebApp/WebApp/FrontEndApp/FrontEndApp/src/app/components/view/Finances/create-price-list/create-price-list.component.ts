@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Version } from '@angular/core';
 import { Form, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import {IPriceListItemRequest, IPriceListRequest,IPriceListItem } from './../../../../services/interfaces';
 import { PriceListService } from './../../../../services/price-list.service';
@@ -18,6 +18,7 @@ export class CreatePriceListComponent implements OnInit {
   public yearItems :IPriceListItem[]
   public priceListForm:FormGroup
   public validationMessage:string = ""
+
   ngOnInit() {
     this.priceListForm = new FormGroup({
       To:new FormControl(null,[Validators.required]),
@@ -29,10 +30,9 @@ export class CreatePriceListComponent implements OnInit {
     })
     this.priceListItemService.subscribeToHourItemsChanged().subscribe((data:IPriceListItem[])=>{
       this.hourItems = data
-    }
-   )
+    })
    this.priceListItemService.subscribeToDayItemsChanged().subscribe((data:IPriceListItem[])=>
-   {this.dayItems = data})
+    {this.dayItems = data})
    this.priceListItemService.subscribeToMonthItemsChanged().subscribe((data:IPriceListItem[])=>{
      this.monthItems = data
    })
@@ -47,7 +47,7 @@ export class CreatePriceListComponent implements OnInit {
       let priceList:IPriceListRequest ={
         To:this.priceListForm.value.To,
         From:this.priceListForm.value.From,
-        PriceListItems:[this.priceListForm.value.HourId,this.priceListForm.value.DayId,this.priceListForm.value.MonthId,this.priceListForm.value.YearId]
+        PriceListItems:[this.priceListForm.value.HourId,this.priceListForm.value.DayId,this.priceListForm.value.MonthId,this.priceListForm.value.YearId],
       }
       this.priceListService.createPriceList(priceList)
     }

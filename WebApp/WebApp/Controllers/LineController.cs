@@ -49,14 +49,29 @@ namespace WebApp.Controllers
 		public IHttpActionResult AddStation(StationRequest addStationRequest)
 		{
 			var line = unitOfWork.LineServices.GetLine(x => x.Id == addStationRequest.LineId && x.Active);
+			if (line.VersionId > addStationRequest.LineVersion)
+			{
+				return BadRequest("Other user has modified line, try again.");
+			}
+
 			var station = unitOfWork.StationServices.GetStation(x => x.Id == addStationRequest.StationId && x.Active);
+			if (station.VersionId > addStationRequest.StationVersion)
+			{
+				return BadRequest("Other user has modified station, try again.");
+			}
+
 			if (line != null && station != null)
 			{
 				if (line.Stations == null) line.Stations = new List<OrderedBusStation>();
 				if (!line.Stations.ConvertAll(x => x.Station).Contains(station))
 				{
-					line.Stations.Add(new OrderedBusStation() { Id = line.Stations.Count, Station = station });
-					unitOfWork.Complete();
+					line.Stations.Add(new OrderedBusStation() { Station = station });
+					line.VersionId++;
+					station.VersionId++;
+					if (unitOfWork.Complete() == -1)
+					{
+						return BadRequest("Other user has modified line or station you tried to modify, try again.");
+					}
 					return Ok();
 				}
 				return BadRequest($"Line with id {addStationRequest.LineId} already contains bus station with id {addStationRequest.StationId}");
@@ -73,12 +88,27 @@ namespace WebApp.Controllers
 		public IHttpActionResult RemoveStation(StationRequest stationRequest)
 		{
 			var line = unitOfWork.LineServices.GetLine(x => x.Id == stationRequest.LineId && x.Active);
+			if (line.VersionId > stationRequest.LineVersion)
+			{
+				return BadRequest("Other user has modified line, try again.");
+			}
 
 			var station = line.Stations.Where(x => x.Station.Id == stationRequest.StationId).First();
+			if (station.Station.VersionId > stationRequest.StationVersion)
+			{
+				return BadRequest("Other user has modified station, try again.");
+			}
+
 			if (line != null && station != null)
 			{
 				line.Stations.Remove(station);
-				unitOfWork.Complete();
+				line.VersionId++;
+				station.Station.VersionId++;
+
+				if (unitOfWork.Complete() == -1)
+				{
+					return BadRequest("Other user has modified line or station you tried to modify, try again.");
+				}
 				return Ok();
 			}
 			else
@@ -93,12 +123,22 @@ namespace WebApp.Controllers
 		public IHttpActionResult UpdateLine(LineUpdateRequest lineUpdateRequest)
 		{
 			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == lineUpdateRequest.Id);
+
+			if (line.VersionId > lineUpdateRequest.Version)
+			{
+				return BadRequest("Other user has modified data, try again.");
+			}
+
 			var check = unitOfWork.LineServices.GetLine(x => x.Active && x.Name == lineUpdateRequest.Name && x.Id != lineUpdateRequest.Id);
 			if (line != null && check == null)
 			{
 				line.Name = lineUpdateRequest.Name;
 				line.LineType = lineUpdateRequest.LineType;
-				unitOfWork.Complete();
+				line.VersionId++;
+				if (unitOfWork.Complete() == -1)
+				{
+					return BadRequest("Other user has modified data, try again.");
+				}
 				return Ok();
 			}
 			else if (line == null)
@@ -125,7 +165,6 @@ namespace WebApp.Controllers
 
 		[HttpGet]
 		[Route("getstations/{id}")]
-		[Authorize(Roles = "Admin")]
 		public IHttpActionResult GetStations(int id)
 		{
 			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
@@ -141,8 +180,7 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult RemoveLine(int id)
 		{
-
-            var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
+			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
 			if (line != null)
 			{
 				line.Active = false;

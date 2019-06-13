@@ -48,9 +48,10 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult GetStations(int id)
 		{
-			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
+			var lineStations = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id).Stations.ConvertAll(x => x.Station);
 			var stations = unitOfWork.StationServices.GetStations(x => x.Active);
-			return Ok(stations.Where(x => x.Lines.Find(y => y.Id == id) == null).ToList());
+			var ret = stations.Where(x => lineStations.Find(y => y.Id == x.Id) == null);
+			return Ok(ret);
 		}
 
 		[HttpDelete]
@@ -77,9 +78,10 @@ namespace WebApp.Controllers
 		public IHttpActionResult GetLines(int id)
 		{
 			var bus = unitOfWork.StationServices.GetStation(x => x.Active && x.Id == id);
-			if (bus != null)
+			var lines = unitOfWork.LineServices.GetLines(x => true).FindAll(x => x.Stations.FindIndex(y => y.Station == bus) != -1);
+			if (lines?.Count > 0)
 			{
-				return Ok(bus.Lines);
+				return Ok(lines);
 			}
 			return Ok(new List<BusStation>(0));
 		}

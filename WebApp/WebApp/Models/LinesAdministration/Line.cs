@@ -5,7 +5,7 @@ using WebApp.Models.Enums;
 
 namespace WebApp.Models
 {
-	public class Line
+	public class Line : VersionedItem
 	{
 		public Line()
 		{

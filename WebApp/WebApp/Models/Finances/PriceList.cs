@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
 {
-	public class PriceList
+	public class PriceList : VersionedItem
 	{
 		public PriceList()
 		{

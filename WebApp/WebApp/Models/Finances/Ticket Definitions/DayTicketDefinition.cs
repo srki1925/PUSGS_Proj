@@ -10,7 +10,8 @@ namespace WebApp.Models.Finances.Ticket_Definitions
 
 		public override bool CheckTicketValidity(DateTime issueDate)
 		{
-			return DateTime.Now.Ticks == (issueDate.Ticks - (issueDate.Ticks % TimeSpan.TicksPerDay));
+			var now = DateTime.Now;
+			return issueDate.Year == now.Year && issueDate.Month == now.Month && issueDate.Day == now.Day;
 		}
 	}
 }

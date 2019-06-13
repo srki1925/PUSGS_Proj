@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Http;
 using WebApp.Models;
 using WebApp.Models.RequestModel.PriceListRequest;
 using WebApp.Persistence.UnitOfWork;
-using System.Linq;
 
 namespace WebApp.Controllers
 {
@@ -27,7 +27,7 @@ namespace WebApp.Controllers
 
 		[HttpPost]
 		[Route("createPriceList")]
-        [Authorize(Roles ="Admin")]
+		[Authorize(Roles = "Admin")]
 		public void CreatePriceList(PriceListCreationRequest priceListCreationRequest)
 		{
 			var priceList = new PriceList();
@@ -36,11 +36,11 @@ namespace WebApp.Controllers
 			priceList.To = priceListCreationRequest.To;
 			priceList.From = priceListCreationRequest.From;
 			foreach (var item in priceListCreationRequest.PriceListItems)
-			{//ako pukne add item.list.add(priceList)
-				priceList.PriceListItems.Add(unitOfWork.PriceListItemServices.GetItem(x=> x.Id == item && x.Active));
+			{
+				priceList.PriceListItems.Add(unitOfWork.PriceListItemServices.GetItem(x => x.Id == item && x.Active));
 			}
-            priceList.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType);
-            unitOfWork.PriceListServices.Add(priceList);
+			priceList.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType);
+			unitOfWork.PriceListServices.Add(priceList);
 			unitOfWork.Complete();
 		}
 
@@ -51,7 +51,7 @@ namespace WebApp.Controllers
 			var list = unitOfWork.PriceListServices.GetPriceList(x => x.Id == id && x.Active);
 			if (list != null)
 			{
-               list.PriceListItems =  list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
+				list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
 				return Ok(list);
 			}
 			return NotFound();
@@ -59,7 +59,7 @@ namespace WebApp.Controllers
 
 		[HttpDelete]
 		[Route("{id}")]
-        [Authorize(Roles ="Admin")]
+		[Authorize(Roles = "Admin")]
 		public IHttpActionResult Delete(int id)
 		{
 			var priceList = unitOfWork.PriceListServices.Get(id);
@@ -72,27 +72,35 @@ namespace WebApp.Controllers
 			return StatusCode(HttpStatusCode.Gone);
 		}
 
-        [HttpPut]
-        [Route("Update")]
-        [Authorize(Roles ="Admin")]
-        public IHttpActionResult Update(PriceListUpdateRequest update)
-        {
-            var list = unitOfWork.PriceListServices.GetPriceList(x => x.Active && x.Id == update.Id);
-            if (list != null)
-            {
-            list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
-                for (int i = 0; i < 4; i++)
-                {
-                    var id = update.PriceListItems[i];
-                    var item = unitOfWork.PriceListItemServices.GetItem(x => x.Id == id && x.Active);
-                    list.PriceListItems[i] = item;
-                }
-               list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
-                unitOfWork.Complete();
-                return Ok();
-            }
-            return NotFound();
-        }
+		[HttpPut]
+		[Route("Update")]
+		[Authorize(Roles = "Admin")]
+		public IHttpActionResult Update(PriceListUpdateRequest update)
+		{
+			var list = unitOfWork.PriceListServices.GetPriceList(x => x.Active && x.Id == update.Id);
+			if (list != null)
+			{
+				if (list.VersionId > update.Version)
+				{
+					return BadRequest("Other user has changed item you are working on, try again.");
+				}
 
-    }
+				list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
+				for (int i = 0; i < 4; i++)
+				{
+					var id = update.PriceListItems[i];
+					var item = unitOfWork.PriceListItemServices.GetItem(x => x.Id == id && x.Active);
+					list.PriceListItems[i] = item;
+				}
+				list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
+				list.VersionId++;
+				if (unitOfWork.Complete() == -1)
+				{
+					return BadRequest("Other user has changed item you are working on, try again.");
+				}
+				return Ok();
+			}
+			return NotFound();
+		}
+	}
 }

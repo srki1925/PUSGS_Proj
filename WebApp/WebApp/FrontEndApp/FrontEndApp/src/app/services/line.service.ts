@@ -64,8 +64,9 @@ addStation(request:IStationLineRequest){
     error => {
       if(error.status === 404){
           this.errorService.setMessage('404 NotFound')
-      }else{
-          this.errorService.setMessage(error)
+      }
+      else{
+          this.errorService.setMessage(error.error.Message)
         }
         this.router.navigate(['home','error'])
     }

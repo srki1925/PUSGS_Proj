@@ -170,10 +170,24 @@ namespace WebApp.Controllers
 			if (passenger != null && passenger.ImageUri != request.EncodedImage)
 			{
 				passenger.ImageUri = request.EncodedImage;
+				passenger.PassengerState = PassengerState.Waiting;
 			}
 			unitOfWork.Complete();
 
 			return Ok();
+		}
+
+		[HttpGet]
+		[Route("state")]
+		[Authorize(Roles = "Passenger")]
+		public IHttpActionResult GetPassengerState()
+		{
+			var user = unitOfWork.UsersRepository.Find(x => x.Email == HttpContext.Current.User.Identity.Name);
+			if (user.Any())
+			{
+				return Ok((user.First() as Passenger).PassengerState.ToString());
+			}
+			return NotFound();
 		}
 
 		// POST api/Account/SetPassword

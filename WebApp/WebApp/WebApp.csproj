@@ -280,6 +280,14 @@
     <Compile Include="Migrations\201906131633436_StationsChangeset.Designer.cs">
       <DependentUpon>201906131633436_StationsChangeset.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906131701599_LineVersioning.cs" />
+    <Compile Include="Migrations\201906131701599_LineVersioning.Designer.cs">
+      <DependentUpon>201906131701599_LineVersioning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906131906202_PriceListVersioning.cs" />
+    <Compile Include="Migrations\201906131906202_PriceListVersioning.Designer.cs">
+      <DependentUpon>201906131906202_PriceListVersioning.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Finances\Extensions\DateTimeExtension.cs" />
     <Compile Include="Models\Finances\PriceList.cs" />
@@ -325,6 +333,7 @@
     <Compile Include="Models\Users\Conductor.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Models\Users\Passenger.cs" />
+    <Compile Include="Models\VersionedItem.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\AdminRepo\AdministratorRepository.cs" />
     <Compile Include="Persistence\Repository\BusRepo\BusRepository.cs" />
@@ -463,6 +472,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906131633436_StationsChangeset.resx">
       <DependentUpon>201906131633436_StationsChangeset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906131701599_LineVersioning.resx">
+      <DependentUpon>201906131701599_LineVersioning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906131906202_PriceListVersioning.resx">
+      <DependentUpon>201906131906202_PriceListVersioning.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

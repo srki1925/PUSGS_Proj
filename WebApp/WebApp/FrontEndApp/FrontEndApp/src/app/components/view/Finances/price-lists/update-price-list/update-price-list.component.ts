@@ -63,7 +63,8 @@ export class UpdatePriceListComponent implements OnInit {
       this.validationMessage = ""
       let priceList:IPriceListUpdateRequest ={
         Id:this.Id,
-        PriceListItems:[this.priceListForm.value.HourId,this.priceListForm.value.DayId,this.priceListForm.value.MonthId,this.priceListForm.value.YearId]
+        PriceListItems:[this.priceListForm.value.HourId,this.priceListForm.value.DayId,this.priceListForm.value.MonthId,this.priceListForm.value.YearId],
+        Version : this.list.VersionId
       }
       this.priceListService.updatePriceList(priceList)
     }

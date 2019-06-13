@@ -10,15 +10,19 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit, OnDestroy {
   public loggedIn = false
   public role : string 
+  public state : string = ''
+
 
   constructor(private authService : AuthService,
               private router : Router) {}
 
   ngOnInit() {
     // Get first values and subscribe to future changes
+    this.authService.subscriberToUserState().subscribe((data : string) =>{
+      this.state = data;
+    })
     this.loggedIn = this.authService.checkLoggedIn()
     this.role = this.authService.getUserRole();
-
     this.authService.getLoginChangeSubscriber().subscribe((data:boolean) =>{
       this.loggedIn = data
       this.role = this.authService.getUserRole()

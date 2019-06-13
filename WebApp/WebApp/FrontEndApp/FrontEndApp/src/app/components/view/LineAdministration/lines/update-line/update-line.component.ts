@@ -31,10 +31,7 @@ export class UpdateLineComponent implements OnInit {
             LineType:this.line.LineType
           })
         })
-
     })
-
-
   }
 
   onUpdate(){
@@ -42,7 +39,8 @@ export class UpdateLineComponent implements OnInit {
       let request:ILineUpdateRequest = {
         Id : this.Id,
         Name: this.updateForm.value.Name,
-        LineType:this.updateForm.value.LineType
+        LineType:this.updateForm.value.LineType,
+        Version : this.line.VersionId
       }
       this.lineService.updateLine(request)
     }

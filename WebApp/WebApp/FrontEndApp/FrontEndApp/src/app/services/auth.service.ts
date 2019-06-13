@@ -12,6 +12,8 @@ export class AuthService {
   private role : string
   private logginChanged = new Subject<boolean>()
   private userDataChanged = new Subject<IUserProfileResponse>()
+  private userStateChanged = new Subject<string>();
+  private userState : string = '';
 
   constructor(private http: HttpClient,
               private externalApisService:ExternalApisDataService,
@@ -28,9 +30,27 @@ export class AuthService {
   checkLoggedIn() : boolean{
     if(localStorage.getItem('loggedIn') === "true"){
       this.role = localStorage.getItem('role')
+      if(this.role === 'Passenger'){
+        this.getUserState()
+      }
       return true
     }
     return false
+  }
+
+  fetchUserState(){
+    this.http.get(this.externalApisService.getDataApiUrl() + '/Account/state').subscribe(
+      ok => { this.userState = <string>ok; this.userStateChanged.next(this.userState)},
+      error => console.log(error)
+      )
+  }
+
+  getUserState() : string{
+    return this.userState;
+  }
+
+  subscriberToUserState() : Subject<string>{
+    return this.userStateChanged;
   }
 
   changePassword(data : IPasswordChangeRequest){

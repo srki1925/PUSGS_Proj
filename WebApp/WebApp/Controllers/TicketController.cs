@@ -46,7 +46,8 @@ namespace WebApp.Controllers
 			var priceList = unitOfWork.PriceListServices.GetPriceList(x => x.Active && x.From < now && x.To >= now);
 			if (priceList != null)
 			{
-				return Ok(priceList.PriceListItems.ConvertAll(x => new TicketDefinitionResponse(x.TicketDefinition)));
+				return Ok(priceList.PriceListItems.Where(x => x.TicketDefinition.TicketType == TicketType.Hour)
+					.Select(x => new TicketDefinitionResponse(x.TicketDefinition)));
 			}
 			return NotFound();
 		}

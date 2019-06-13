@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
 {
-	public class BusStation
+	public class BusStation : VersionedItem
 	{
 		public BusStation()
 		{

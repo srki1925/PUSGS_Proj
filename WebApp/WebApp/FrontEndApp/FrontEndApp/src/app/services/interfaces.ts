@@ -34,16 +34,18 @@ export interface ILineRequest{
 }
 
 export interface ILineUpdateRequest{
-    Id:number,
-    Name:string,
-    LineType:LineType
+    Id : number,
+    Name : string,
+    LineType : LineType,
+    Version : number
 }
 
 export interface ILine{
     Id:number,
     Name:string,
     LineType: LineType,
-    Active:boolean
+    Active:boolean,
+    VersionId : number
 }
 
 export enum LineType{
@@ -57,7 +59,8 @@ export interface IBusStation{
     Address:string,
     Longitude:number,
     Latitude:number,
-    Active:boolean
+    Active:boolean,
+    VersionId : number
 }
 
 export interface IBusStationRequest{
@@ -145,11 +148,13 @@ export interface IPriceList{
     Id:number,
     From:Date,
     To:Date,
-    PriceListItems:IPriceListItem[]
+    PriceListItems:IPriceListItem[],
+    VersionId : number
 }
 export interface IPriceListUpdateRequest{
     Id:number,
-    PriceListItems:number[]
+    PriceListItems:number[],
+    Version : number
 }
 export interface ITicketDefinitionResponse{
     Id : number,
@@ -164,7 +169,9 @@ export interface IScheduleRequest{
 
 export interface IStationLineRequest{
     LineId:number,
-    StationId:number
+    StationId:number,
+    StationVersion,
+    LineVersion
 }
 export interface ITicketResponse{
     Id : number,

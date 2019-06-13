@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using Unity;
 using WebApp.Persistence.Repository;
 using WebApp.Persistence.Repository.AdminRepo;
@@ -62,7 +63,14 @@ namespace WebApp.Persistence.UnitOfWork
 
 		public int Complete()
 		{
-			return _context.SaveChanges();
+			try
+			{
+				return _context.SaveChanges();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				return -1;
+			}
 		}
 
 		public void Dispose()
