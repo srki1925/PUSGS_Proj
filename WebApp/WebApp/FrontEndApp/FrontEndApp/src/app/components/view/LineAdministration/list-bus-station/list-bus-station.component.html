@@ -1,19 +1,25 @@
-<table border="1">
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Longitude</th>
+<div *ngIf="busStations != undefined && busStations.length > 0">
+
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Longitude</th>
     <th>Latitude</th>
     <th class="text-center" colspan="2">Option</th>
   </tr>
   <tr  *ngFor="let busStation of busStations">
-      <td>{{busStation.Id}}</td>
-      <td>{{busStation.Name}}</td>
-      <td>{{busStation.Address}}</td>
-      <td>{{busStation.Longitude}}</td>
-      <td>{{busStation.Latitude}}</td>
-      <td><a [routerLink]="['/home','stations',busStation.Id,'details']" class="btn btn-success btn-xs">Details</a></td>
-      <button (click)="onRemove(busStation.Id)" class="btn btn-danger btn-xs">Remove Bus Station</button>
+    <td>{{busStation.Id}}</td>
+    <td>{{busStation.Name}}</td>
+    <td>{{busStation.Address}}</td>
+    <td>{{busStation.Longitude}}</td>
+    <td>{{busStation.Latitude}}</td>
+    <td><a [routerLink]="['/home','stations',busStation.Id,'details']" class="btn btn-success btn-xs">Details</a></td>
+    <button (click)="onRemove(busStation.Id)" class="btn btn-danger btn-xs">Remove Bus Station</button>
   </tr>
 </table>
+</div>
+<div *ngIf="busStation == undefined || busStations.length == 0">
+  <h4>There are no active bus stations at the moment.</h4>
+</div>

@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="items != undefined && items.length > 0"> 
   <table border="1">
     <tr>
       <th>TicketType</th>
@@ -11,3 +11,7 @@
   </table>
 
   </div>
+  <div *ngIf="items == undefined || items.length == 0">
+    <h4>There are no acitve price list items for this price list at the moment.</h4>
+  </div>
+  

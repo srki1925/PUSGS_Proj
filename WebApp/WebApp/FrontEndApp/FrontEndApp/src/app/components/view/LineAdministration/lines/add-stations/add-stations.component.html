@@ -1,11 +1,15 @@
-
-<form [formGroup]="selectForm" (submit)="onSubmit()">
-  <div>
-    <select formControlName="StationId">
-      <option  *ngFor="let item of stations" value={{item.Id}}>{{item.Name}} {{item.Address}}</option>
-    </select>
-  </div>
-  <div>
-    <button type="submit">Add</button>
-  </div>
-</form>
+<div *ngIf="stations != undefined && stations.length > 0">
+  <form [formGroup]="selectForm" (submit)="onSubmit()">
+    <div>
+      <select formControlName="StationId">
+        <option  *ngFor="let item of stations" value={{item.Id}}>{{item.Name}} {{item.Address}}</option>
+      </select>
+    </div>
+    <div>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</div>
+<div>
+  <h4>There are no active bus stations at the moment.</h4>
+</div>

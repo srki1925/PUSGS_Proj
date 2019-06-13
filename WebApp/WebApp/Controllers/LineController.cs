@@ -59,7 +59,7 @@ namespace WebApp.Controllers
 					unitOfWork.Complete();
 					return Ok();
 				}
-				return NotFound();
+				return BadRequest($"Line with id {addStationRequest.LineId} already contains bus station with id {addStationRequest.StationId}");
 			}
 			else
 			{
@@ -93,7 +93,7 @@ namespace WebApp.Controllers
 		public IHttpActionResult UpdateLine(LineUpdateRequest lineUpdateRequest)
 		{
 			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == lineUpdateRequest.Id);
-			var check = unitOfWork.LineServices.GetLine(x => x.Active && x.Name == lineUpdateRequest.Name);
+			var check = unitOfWork.LineServices.GetLine(x => x.Active && x.Name == lineUpdateRequest.Name && x.Id != lineUpdateRequest.Id);
 			if (line != null && check == null)
 			{
 				line.Name = lineUpdateRequest.Name;
@@ -133,7 +133,7 @@ namespace WebApp.Controllers
 			{
 				return Ok(line.Stations);
 			}
-			return NotFound();
+			return Ok(new List<BusStation>(0));
 		}
 
 		[HttpDelete]

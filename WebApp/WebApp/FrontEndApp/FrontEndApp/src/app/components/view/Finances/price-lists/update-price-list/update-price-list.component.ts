@@ -23,6 +23,7 @@ export class UpdatePriceListComponent implements OnInit {
   public priceListForm:FormGroup
   private Id:number
   public list:IPriceList
+  public validationMessage:string =""
   ngOnInit() {
     this.priceListForm = new FormGroup({
       HourId: new FormControl(null,[Validators.required]),
@@ -59,12 +60,13 @@ export class UpdatePriceListComponent implements OnInit {
   }
   onSubmit(){
     if(this.priceListForm.valid){
-      console.log('valid')
+      this.validationMessage = ""
       let priceList:IPriceListUpdateRequest ={
         Id:this.Id,
         PriceListItems:[this.priceListForm.value.HourId,this.priceListForm.value.DayId,this.priceListForm.value.MonthId,this.priceListForm.value.YearId]
       }
       this.priceListService.updatePriceList(priceList)
     }
+    this.validationMessage = "All fields are required!!"
   }
 }
