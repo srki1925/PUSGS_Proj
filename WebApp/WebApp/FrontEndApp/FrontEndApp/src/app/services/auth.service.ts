@@ -47,6 +47,13 @@ export class AuthService {
     )
   }
 
+  updateUser(user : IUserProfileResponse){
+    this.http.post(this.externalApisService.getDataApiUrl() + '/Account/Update', user).subscribe(
+      ok => { this.getUserData(); this.router.navigate(['/user-profile']) },
+      error => console.log(error.status)
+    )
+  }
+
   subscribeToUserDataChanges(){
     return this.userDataChanged;
   }

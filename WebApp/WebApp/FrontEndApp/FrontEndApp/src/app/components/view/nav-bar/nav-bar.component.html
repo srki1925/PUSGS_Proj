@@ -39,10 +39,10 @@
                       <li><a [routerLink]="['/home','stations']" style="cursor: pointer;">All stations</a></li>
                   </ul>
               </li>
-              <li class="dropdown" appDropdown>
+              <li class="dropdown" *ngIf="loggedIn && role === 'Admin'" appDropdown>
                   <a class="dropdown-toggle" role="button" style="cursor: pointer;">Departures<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                      <li><a [routerLink]="['/home','departures','new']" *ngIf="loggedIn && role === 'Admin'" style="cursor: pointer;">Add new</a></li>
+                      <li><a [routerLink]="['/home','departures','new']" style="cursor: pointer;">Add new</a></li>
                       <li><a [routerLink]="['/home','departures']" style="cursor: pointer;">All departures</a></li>
                   </ul>
               </li>

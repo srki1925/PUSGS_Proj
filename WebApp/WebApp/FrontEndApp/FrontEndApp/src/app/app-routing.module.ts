@@ -61,8 +61,8 @@ const routes: Routes = [
       {path:':id/details',component:DetailsStationComponent}
     ]},
     { path: 'schedule',component: ScheduleComponent},
-    { path:'departures',component: DeparturesComponent,children:[
-      { path:'new',component: CreateDepartureComponent, canActivate : [AdminGuard] }
+    { path:'departures',component: DeparturesComponent, canActivate : [AdminGuard], children:[
+      { path:'new',component: CreateDepartureComponent }
     ]},
     { path:'pricelist',component: PriceListsComponent, canActivate : [AdminGuard] ,children:[
       { path:'newPriceList',component: CreatePriceListComponent },
