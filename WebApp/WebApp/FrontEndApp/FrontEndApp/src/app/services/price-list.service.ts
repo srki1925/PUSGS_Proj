@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {IPriceList, IPriceListRequest} from './interfaces'
+import {IPriceList, IPriceListRequest, IPriceListUpdateRequest} from './interfaces'
 import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
 import { ok } from 'assert';
@@ -39,7 +39,7 @@ export class PriceListService {
         
     }
 
-    updatePriceList(list:IPriceList){
+    updatePriceList(list:IPriceListUpdateRequest){
       this.http.put(this.externalApis.getDataApiUrl() + '/pricelist/update/',list).subscribe(
         ok => this.refreshList(),
         error => console.log(error)

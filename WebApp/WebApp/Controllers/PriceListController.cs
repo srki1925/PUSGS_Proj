@@ -4,6 +4,7 @@ using System.Web.Http;
 using WebApp.Models;
 using WebApp.Models.RequestModel.PriceListRequest;
 using WebApp.Persistence.UnitOfWork;
+using System.Linq;
 
 namespace WebApp.Controllers
 {
@@ -26,6 +27,7 @@ namespace WebApp.Controllers
 
 		[HttpPost]
 		[Route("createPriceList")]
+        [Authorize(Roles ="Admin")]
 		public void CreatePriceList(PriceListCreationRequest priceListCreationRequest)
 		{
 			var priceList = new PriceList();
@@ -35,9 +37,10 @@ namespace WebApp.Controllers
 			priceList.From = priceListCreationRequest.From;
 			foreach (var item in priceListCreationRequest.PriceListItems)
 			{//ako pukne add item.list.add(priceList)
-				priceList.PriceListItems.Add(unitOfWork.PriceListItemServices.Get(item));
+				priceList.PriceListItems.Add(unitOfWork.PriceListItemServices.GetItem(x=> x.Id == item && x.Active));
 			}
-			unitOfWork.PriceListServices.Add(priceList);
+            priceList.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType);
+            unitOfWork.PriceListServices.Add(priceList);
 			unitOfWork.Complete();
 		}
 
@@ -48,6 +51,7 @@ namespace WebApp.Controllers
 			var list = unitOfWork.PriceListServices.GetPriceList(x => x.Id == id && x.Active);
 			if (list != null)
 			{
+               list.PriceListItems =  list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
 				return Ok(list);
 			}
 			return NotFound();
@@ -55,6 +59,7 @@ namespace WebApp.Controllers
 
 		[HttpDelete]
 		[Route("{id}")]
+        [Authorize(Roles ="Admin")]
 		public IHttpActionResult Delete(int id)
 		{
 			var priceList = unitOfWork.PriceListServices.Get(id);
@@ -66,5 +71,28 @@ namespace WebApp.Controllers
 			}
 			return StatusCode(HttpStatusCode.Gone);
 		}
+
+        [HttpPut]
+        [Route("Update")]
+        [Authorize(Roles ="Admin")]
+        public IHttpActionResult Update(PriceListUpdateRequest update)
+        {
+            var list = unitOfWork.PriceListServices.GetPriceList(x => x.Active && x.Id == update.Id);
+            list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
+            if (list != null)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    var id = update.PriceListItems[i];
+                    var item = unitOfWork.PriceListItemServices.GetItem(x => x.Id == id && x.Active);
+                    list.PriceListItems[i] = item;
+                }
+               list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
+                unitOfWork.Complete();
+                return Ok();
+            }
+            return NotFound();
+        }
+
     }
 }

@@ -31,7 +31,7 @@ import {LineDetailsComponent} from './components/view/LineAdministration/lines/l
 import {RemoveStationComponent} from './components/view/LineAdministration/lines/remove-station/remove-station.component'
 import {UpdateLineComponent} from './components/view/LineAdministration/lines/update-line/update-line.component'
 import {DetailsStationComponent} from './components/view/LineAdministration/stations/details-station/details-station.component'
-
+import { UpdatePriceListComponent} from './components/view/Finances/price-lists/update-price-list/update-price-list.component'
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
@@ -58,7 +58,8 @@ const routes: Routes = [
     ]},
     { path:'pricelist',component: PriceListsComponent, canActivate : [AdminGuard] ,children:[
       { path:'newPriceList',component: CreatePriceListComponent },
-      {path:':id',component:PriceListDetailsComponent} 
+      {path:':id',component:PriceListDetailsComponent} ,
+      {path:':id/update',component:UpdatePriceListComponent}
     ]},
     { path:'pricelistitem',component: PriceListItemsComponent, canActivate : [AdminGuard] ,children:[
       { path:'newItem',component: CreatePriceListItemComponent }
