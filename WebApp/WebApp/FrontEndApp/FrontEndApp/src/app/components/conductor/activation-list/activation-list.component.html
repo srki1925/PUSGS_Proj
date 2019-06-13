@@ -1,35 +1,26 @@
-
-<div>
-<table border="1">
-  <tr>
-    <th>FirstName</th>
-    <th>LastName</th>
-    <th>Email</th>
-    <th>PassengerType</th>
-    <th>Date of Birth</th>
-    <th>Image</th>
-  </tr>
-  <tr *ngFor="let user of activationList">
-      <td>{{user.FirstName}}</td>
-      <td>{{user.LastName}}</td>
-      <td>{{user.Email}}</td>
-      <td>{{getPassengerTypeString(user.PassengerType)}}</td>
-      <td>{{user.DoB}}</td>
-      <td><a href={{user.Image}}></a></td>
-  </tr>
-</table>
-<form [formGroup]="acceptenceForm" (submit)="onAccept()">
-    <div>
-      <label for="Id">Id: </label>
-      <input type="number" formControlName="Id" class="form-control"/>
-      <button type="submit">Accept</button>
-    </div>
-  </form>
-  
-  <form [formGroup]="acceptenceForm" (submit)="onDeny()">
-    <div>
-      <label for="Id">Id: </label>
-      <input type="number" formControlName="Id" class="form-control"/>
-      <button type="submit">Deny</button>
-    </div>
-  </form>
+<div *ngIf="listFilled">
+  <table border="1">
+    <tr>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th>PassengerType</th>
+      <th>Date of Birth</th>
+      <th>Image</th>
+      <th colspan="2">Settings</th>
+    </tr>
+    <tr *ngFor="let user of activationList">
+        <td>{{user.FirstName}}</td>
+        <td>{{user.LastName}}</td>
+        <td>{{user.Email}}</td>
+        <td>{{user.PassengerType}}</td>
+        <td>{{user.DoB}}</td>
+        <td><img width="100" height="100" src="{{user.EncodedImage}}"/></td>
+        <td><button (click)="onAccept(user.Email)">Accept</button></td>
+        <td><button (click)="onDeny(user.Email)">Deny</button></td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="!listFilled">
+  <h4>There are no users on the activation list.</h4>
+</div>

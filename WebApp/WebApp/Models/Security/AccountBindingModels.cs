@@ -60,6 +60,8 @@ namespace WebApp.Models
 		public DateTime DoB { get; set; }
 
 		public PassengerType? PassengerType { get; set; }
+
+		public string EncodedImage { get; set; }
 	}
 
 	public class RegisterExternalBindingModel

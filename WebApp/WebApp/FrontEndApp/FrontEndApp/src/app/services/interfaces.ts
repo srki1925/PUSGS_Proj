@@ -99,17 +99,17 @@ export interface IRegistrationRequest{
     Password:string,
     ConfirmPassword: string,
     PassengerType:PassengerType,
-    ImageUri:string,
+    EncodedImage:string,
     DoB:Date
 }
 
 export interface IActivationData{
-    Id:number,
     FirstName:string,
     LastName:string,
     Email:string,
-    PassengerType:PassengerType,
-    ImageUri:string
+    PassengerType:string,
+    EncodedImage:string,
+    DoB : string,
 }
 
 export enum TicketType{

@@ -25,8 +25,22 @@ export class ConductorService {
     return this.activationListChanged;
   }
 
-  accept(id:number){
-    this.http.delete(this.externalApis.getDataApiUrl() + '/conductor/accept/' + id).subscribe(
+  accept(id:string){
+    let data = {
+      Email : id
+    }
+    this.http.post(this.externalApis.getDataApiUrl() + '/Conductor/Accept', data).subscribe(
+      ok => this.refreshList(),
+      error => console.log(error)
+    )
+  }
+
+  deny(email : string){
+    let data = {
+      Email : email
+    }
+    this.http.post(this.externalApis.getDataApiUrl() + '/Conductor/Refuse', data ).subscribe(
+      ok => this.refreshList(),
       error => console.log(error)
     )
   }

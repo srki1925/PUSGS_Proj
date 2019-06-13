@@ -10,15 +10,14 @@ import {IActivationData,PassengerType} from '../../../services/interfaces'
 export class ActivationListComponent implements OnInit {
 
   constructor(private conductorService:ConductorService) { }
-  public activationList:IActivationData[]
-  public acceptenceForm:FormGroup
+  public activationList : IActivationData[]
+  public listFilled = false
+
   ngOnInit() {
     this.conductorService.subscribeToListChanged().subscribe((data:IActivationData[])=> {
       this.activationList = data;
+      if(this.activationList.length > 0) this.listFilled = true
     })
-        this.acceptenceForm = new FormGroup({
-          Id:new FormControl(null,[Validators.required])
-        })
   }
   getPassengerTypeString(passType:number){
       switch(passType){
@@ -27,14 +26,12 @@ export class ActivationListComponent implements OnInit {
       }
   }
 
-  onAccept(){
-    if(this.acceptenceForm.valid){
-      this.conductorService.accept(this.acceptenceForm.value.Id)
-    }
+  onAccept(email:string){
+      this.conductorService.accept(email)
   }
 
   onDeny(email: string){
-
+    this.conductorService.deny(email)
   }
 
 }

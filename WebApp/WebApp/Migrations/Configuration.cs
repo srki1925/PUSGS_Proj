@@ -5,7 +5,6 @@ namespace WebApp.Migrations
 	using Microsoft.AspNet.Identity;
 	using Microsoft.AspNet.Identity.EntityFramework;
 	using WebApp.Models;
-	using WebApp.Models.Enums;
 	using WebApp.Models.Users;
 
 	internal sealed class Configuration : DbMigrationsConfiguration<WebApp.Persistence.ApplicationDbContext>
@@ -46,33 +45,6 @@ namespace WebApp.Migrations
 				var store = new RoleStore<IdentityRole>(context);
 				var manager = new RoleManager<IdentityRole>(store);
 				var role = new IdentityRole { Name = "Passenger" };
-
-				manager.Create(role);
-			}
-
-			if (!context.Roles.Any(r => r.Name == PassengerType.Regular.ToString()))
-			{
-				var store = new RoleStore<IdentityRole>(context);
-				var manager = new RoleManager<IdentityRole>(store);
-				var role = new IdentityRole { Name = PassengerType.Regular.ToString() };
-
-				manager.Create(role);
-			}
-
-			if (!context.Roles.Any(r => r.Name == PassengerType.Student.ToString()))
-			{
-				var store = new RoleStore<IdentityRole>(context);
-				var manager = new RoleManager<IdentityRole>(store);
-				var role = new IdentityRole { Name = PassengerType.Student.ToString() };
-
-				manager.Create(role);
-			}
-
-			if (!context.Roles.Any(r => r.Name == PassengerType.Retired.ToString()))
-			{
-				var store = new RoleStore<IdentityRole>(context);
-				var manager = new RoleManager<IdentityRole>(store);
-				var role = new IdentityRole { Name = PassengerType.Retired.ToString() };
 
 				manager.Create(role);
 			}

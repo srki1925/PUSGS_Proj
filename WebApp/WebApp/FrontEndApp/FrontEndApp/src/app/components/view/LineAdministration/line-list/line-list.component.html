@@ -3,17 +3,17 @@
       <th>Id</th>
       <th>Name</th>
       <th>LineType</th>
-      <th colspan = 5 class="text-center">Options</th>
+      <th colspan = 5 class="text-center" *ngIf="isAdmin">Options</th>
     </tr>
     <tr *ngFor="let line of lines">
         <td>{{line.Id}}</td>
         <td>{{line.Name}}</td>
         <td>{{getLineTypeString(line.LineType)}}</td>
-        <td><a [routerLink]="['/home','lines',line.Id,'add']" class="btn btn-primary btn-xs pull-right">Add Station</a></td>
+        <td *ngIf="isAdmin"><a [routerLink]="['/home','lines',line.Id,'add']" class="btn btn-primary btn-xs pull-right">Add Station</a></td>
         <td><a [routerLink]="['/home','lines',line.Id,'details']" class="btn btn-success btn-xs">Details</a></td>
-        <td><a [routerLink]="['/home','lines',line.Id,'update']" class='btn btn-info btn-xs'>Update Line</a></td>
-        <td><a [routerLink]="['/home','lines',line.Id,'remove']" class="btn btn-danger btn-xs">Remove Station</a></td>
-        <td> <button (click)="onRemove(line.Id)" class="btn btn-danger btn-xs">Remove Line</button></td>
+        <td *ngIf="isAdmin"><a [routerLink]="['/home','lines',line.Id,'update']" class='btn btn-info btn-xs'>Update Line</a></td>
+        <td *ngIf="isAdmin"><a [routerLink]="['/home','lines',line.Id,'remove']" class="btn btn-danger btn-xs">Remove Station</a></td>
+        <td *ngIf="isAdmin"> <button (click)="onRemove(line.Id)" class="btn btn-danger btn-xs">Remove Line</button></td>
       </tr>
   </table>
 

@@ -3,6 +3,13 @@ using WebApp.Models.Enums;
 
 namespace WebApp.Models.Users
 {
+	public enum PassengerState
+	{
+		Waiting = 0,
+		Accepted = 1,
+		Blocked
+	}
+
 	public sealed class Passenger : User
 	{
 		public Passenger()
@@ -11,6 +18,8 @@ namespace WebApp.Models.Users
 		}
 
 		public PassengerType PassengerType { get; set; }
+
+		public PassengerState PassengerState { get; set; }
 
 		public List<Ticket> Tickets { get; set; }
 

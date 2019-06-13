@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using System.Net.Http;
 using System.Net.Mail;
-using System.Web;
 using System.Web.Http;
-using Microsoft.AspNet.Identity.Owin;
+using WebApp.Models.RequestModel.PassengerRequest;
+using WebApp.Models.Users;
 using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
@@ -18,29 +17,27 @@ namespace WebApp.Controllers
 			this.unitOfWork = unitOfWork;
 		}
 
-		[HttpDelete]
-		[Route("Accept/{id}")]
-		[Authorize(Roles = "Admin")]
-		public void Accept(string id)
+		[HttpPost]
+		[Route("Accept")]
+		[Authorize(Roles = "Controller")]
+		public IHttpActionResult Accept([FromBody]ConductorModifyRequest request)
 		{
-			var user = unitOfWork.UsersRepository.Find(x => x.Id == id).First();
-			user.Blocked = false;
+			var users = unitOfWork.UsersRepository.Find(x => x.Email == request.Email);
+			if (!users.Any()) return NotFound();
 
-			// After user is accepted add him to role
-			Request.GetOwinContext().GetUserManager<ApplicationUserManager>()
-				.AddToRoleAsync(user.Id, user.UserType.ToString());
-
+			var user = users.First();
+			(user as Passenger).PassengerState = PassengerState.Accepted;
 			unitOfWork.Complete();
-
-			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", user.Email, "Your registration was accepted", "registration");
+			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", user.Email, "Your registration was accepted.", "Registration Accepted");
+			return Ok();
 		}
 
 		[HttpPost]
 		[Route("Refuse")]
 		[Authorize(Roles = "Controller")]
-		public void Refuse(string email)
+		public void Refuse([FromBody]ConductorModifyRequest request)
 		{
-			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", email, "Your registration was denied", "registration");
+			SendMail("drugtitosevracakuci@gmail.com", "vinjak10", request.Email, "Your registration was denied, try sending us new documentation.", "Registration denied");
 		}
 
 		[HttpGet]
