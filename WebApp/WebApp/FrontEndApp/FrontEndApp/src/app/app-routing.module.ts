@@ -36,9 +36,10 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
 import { EditProfileComponent } from './components/user/user-profile/edit-profile/edit-profile.component';
 import {ErrorComponent} from './components/view/error/error.component'
 import { UpdatePriceListComponent} from './components/view/Finances/price-lists/update-price-list/update-price-list.component'
+import { TicketGuard } from './route-guards/ticket.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo:'home/lines', pathMatch:'full' },
+  { path: '', redirectTo: 'home', pathMatch:'full' },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'register',component: RegistrationComponent, canActivate: [LoginGuard] },
   { path: 'change-password', component : ChangePasswordComponent},
@@ -77,8 +78,8 @@ const routes: Routes = [
       { path:'validateticket',component: ValidateTicketComponent }
     ]},
     { path: 'tickets', component: TicketsComponent, children : [
-      { path: 'buy', component : BuyTicketComponent },
-      { path: 'allTickets', component : AllTicketsComponent, canActivate : [PassengerGuard] }
+      { path: 'buy', component : BuyTicketComponent, canActivate: [TicketGuard] },
+      { path: 'allTickets', component : AllTicketsComponent, canActivate : [PassengerGuard, TicketGuard] }
     ]},
     {path:'error',component:ErrorComponent}
   ]},

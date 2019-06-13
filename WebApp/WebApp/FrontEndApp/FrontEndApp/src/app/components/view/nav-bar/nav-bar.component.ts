@@ -20,6 +20,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     // Get first values and subscribe to future changes
     this.authService.subscriberToUserState().subscribe((data : string) =>{
       this.state = data;
+      console.log(this.state)
     })
     this.loggedIn = this.authService.checkLoggedIn()
     this.role = this.authService.getUserRole();

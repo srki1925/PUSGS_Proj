@@ -4,6 +4,7 @@ import { IUser, IConductorRequest } from './interfaces'
 import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
 import { ErrorService } from './error.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AdminService {
   private usersChanged = new Subject<IUser[]>()
 
   constructor(private http:HttpClient,private errorService:ErrorService,
-              private externalApis : ExternalApisDataService) { }
+              private externalApis : ExternalApisDataService,
+              private router:Router) { }
 
   subscriberToUserChanges() : Subject<IUser[]>{
       this.refreshUsers()
@@ -21,15 +23,16 @@ export class AdminService {
   }
 
   refreshUsers(){
-    this.http.get(this.externalApis.getDataApiUrl() + '/admin/users').subscribe((data:IUser[]) =>{
-      this.usersChanged.next(data)
-    })
+    this.http.get(this.externalApis.getDataApiUrl() + '/admin/users').subscribe(
+      ok => this.usersChanged.next(<IUser[]>ok),
+      error => console.log(error)
+    )
   }
 
   addConductor(newConductor : IConductorRequest){
     console.log('dsaidjasio')
     this.http.post(this.externalApis.getDataApiUrl() + '/Account/AddConductor', newConductor).subscribe(
-      ok => this.refreshUsers(),
+      ok => { this.refreshUsers(); this.router.navigate(['/home', 'users'])},
       error => console.log(error)
     )
   }

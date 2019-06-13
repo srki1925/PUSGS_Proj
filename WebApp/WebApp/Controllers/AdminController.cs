@@ -1,4 +1,6 @@
-﻿using System.Net.Mail;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.Mail;
 using System.Web.Http;
 using WebApp.Models.RequestModel;
 using WebApp.Models.Users;
@@ -20,7 +22,12 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult GetUsers()
 		{
-			return Ok(unitOfWork.UsersRepository.Find(x => !(x is Administrator)));
+			var users = unitOfWork.UsersRepository.Find(x => !(x is Administrator));
+			if (users.Any())
+			{
+				return Ok(users.ToList());
+			}
+			return Ok(new List<User>());
 		}
 
 		[Route("User/{id}")]

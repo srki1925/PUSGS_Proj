@@ -31,7 +31,7 @@ export class AuthService {
     if(localStorage.getItem('loggedIn') === "true"){
       this.role = localStorage.getItem('role')
       if(this.role === 'Passenger'){
-        this.getUserState()
+        this.fetchUserState()
       }
       return true
     }
@@ -116,6 +116,10 @@ export class AuthService {
       // console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
       // console.log('decodedJwtData: ' + decodedJwtData)
       // console.log('Role ' + role)
+
+      if(role === 'Passenger'){
+        this.getUserState()
+      }
 
       localStorage.setItem('jwt', jwt)
       localStorage.setItem('role', role);

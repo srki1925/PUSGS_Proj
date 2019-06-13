@@ -29,6 +29,7 @@ export class LineDetailsComponent implements OnInit {
         {
           this.stations = data;
           if(this.stations.length > 2){
+            this.waypoints = []
             this.origin = {lat: this.stations[0].Latitude, lng: this.stations[0].Longitude}
             this.destination = {lat: this.stations[this.stations.length - 1].Latitude, lng: this.stations[this.stations.length - 1].Longitude}
             this.stations.slice(1, this.stations.length - 1).forEach((station:IBusStation) =>{

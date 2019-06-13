@@ -61,9 +61,9 @@ namespace WebApp.Controllers
 			mail.To.Add(emailTo);
 			mail.Subject = subject;
 			mail.Body = body;
-			mail.From = new MailAddress("titovrentavehicle@gmail.com");
+			mail.From = new MailAddress(emailFrom);
 			SmtpServer.Port = 587;
-			SmtpServer.Credentials = new System.Net.NetworkCredential("titovrentavehicle@gmail.com", "drugtito");
+			SmtpServer.Credentials = new System.Net.NetworkCredential(emailFrom, pw);
 			SmtpServer.EnableSsl = true;
 			SmtpServer.Send(mail);
 		}

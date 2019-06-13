@@ -29,16 +29,6 @@ export class UsersListComponent implements OnInit {
      })
   }
 
-  getUserTypeString(userType : number) : string{
-    switch(userType){
-      case UserType.Passenger: return 'Passenger'
-      case UserType.Conductor: return 'Conductor'
-      case UserType.Administrator: return 'Administrator'
-    }
-  }
-
-  
-
   onBlockUser(){
     if(!this.blockForm.valid) return
 
