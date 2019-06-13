@@ -5,13 +5,15 @@ import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
 import { ok } from 'assert';
 import { error } from '@angular/compiler/src/util';
+import { ErrorService } from './error.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BusstationService {
 
-  constructor(private http:HttpClient,
+  constructor(private http:HttpClient,private errorService:ErrorService,private router:Router,
     private externalApis : ExternalApisDataService) { }
     private busStationsChanged = new Subject<IBusStation[]>()
     private stations = new Subject<IBusStation[]>()
@@ -58,7 +60,9 @@ this.http.get(this.externalApis.getDataApiUrl() + '/busstation/busstations/').su
 removeBusStation(busstationId : number){
   this.http.delete(this.externalApis.getDataApiUrl() + '/busstation/removebusstation/' + busstationId).subscribe(
     ok => this.refreshBusStations(),
-    error => console.log(error)
+    error =>{ this.errorService.setMessage('404 NotFound')
+    this.router.navigate(['home','error'])
+  }
   )
 }
 

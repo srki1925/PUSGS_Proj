@@ -34,7 +34,7 @@ import {DetailsStationComponent} from './components/view/LineAdministration/stat
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { EditProfileComponent } from './components/user/user-profile/edit-profile/edit-profile.component';
-
+import {ErrorComponent} from './components/view/error/error.component'
 import { UpdatePriceListComponent} from './components/view/Finances/price-lists/update-price-list/update-price-list.component'
 
 const routes: Routes = [
@@ -79,7 +79,8 @@ const routes: Routes = [
     { path: 'tickets', component: TicketsComponent, children : [
       { path: 'buy', component : BuyTicketComponent },
       { path: 'allTickets', component : AllTicketsComponent, canActivate : [PassengerGuard] }
-    ]}
+    ]},
+    {path:'error',component:ErrorComponent}
   ]},
   { path: '**', redirectTo:'home'}
 ];

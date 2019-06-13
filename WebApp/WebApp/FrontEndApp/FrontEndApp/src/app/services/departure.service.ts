@@ -5,24 +5,22 @@ import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
 import { ok } from 'assert';
 import { error } from '@angular/compiler/src/util';
-//TO DO
-//List ima ispisano Id(za brisanje),Time,Tip i LineName i LinaType
-//Create ima ponudjenu listu Linija gde je prikazano LineName i LineType i unosi LineName(na osnovu name sa find pronalazimo LineId i saljemo)
+import { ErrorService } from './error.service';
+import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DepartureService {
 
-  constructor(private http:HttpClient,
-    private externalApis : ExternalApisDataService) { }
+  constructor(private http:HttpClient,private errorService:ErrorService,private router:Router
+    ,private externalApis : ExternalApisDataService) { }
     private departuresChanged = new Subject<IDeparture[]>()
 
 
     addDeparture(newDeparture:IDepartureRequest){
-      console.log("sasa")
       this.http.post(this.externalApis.getDataApiUrl() + '/departure/createdeparture',newDeparture).subscribe(
-      ok => this.refreshDepartures(),
-      error => console.log("error polazak ")
+      ok => this.refreshDepartures()
       )
     }
     subscriberToDepartureChanges():Subject<IDeparture[]>{
@@ -37,7 +35,10 @@ export class DepartureService {
     removeDeparture(departureId:number){
       this.http.delete(this.externalApis.getDataApiUrl() + '/departure/removedeparture/'+departureId).subscribe(
         ok => this.refreshDepartures(),
-        error => console.log(error)
+        error => {
+          this.errorService.setMessage('404 NotFound')
+          this.router.navigate(['home','error'])
+        }
       )
     }
 }

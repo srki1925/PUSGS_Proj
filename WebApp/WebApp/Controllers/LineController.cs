@@ -141,7 +141,8 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult RemoveLine(int id)
 		{
-			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
+
+            var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
 			if (line != null)
 			{
 				line.Active = false;

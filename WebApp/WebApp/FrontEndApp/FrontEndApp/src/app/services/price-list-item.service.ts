@@ -5,13 +5,15 @@ import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
 import { ok } from 'assert';
 import { error } from '@angular/compiler/src/util';
+import { ErrorService } from './error.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PriceListItemService {
 
-  constructor(private http:HttpClient,
+  constructor(private http:HttpClient,private errorService:ErrorService,private router:Router,
     private externalApis:ExternalApisDataService) { }
     private priceListItemsChanged = new  Subject<IPriceListItem[]>()
     private priceLsitItems = new Subject<IPriceListItem[]>()
@@ -64,14 +66,20 @@ export class PriceListItemService {
     createPriceListItem(item:IPriceListItemRequest){
       this.http.post(this.externalApis.getDataApiUrl() + '/pricelistitem/createpricelistitem',item).subscribe(
         ok => this.refreshItems(),
-        error=> console.log('There is no such type of ticket type')
+        error=> {
+          this.errorService.setMessage('404 NotFound')
+          this.router.navigate(['home','error'])
+        }
       )
     }
 
     removePriceListItem(id:number){
       this.http.delete(this.externalApis.getDataApiUrl()+ '/pricelistitem/removepricelistitem/'+ id).subscribe(
         ok => this.refreshItems(),
-        error => console.log('There is no PriceListItem with that id')
+        error => {
+          this.errorService.setMessage('404 NotFound')
+          this.router.navigate(['home','error'])
+        }
       )
     }
 }

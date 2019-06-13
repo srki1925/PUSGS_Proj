@@ -48,6 +48,7 @@ import { UpdatePriceListComponent } from './components/view/Finances/price-lists
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { EditProfileComponent } from './components/user/user-profile/edit-profile/edit-profile.component';
+import { ErrorComponent } from './components/view/error/error.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { EditProfileComponent } from './components/user/user-profile/edit-profil
     ChangePasswordComponent,
     UserProfileComponent,
     EditProfileComponent,
+    ErrorComponent,
 
 
   ],
