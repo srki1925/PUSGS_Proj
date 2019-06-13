@@ -5,12 +5,14 @@ import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
 import { ok } from 'assert';
 import { error } from '@angular/compiler/src/util';
+import { ErrorService } from './error.service';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class PriceListService {
 
-  constructor(private http:HttpClient,
+  constructor(private http:HttpClient,private errorService:ErrorService,private router:Router,
     private externalApis:ExternalApisDataService) { }
     private priceListChanged = new  Subject<IPriceList[]>()
     private list = new Subject<IPriceList>()
@@ -33,7 +35,10 @@ export class PriceListService {
     getList(id:number){
         this.http.get(this.externalApis.getDataApiUrl() + '/pricelist/'+id).subscribe(
           ok => this.list.next(<IPriceList>ok),
-          error => console.log(error)
+          error => {
+            this.errorService.setMessage('404 NotFound')
+            this.router.navigate(['home','error'])
+          }
         
         )
         
@@ -42,20 +47,27 @@ export class PriceListService {
     updatePriceList(list:IPriceListUpdateRequest){
       this.http.put(this.externalApis.getDataApiUrl() + '/pricelist/update/',list).subscribe(
         ok => this.refreshList(),
-        error => console.log(error)
+        error => {
+          this.errorService.setMessage('404 NotFound')
+          this.router.navigate(['home','error'])
+        }
       )
+      this.router.navigate(['home','pricelist'])
     }
     createPriceList(list:IPriceListRequest){
       this.http.post(this.externalApis.getDataApiUrl() + '/pricelist/createpricelist',list).subscribe(
-        ok => this.refreshList(),
-        error=> console.log('There is no such type of ticket type')
+        ok => this.refreshList()
       )
+      this.router.navigate(['home','pricelist'])
     }
 
     removePriceList(id:number){
       this.http.delete(this.externalApis.getDataApiUrl()+ '/pricelist/'+ id).subscribe(
         ok => this.refreshList(),
-        error => console.log('There is no PriceList with that id')
+        error => {
+            this.errorService.setMessage('510 Gone')
+            this.router.navigate(['home','error'])
+        }
       )
     }
 }

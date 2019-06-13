@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser, IConductorRequest } from './interfaces'
 import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AdminService {
 
   private usersChanged = new Subject<IUser[]>()
 
-  constructor(private http:HttpClient,
+  constructor(private http:HttpClient,private errorService:ErrorService,
               private externalApis : ExternalApisDataService) { }
 
   subscriberToUserChanges() : Subject<IUser[]>{

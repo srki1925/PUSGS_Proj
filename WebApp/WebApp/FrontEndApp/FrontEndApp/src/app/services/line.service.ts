@@ -3,15 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser, IConductorRequest, ILineRequest,ILine, IStationLineRequest, IBusStation, ILineUpdateRequest } from './interfaces'
 import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
-import { ok } from 'assert';
-import { error } from '@angular/compiler/src/util';
+import { ErrorService } from './error.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LineService {
 
-  constructor(private http:HttpClient,
+  constructor(private http:HttpClient,private errorService:ErrorService,private router:Router,
     private externalApis : ExternalApisDataService) { }
     private lineChanged = new Subject<ILine[]>()
     private stations = new Subject<IBusStation[]>()
@@ -23,6 +23,7 @@ export class LineService {
         error => console.log("error kreiranje")
       )
       this.refreshLines()
+      this.router.navigate(['home','lines'])
     }
 
 
@@ -50,21 +51,36 @@ this.http.get(this.externalApis.getDataApiUrl() + '/line/lines').subscribe((data
 removeLine(lineId : number){
   this.http.delete(this.externalApis.getDataApiUrl() + '/line/removeLine/' + lineId).subscribe(
     ok => this.refreshLines(),
-    error => console.log(error)
+    error => {
+      this.errorService.setMessage('404 NotFound')
+      this.router.navigate(['home','error'])
+    }
   )
 }
 
 addStation(request:IStationLineRequest){
   this.http.post(this.externalApis.getDataApiUrl() + '/line/addstation/',request).subscribe(
-    ok => this.getstations(request.LineId),
-    error => console.log(error)
+    ok => { this.refreshLines(); this.getstations(request.LineId)},
+    error => {
+      if(error.status === 404){
+          this.errorService.setMessage('404 NotFound')
+      }else{
+          this.errorService.setMessage(error)
+        }
+        this.router.navigate(['home','error'])
+    }
   )
+  this.router.navigate(['home','lines'])
 }
   removeStation(request:IStationLineRequest){
     this.http.post(this.externalApis.getDataApiUrl()+ '/line/RemoveStation',request).subscribe(
       ok => this.getstations(request.LineId),
-      error => console.log(error)
+      error => {
+        this.errorService.setMessage('404 NotFound')
+        this.router.navigate(['home','error'])
+      }
     )
+    this.router.navigate(['home','lines'])
   }
 
   subToGetLine(id:number):Subject<ILine>{
@@ -74,14 +90,25 @@ addStation(request:IStationLineRequest){
   getLine(id:number){
     this.http.get(this.externalApis.getDataApiUrl() + '/line/getline/'+ id).subscribe(
       ok => this.line.next(<ILine>ok),
-      error => console.log(error)
+      error => {
+        this.errorService.setMessage('404 NotFound')
+        this.router.navigate(['home','error'])
+      }
     )
   }
   updateLine(line:ILineUpdateRequest){
     this.http.put(this.externalApis.getDataApiUrl() + '/line/update/',line).subscribe(
       ok => this.refreshLines(),
-      error => console.log(error)
+      error => {
+        if(error.status === 404){
+          this.errorService.setMessage('404 NotFound')
+        }else{
+          this.errorService.setMessage(error)
+        }
+        this.router.navigate(['home','error'])
+      }
     )
+    this.router.navigate(['home','lines'])
   }
 
 }

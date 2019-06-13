@@ -50,6 +50,7 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
 import { EditProfileComponent } from './components/user/user-profile/edit-profile/edit-profile.component';
 import { AgmCoreModule } from '@agm/core'
 import { AgmDirectionModule } from 'agm-direction'
+import { ErrorComponent } from './components/view/error/error.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { AgmDirectionModule } from 'agm-direction'
     ChangePasswordComponent,
     UserProfileComponent,
     EditProfileComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
