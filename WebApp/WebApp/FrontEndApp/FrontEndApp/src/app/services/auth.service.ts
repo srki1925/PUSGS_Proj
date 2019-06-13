@@ -87,6 +87,7 @@ export class AuthService {
 
     this.role = ''
     this.logginChanged.next(false)
+    this.userState = '';
   }
 
   logIn(loginData: ILoginData){
@@ -118,7 +119,7 @@ export class AuthService {
       // console.log('Role ' + role)
 
       if(role === 'Passenger'){
-        this.getUserState()
+        this.fetchUserState()
       }
 
       localStorage.setItem('jwt', jwt)
