@@ -23,6 +23,7 @@ export class LineService {
         error => console.log("error kreiranje")
       )
       this.refreshLines()
+      this.router.navigate(['home','lines'])
     }
 
 
@@ -69,6 +70,7 @@ addStation(request:IStationLineRequest){
         this.router.navigate(['home','error'])
     }
   )
+  this.router.navigate(['home','lines'])
 }
   removeStation(request:IStationLineRequest){
     this.http.post(this.externalApis.getDataApiUrl()+ '/line/RemoveStation',request).subscribe(
@@ -78,6 +80,7 @@ addStation(request:IStationLineRequest){
         this.router.navigate(['home','error'])
       }
     )
+    this.router.navigate(['home','lines'])
   }
 
   subToGetLine(id:number):Subject<ILine>{
@@ -105,6 +108,7 @@ addStation(request:IStationLineRequest){
         this.router.navigate(['home','error'])
       }
     )
+    this.router.navigate(['home','lines'])
   }
 
 }

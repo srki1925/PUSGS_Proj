@@ -71,6 +71,7 @@ export class PriceListItemService {
           this.router.navigate(['home','error'])
         }
       )
+      this.router.navigate(['home','pricelistitem'])
     }
 
     removePriceListItem(id:number){

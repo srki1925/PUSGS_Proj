@@ -52,11 +52,13 @@ export class PriceListService {
           this.router.navigate(['home','error'])
         }
       )
+      this.router.navigate(['home','pricelist'])
     }
     createPriceList(list:IPriceListRequest){
       this.http.post(this.externalApis.getDataApiUrl() + '/pricelist/createpricelist',list).subscribe(
         ok => this.refreshList()
       )
+      this.router.navigate(['home','pricelist'])
     }
 
     removePriceList(id:number){

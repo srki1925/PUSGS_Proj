@@ -21,10 +21,10 @@ export class BusstationService {
     addBusStation(newBusStation:IBusStationRequest){
       let line = newBusStation;
       this.http.post(this.externalApis.getDataApiUrl() + '/busstation/createbusstation/', line).subscribe(
-        ok => this.refreshBusStations(),
-        error => console.log("error kreiranje")
+        ok => this.refreshBusStations()
       )
-
+      
+        this.router.navigate(['home','stations'])
     }
     subtToLines(id:number){
       this.getLines(id)

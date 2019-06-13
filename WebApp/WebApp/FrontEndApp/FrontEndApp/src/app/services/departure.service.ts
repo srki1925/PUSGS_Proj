@@ -22,6 +22,7 @@ export class DepartureService {
       this.http.post(this.externalApis.getDataApiUrl() + '/departure/createdeparture',newDeparture).subscribe(
       ok => this.refreshDepartures()
       )
+      this.router.navigate(['home','departures'])
     }
     subscriberToDepartureChanges():Subject<IDeparture[]>{
       this.refreshDepartures()
