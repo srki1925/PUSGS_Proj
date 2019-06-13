@@ -23,5 +23,6 @@ export class PassengerService {
         ok => this.router.navigate(['/login']),
         error => {this.errorService.setMessage(error.error.Message); this.router.navigate(['/home', 'error'])}      
       )
+        this.router.navigate(['login'])
     }
 }

@@ -13,7 +13,8 @@ export class AdminService {
 
   private usersChanged = new Subject<IUser[]>()
 
-  constructor(private http:HttpClient,private errorService:ErrorService,
+  constructor(private http:HttpClient,
+              private errorService:ErrorService,
               private externalApis : ExternalApisDataService,
               private router:Router) { }
 
@@ -30,7 +31,7 @@ export class AdminService {
   }
 
   addConductor(newConductor : IConductorRequest){
-    console.log('dsaidjasio')
+
     this.http.post(this.externalApis.getDataApiUrl() + '/Account/AddConductor', newConductor).subscribe(
       ok => { this.refreshUsers(); this.router.navigate(['/home', 'users'])},
       error => console.log(error)

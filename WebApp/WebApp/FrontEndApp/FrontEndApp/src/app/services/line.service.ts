@@ -77,7 +77,12 @@ addStation(request:IStationLineRequest){
     this.http.post(this.externalApis.getDataApiUrl()+ '/line/RemoveStation',request).subscribe(
       ok => this.getstations(request.LineId),
       error => {
-        this.errorService.setMessage('404 NotFound')
+        if(error.status === 404){
+
+          this.errorService.setMessage('404 NotFound')
+        }else{
+          this.errorService.setMessage(error.error.Message)
+        }
         this.router.navigate(['home','error'])
       }
     )
@@ -104,7 +109,7 @@ addStation(request:IStationLineRequest){
         if(error.status === 404){
           this.errorService.setMessage('404 NotFound')
         }else{
-          this.errorService.setMessage(error)
+          this.errorService.setMessage(error.error.Message)
         }
         this.router.navigate(['home','error'])
       }

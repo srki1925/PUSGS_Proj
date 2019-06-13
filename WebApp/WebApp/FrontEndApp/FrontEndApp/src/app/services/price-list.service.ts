@@ -48,7 +48,12 @@ export class PriceListService {
       this.http.put(this.externalApis.getDataApiUrl() + '/pricelist/update/',list).subscribe(
         ok => this.refreshList(),
         error => {
-          this.errorService.setMessage('404 NotFound')
+          if(error.status === 404){
+
+            this.errorService.setMessage('404 NotFound')
+          }else{
+            this.errorService.setMessage(error.error.Mesage)
+          }
           this.router.navigate(['home','error'])
         }
       )
