@@ -48,6 +48,8 @@ import { UpdatePriceListComponent } from './components/view/Finances/price-lists
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { EditProfileComponent } from './components/user/user-profile/edit-profile/edit-profile.component';
+import { AgmCoreModule } from '@agm/core'
+import { AgmDirectionModule } from 'agm-direction'
 
 @NgModule({
   declarations: [
@@ -94,14 +96,16 @@ import { EditProfileComponent } from './components/user/user-profile/edit-profil
     ChangePasswordComponent,
     UserProfileComponent,
     EditProfileComponent,
-
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDFTKbcSXEN22pUx3zfaabEOGyy7oOZtmI'
+    }),
+    AgmDirectionModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]

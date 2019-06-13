@@ -56,6 +56,7 @@ removeLine(lineId : number){
 
 addStation(request:IStationLineRequest){
   this.http.post(this.externalApis.getDataApiUrl() + '/line/addstation/',request).subscribe(
+    ok => this.getstations(request.LineId),
     error => console.log(error)
   )
 }

@@ -268,21 +268,17 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906111118522_First.cs" />
-    <Compile Include="Migrations\201906111118522_First.Designer.cs">
-      <DependentUpon>201906111118522_First.cs</DependentUpon>
+    <Compile Include="Migrations\201906131600164_First.cs" />
+    <Compile Include="Migrations\201906131600164_First.Designer.cs">
+      <DependentUpon>201906131600164_First.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906111459006_adsa.cs" />
-    <Compile Include="Migrations\201906111459006_adsa.Designer.cs">
-      <DependentUpon>201906111459006_adsa.cs</DependentUpon>
+    <Compile Include="Migrations\201906131613127_Second.cs" />
+    <Compile Include="Migrations\201906131613127_Second.Designer.cs">
+      <DependentUpon>201906131613127_Second.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906121342452_Second.cs" />
-    <Compile Include="Migrations\201906121342452_Second.Designer.cs">
-      <DependentUpon>201906121342452_Second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906130921001_Passenger_PassengerStates.cs" />
-    <Compile Include="Migrations\201906130921001_Passenger_PassengerStates.Designer.cs">
-      <DependentUpon>201906130921001_Passenger_PassengerStates.cs</DependentUpon>
+    <Compile Include="Migrations\201906131633436_StationsChangeset.cs" />
+    <Compile Include="Migrations\201906131633436_StationsChangeset.Designer.cs">
+      <DependentUpon>201906131633436_StationsChangeset.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Finances\Extensions\DateTimeExtension.cs" />
@@ -298,6 +294,7 @@
     <Compile Include="Models\LinesAdministration\BusStation.cs" />
     <Compile Include="Models\LinesAdministration\Departure.cs" />
     <Compile Include="Models\LinesAdministration\Line.cs" />
+    <Compile Include="Models\LinesAdministration\OrderedBusStation.cs" />
     <Compile Include="Models\RequestModel\AdministrationRequests\ConductorCreationRequest.cs" />
     <Compile Include="Models\RequestModel\AdministrationRequests\UpdateUserRequest.cs" />
     <Compile Include="Models\RequestModel\BusStationRequest\BusStationCreationRequest.cs" />
@@ -458,17 +455,14 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906111118522_First.resx">
-      <DependentUpon>201906111118522_First.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906131600164_First.resx">
+      <DependentUpon>201906131600164_First.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906111459006_adsa.resx">
-      <DependentUpon>201906111459006_adsa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906131613127_Second.resx">
+      <DependentUpon>201906131613127_Second.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906121342452_Second.resx">
-      <DependentUpon>201906121342452_Second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906130921001_Passenger_PassengerStates.resx">
-      <DependentUpon>201906130921001_Passenger_PassengerStates.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906131633436_StationsChangeset.resx">
+      <DependentUpon>201906131633436_StationsChangeset.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

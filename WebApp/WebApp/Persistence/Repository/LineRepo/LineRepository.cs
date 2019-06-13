@@ -9,30 +9,29 @@ namespace WebApp.Persistence.Repository.LineRepo
 {
 	public sealed class LineRepository : Repository<Line, int>, ILineRepository
 	{
-        private ApplicationDbContext _context;
+		private ApplicationDbContext _context;
+
 		public LineRepository(DbContext context) : base(context)
 		{
-            _context = context as ApplicationDbContext;
+			_context = context as ApplicationDbContext;
 		}
 
-        public Line GetLine(Expression<Func<Line, bool>> predicate)
-        {
-            if (_context.Lines.Any(predicate))
-            {
-                return _context.Lines.Where(predicate).Include(x => x.Stations).First();
-            }
-            return null;
+		public Line GetLine(Expression<Func<Line, bool>> predicate)
+		{
+			if (_context.Lines.Any(predicate))
+			{
+				return _context.Lines.Where(predicate).Include(x => x.Stations).Include("Stations.Station").First();
+			}
+			return null;
+		}
 
-        }
-
-        public List<Line> GetLines(Expression<Func<Line, bool>> predicate)
-        {
-            if (_context.Lines.Any(predicate))
-            {
-                return _context.Lines.Where(predicate).Include( x=> x.Stations).ToList();
-
-            }
-            return null;
-        }
-    }
+		public List<Line> GetLines(Expression<Func<Line, bool>> predicate)
+		{
+			if (_context.Lines.Any(predicate))
+			{
+				return _context.Lines.Where(predicate).Include(x => x.Stations).Include("Stations.Station").ToList();
+			}
+			return null;
+		}
+	}
 }

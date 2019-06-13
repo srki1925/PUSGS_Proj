@@ -19,8 +19,8 @@ namespace WebApp.Models
 
 		public LineType LineType { get; set; }
 
-		public List<BusStation> Stations { get; set; }
+		public List<OrderedBusStation> Stations { get; set; }
 
-        public bool Active { get; set; } = true;
+		public bool Active { get; set; } = true;
 	}
 }

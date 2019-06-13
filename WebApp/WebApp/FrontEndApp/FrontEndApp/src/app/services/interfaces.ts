@@ -55,8 +55,8 @@ export interface IBusStation{
     Id:number,
     Name:string,
     Address:string,
-    Longitude:string,
-    Latitude:string,
+    Longitude:number,
+    Latitude:number,
     Active:boolean
 }
 
@@ -189,4 +189,9 @@ export interface IUserProfileResponse{
     EncodedImage : string,
     UserType : string
     PassengerType : string
+}
+
+export interface IMarker{
+    lat : number,
+    lng : number
 }

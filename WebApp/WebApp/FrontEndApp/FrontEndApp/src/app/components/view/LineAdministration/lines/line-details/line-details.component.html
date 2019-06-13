@@ -14,6 +14,9 @@
           <td>{{item.Longitude}}</td>
       </tr>
     </table>
+    <agm-map *ngIf="stations != undefined && stations.length > 0" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-direction [origin]="origin" [destination]="destination" [waypoints]="waypoints"></agm-direction>
+    </agm-map>
     </div>
     <div *ngIf="stations == undefined || stations.length == 0">
         <h4>Selected line does not contain any bus stations at the moment.</h4>

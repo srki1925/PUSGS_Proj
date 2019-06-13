@@ -52,10 +52,10 @@ namespace WebApp.Controllers
 			var station = unitOfWork.StationServices.GetStation(x => x.Id == addStationRequest.StationId && x.Active);
 			if (line != null && station != null)
 			{
-				if (line.Stations == null) line.Stations = new List<BusStation>();
-				if (!line.Stations.Contains(station))
+				if (line.Stations == null) line.Stations = new List<OrderedBusStation>();
+				if (!line.Stations.ConvertAll(x => x.Station).Contains(station))
 				{
-					line.Stations.Add(station);
+					line.Stations.Add(new OrderedBusStation() { Id = line.Stations.Count, Station = station });
 					unitOfWork.Complete();
 					return Ok();
 				}
@@ -74,7 +74,7 @@ namespace WebApp.Controllers
 		{
 			var line = unitOfWork.LineServices.GetLine(x => x.Id == stationRequest.LineId && x.Active);
 
-			var station = line.Stations.Where(x => x.Id == stationRequest.StationId).First();
+			var station = line.Stations.Where(x => x.Station.Id == stationRequest.StationId).First();
 			if (line != null && station != null)
 			{
 				line.Stations.Remove(station);
@@ -131,7 +131,7 @@ namespace WebApp.Controllers
 			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
 			if (line != null)
 			{
-				return Ok(line.Stations);
+				return Ok(line.Stations.OrderBy(x => x.Id).Select(x => x.Station));
 			}
 			return Ok(new List<BusStation>(0));
 		}

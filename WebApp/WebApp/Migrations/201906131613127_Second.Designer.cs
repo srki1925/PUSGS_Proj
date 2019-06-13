@@ -7,18 +7,18 @@ namespace WebApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Passenger_PassengerStates : IMigrationMetadata
+    public sealed partial class Second : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Passenger_PassengerStates));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Second));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906130921001_Passenger_PassengerStates"; }
+            get { return "201906131613127_Second"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

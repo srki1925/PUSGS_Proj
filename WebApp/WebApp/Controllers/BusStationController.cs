@@ -29,7 +29,7 @@ namespace WebApp.Controllers
 				Longitude = busStationCreationRequest.Longitude,
 				Latitude = busStationCreationRequest.Latitude
 			};
-            busStation.Lines = new List<Line>();
+			busStation.Lines = new List<Line>();
 			unitOfWork.StationServices.Add(busStation);
 			unitOfWork.Complete();
 		}
@@ -43,18 +43,17 @@ namespace WebApp.Controllers
 			return Ok(response.Where(x => x.Active));
 		}
 
-        [HttpGet]
-        [Route("BusStations/{id}")]
-        [Authorize(Roles = "Admin")]
-        public IHttpActionResult GetStations(int id)
-        {
-            var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
-            var stations = unitOfWork.StationServices.GetStations(x => x.Active);
-             return Ok(stations.Where(x => x.Lines.Find(y => y.Id == id) == null).ToList());
-            
-        }
+		[HttpGet]
+		[Route("BusStations/{id}")]
+		[Authorize(Roles = "Admin")]
+		public IHttpActionResult GetStations(int id)
+		{
+			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
+			var stations = unitOfWork.StationServices.GetStations(x => x.Active);
+			return Ok(stations.Where(x => x.Lines.Find(y => y.Id == id) == null).ToList());
+		}
 
-        [HttpDelete]
+		[HttpDelete]
 		[Route("RemoveBusStation/{id}")]
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult RemoveBusStation(int id)
@@ -63,7 +62,7 @@ namespace WebApp.Controllers
 			if (busStation != null)
 			{
 				busStation.Active = false;
-                busStation.Lines.Clear();
+				busStation.Lines.Clear();
 				unitOfWork.Complete();
 				return Ok();
 			}
@@ -72,16 +71,17 @@ namespace WebApp.Controllers
 				return NotFound();
 			}
 		}
-        [HttpGet]
-        [Route("GetLines/{id}")]
-        public IHttpActionResult GetLines(int id)
-        {
-            var bus = unitOfWork.StationServices.GetStation(x => x.Active && x.Id == id);
-            if(bus != null)
-            {
-                return Ok(bus.Lines);
-            }
-            return Ok(new List<BusStation>(0));
-        }
+
+		[HttpGet]
+		[Route("GetLines/{id}")]
+		public IHttpActionResult GetLines(int id)
+		{
+			var bus = unitOfWork.StationServices.GetStation(x => x.Active && x.Id == id);
+			if (bus != null)
+			{
+				return Ok(bus.Lines);
+			}
+			return Ok(new List<BusStation>(0));
+		}
 	}
 }
