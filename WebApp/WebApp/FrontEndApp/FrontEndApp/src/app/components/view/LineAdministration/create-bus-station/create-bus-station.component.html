@@ -1,5 +1,6 @@
-<div>
-    <form [formGroup]="busForm" (submit)="onSubmit()">
+<div class="row">
+  <hr>
+    <form class="col-sm-5" [formGroup]="busForm" (submit)="onSubmit()">
       <div class="form-group">
         <label for="Name">Name: </label>
         <input type="text" id="Name" formControlName="Name" class="form-control">
@@ -23,8 +24,7 @@
     <h4 class="text-danger" *ngIf="validationMessage !== ''">
       {{validationMessage}}
     </h4>
-    <hr>
-    <agm-map [zoom]="zoom" [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+    <agm-map class="col-md-7" [zoom]="zoom" [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
         <agm-marker *ngIf="chosen" [longitude]="marker.lng" [latitude]="marker.lat" [markerDraggable]="draggable" (dragEnd)="onMarkerDrag($event)"></agm-marker>
     </agm-map>
   </div>
