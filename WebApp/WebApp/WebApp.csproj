@@ -299,6 +299,7 @@
     <Compile Include="Models\LinesAdministration\Departure.cs" />
     <Compile Include="Models\LinesAdministration\Line.cs" />
     <Compile Include="Models\RequestModel\AdministrationRequests\ConductorCreationRequest.cs" />
+    <Compile Include="Models\RequestModel\AdministrationRequests\UpdateUserRequest.cs" />
     <Compile Include="Models\RequestModel\BusStationRequest\BusStationCreationRequest.cs" />
     <Compile Include="Models\RequestModel\DepartureRequest\DepartureCreationRequest.cs" />
     <Compile Include="Models\RequestModel\DepartureRequest\DepartureResponse.cs" />

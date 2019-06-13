@@ -14,6 +14,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using WebApp.Models;
+using WebApp.Models.RequestModel.AdministrationRequests;
 using WebApp.Models.ResponseModel;
 using WebApp.Models.Users;
 using WebApp.Persistence.UnitOfWork;
@@ -145,8 +146,34 @@ namespace WebApp.Controllers
 		{
 			var users = unitOfWork.UsersRepository.Find(x => x.Email == HttpContext.Current.User.Identity.Name);
 			if (!users.Any()) return NotFound();
-
 			return Ok(new UserDetailsResponse(users.First()));
+		}
+
+		[HttpPost]
+		[Route("Update")]
+		[Authorize(Roles = "Admin, Controller, Passenger")]
+		public IHttpActionResult UpdateUserData(UpdateUserRequest request)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			var users = unitOfWork.UsersRepository.Find(x => x.Email == HttpContext.Current.User.Identity.Name);
+			if (!users.Any()) return NotFound();
+
+			var user = users.First();
+			if (user.FirstName != request.FirstName) user.FirstName = request.FirstName;
+			if (user.LastName != request.LastName) user.LastName = request.LastName;
+
+			var passenger = user as Passenger;
+			if (passenger != null && passenger.ImageUri != request.EncodedImage)
+			{
+				passenger.ImageUri = request.EncodedImage;
+			}
+			unitOfWork.Complete();
+
+			return Ok();
 		}
 
 		// POST api/Account/SetPassword
@@ -357,7 +384,9 @@ namespace WebApp.Controllers
 				FirstName = model.FirstName,
 				LastName = model.LastName,
 				PassengerType = model.PassengerType.HasValue ? model.PassengerType.Value : Models.Enums.PassengerType.Regular,
-				ImageUri = model.EncodedImage
+				ImageUri = model.EncodedImage,
+				LockoutEnabled = true,
+				LockoutEndDateUtc = DateTime.UtcNow.AddDays(10)
 			};
 
 			user.PassengerState = user.PassengerType == Models.Enums.PassengerType.Regular ? PassengerState.Accepted : PassengerState.Waiting;
