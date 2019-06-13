@@ -11,12 +11,9 @@ import { DepartureService } from './../../../../services/departure.service'
 export class ListDepartureComponent implements OnInit {
 
   constructor(private departureService:DepartureService) { }
-  public removeDepartureForm:FormGroup
+
   public departures :IDeparture[]
   ngOnInit() {
-    this.removeDepartureForm = new FormGroup({
-      DepId: new FormControl(null,[Validators.nullValidator,Validators.required])
-    })
     this.departureService.subscriberToDepartureChanges().subscribe((data:IDeparture[])=> {this.departures = data;})
     this.departureService.refreshDepartures()
   }
@@ -35,10 +32,10 @@ export class ListDepartureComponent implements OnInit {
       case DayType.Sunday:return 'Sunday'
     }
   }
-  onRemove(){
-    if(this.removeDepartureForm.valid){
-    this.departureService.removeDeparture(this.removeDepartureForm.value.DepId)
+  onRemove(id:number){
+
+    this.departureService.removeDeparture(id)
     this.departureService.refreshDepartures()
-    }
+    
   }
 }

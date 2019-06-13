@@ -30,6 +30,8 @@ import {AddStationsComponent} from './components/view/LineAdministration/lines/a
 import {LineDetailsComponent} from './components/view/LineAdministration/lines/line-details/line-details.component'
 import {RemoveStationComponent} from './components/view/LineAdministration/lines/remove-station/remove-station.component'
 import {UpdateLineComponent} from './components/view/LineAdministration/lines/update-line/update-line.component'
+import {DetailsStationComponent} from './components/view/LineAdministration/stations/details-station/details-station.component'
+
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
@@ -48,7 +50,8 @@ const routes: Routes = [
       {path: ':id/update',component:UpdateLineComponent}
     ]},
     { path:'stations',component: StationsComponent, canActivate: [AdminGuard] ,children:[
-      { path:'new',component: CreateBusStationComponent }
+      { path:'new',component: CreateBusStationComponent },
+      {path:':id/details',component:DetailsStationComponent}
     ]},
     { path:'departures',component: DeparturesComponent,children:[
       { path:'new',component: CreateDepartureComponent, canActivate : [AdminGuard] }

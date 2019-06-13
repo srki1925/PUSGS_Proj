@@ -11,23 +11,21 @@ import { BusstationService } from './../../../../services/busstation.service';
 export class ListBusStationComponent implements OnInit {
 
   public busStations:IBusStation[]
-  public removeBusStationForm:FormGroup
+
 
 
   constructor(private busStationService:BusstationService) { }
 
   ngOnInit() {
-    this.removeBusStationForm = new FormGroup({
-      BusStationId: new FormControl(null,[Validators.required,Validators.nullValidator])
-    })
+
     this.busStationService.subscriberToBusChanges().subscribe((data:IBusStation[])=> {this.busStations = data;})
     this.busStationService.refreshBusStations()
     
   }
-  onRemove(){
-    if(this.removeBusStationForm.valid){
-    this.busStationService.removeBusStation(this.removeBusStationForm.value.BusStationId)
+  onRemove(id:number){
+
+    this.busStationService.removeBusStation(id)
     this.busStationService.refreshBusStations()
-    }
+    
   }
 }

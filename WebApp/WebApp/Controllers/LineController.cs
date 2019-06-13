@@ -96,19 +96,12 @@ namespace WebApp.Controllers
             var check =unitOfWork.LineServices.GetLine(x => x.Active && x.Name == lineUpdateRequest.Name);
             if (line != null && check == null)
             {
-                try
-                {
+
                 line.Name = lineUpdateRequest.Name;
                 line.LineType = lineUpdateRequest.LineType;
                 unitOfWork.Complete();
                 return Ok();
 
-                }
-                catch (System.Exception ex)
-                {
-                    return BadRequest();
-                    System.Console.WriteLine(ex.Message);
-                }
             }
             else if (line == null)
             {
@@ -150,10 +143,11 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult RemoveLine(int id)
 		{
-			var line = unitOfWork.LineServices.Get(id);
+			var line = unitOfWork.LineServices.GetLine(x => x.Active && x.Id == id);
 			if (line != null)
 			{
 				line.Active = false;
+                line.Stations.Clear();
 				unitOfWork.Complete();
 				return Ok();
 			}

@@ -11,13 +11,9 @@ import { LineService } from './../../../../services/line.service';
 export class LineListComponent implements OnInit {
 
   public lines:ILine[]
-  public removeLineForm:FormGroup
   constructor(private lineService:LineService) { }
 
   ngOnInit() {
-    this.removeLineForm = new FormGroup({
-      LineId: new FormControl(null,[Validators.required,Validators.nullValidator])
-    })
     this.lineService.subscriberToLineChanges().subscribe((data:ILine[]) =>{this.lines = data;})
     this.lineService.refreshLines()
 
@@ -28,10 +24,10 @@ export class LineListComponent implements OnInit {
       case LineType.Outskirts: return 'Outskirts'
     }
   }
-onRemove(){
-  if(this.removeLineForm.valid){
-  this.lineService.removeLine(this.removeLineForm.value.LineId)
+onRemove(id:number){
+
+  this.lineService.removeLine(id)
   this.lineService.refreshLines()
-  }
+  
 }
 }

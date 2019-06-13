@@ -1,0 +1,10 @@
+<table class="table table-striped custab">
+  <tr>
+    <th>Name</th>
+    <th>LineType</th>
+  </tr>
+  <tr *ngFor="let line of lines">
+      <td>{{line.Name}}</td>
+      <td>{{getLineTypeString(line.LineType)}}</td>
+   </tr>
+</table>

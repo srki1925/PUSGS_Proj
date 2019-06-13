@@ -13,20 +13,16 @@ export class ListPriceListComponent implements OnInit {
   constructor(private priceListService:PriceListService) { }
 
   public list:IPriceList[]
-  public blockForm:FormGroup
-  ngOnInit() {
-    this.blockForm = new FormGroup({
-      ListId: new FormControl(null,[Validators.required])
-    })
 
+  ngOnInit() {
     this.priceListService.subscribeToListChanged().subscribe((data:IPriceList[])=>{
       this.list =data;
     })
   }
 
-  onBlock(){
-    if(this.blockForm.valid){
-      this.priceListService.removePriceList(this.blockForm.value.ListId)
-    }
+  onRemove(id:number){
+
+      this.priceListService.removePriceList(id)
+
   }
 }

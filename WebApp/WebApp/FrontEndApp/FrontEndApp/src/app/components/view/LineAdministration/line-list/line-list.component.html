@@ -1,29 +1,19 @@
-
-  <form [formGroup]="removeLineForm" (submit)="onRemove()">
-    <div>
-      <label for="LineId">Line id: </label>
-      <input type="number" formControlName="LineId" class="form-control" />
-      <button type="submit">Remove</button>
-    </div>
-  </form>
-  <table border="1">
+ <table class="table table-striped custab">
     <tr>
       <th>Id</th>
       <th>Name</th>
       <th>LineType</th>
-      <th>Active</th>
-      <th colspan = 4 halign = Central>Options</th>
+      <th colspan = 5 class="text-center">Options</th>
     </tr>
     <tr *ngFor="let line of lines">
         <td>{{line.Id}}</td>
         <td>{{line.Name}}</td>
         <td>{{getLineTypeString(line.LineType)}}</td>
-        <td>{{line.Active}}</td>
-        <td><a [routerLink]="['/home','lines',line.Id,'add']" class="button">Add</a></td>
-        <td><a [routerLink]="['/home','lines',line.Id,'details']" class="button">Details</a></td>
-        <td><a [routerLink]="['/home','lines',line.Id,'update']" class="button">Update</a></td>
-        <td><a [routerLink]="['/home','lines',line.Id,'remove']" class="button">Remove</a></td>
-
+        <td><a [routerLink]="['/home','lines',line.Id,'add']" class="btn btn-primary btn-xs pull-right">Add Station</a></td>
+        <td><a [routerLink]="['/home','lines',line.Id,'details']" class="btn btn-success btn-xs">Details</a></td>
+        <td><a [routerLink]="['/home','lines',line.Id,'update']" class='btn btn-info btn-xs'>Update Line</a></td>
+        <td><a [routerLink]="['/home','lines',line.Id,'remove']" class="btn btn-danger btn-xs">Remove Station</a></td>
+        <td> <button (click)="onRemove(line.Id)" class="btn btn-danger btn-xs">Remove Line</button></td>
       </tr>
   </table>
 

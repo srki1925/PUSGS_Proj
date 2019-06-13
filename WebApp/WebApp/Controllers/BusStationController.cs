@@ -29,7 +29,7 @@ namespace WebApp.Controllers
 				Longitude = busStationCreationRequest.Longitude,
 				Latitude = busStationCreationRequest.Latitude
 			};
-
+            busStation.Lines = new List<Line>();
 			unitOfWork.StationServices.Add(busStation);
 			unitOfWork.Complete();
 		}
@@ -59,10 +59,11 @@ namespace WebApp.Controllers
 		[Authorize(Roles = "Admin")]
 		public IHttpActionResult RemoveBusStation(int id)
 		{
-			var busStation = unitOfWork.StationServices.Get(id);
+			var busStation = unitOfWork.StationServices.GetStation(x => x.Active && x.Id == id);
 			if (busStation != null)
 			{
 				busStation.Active = false;
+                busStation.Lines.Clear();
 				unitOfWork.Complete();
 				return Ok();
 			}
@@ -71,5 +72,16 @@ namespace WebApp.Controllers
 				return NotFound();
 			}
 		}
+        [HttpGet]
+        [Route("GetLines/{id}")]
+        public IHttpActionResult GetLines(int id)
+        {
+            var bus = unitOfWork.StationServices.GetStation(x => x.Active && x.Id == id);
+            if(bus != null)
+            {
+                return Ok(bus.Lines);
+            }
+            return NotFound();
+        }
 	}
 }

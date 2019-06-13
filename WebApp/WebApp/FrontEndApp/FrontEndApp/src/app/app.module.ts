@@ -43,6 +43,8 @@ import { AddStationsComponent } from './components/view/LineAdministration/lines
 import { LineDetailsComponent } from './components/view/LineAdministration/lines/line-details/line-details.component';
 import { RemoveStationComponent } from './components/view/LineAdministration/lines/remove-station/remove-station.component';
 import { UpdateLineComponent } from './components/view/LineAdministration/lines/update-line/update-line.component';
+import { DetailsStationComponent } from './components/view/LineAdministration/stations/details-station/details-station.component';
+import { UpdatePriceListComponent } from './components/view/Finances/price-lists/update-price-list/update-price-list.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { UpdateLineComponent } from './components/view/LineAdministration/lines/
     LineDetailsComponent,
     RemoveStationComponent,
     UpdateLineComponent,
+    DetailsStationComponent,
+    UpdatePriceListComponent,
 
 
   ],

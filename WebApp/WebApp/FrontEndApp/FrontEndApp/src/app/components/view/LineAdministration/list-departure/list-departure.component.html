@@ -1,26 +1,16 @@
-<form [formGroup]="removeDepartureForm" (submit)="onRemove()">
-  <div>
-    <label for="DepId">DepartureId: </label>
-    <input type="number" formControlName="DepId" class="form-control" />
-    <button type="submit">Remove</button>
-  </div>
-</form>
-
 <table border="1">
   <tr>
-    <th>Id</th>
     <th>Time</th>
     <th>DayType</th>
     <th>Line Name</th>
     <th>LineType</th>
-    <th>Active</th>
+    <th class="text-center">Option</th>
   </tr>
   <tr *ngFor="let departure of departures">
-      <td>{{departure.Id}}</td>
       <td>{{departure.Time}}</td>
       <td>{{getDayTypeString(departure.DayType)}}</td>
       <td>{{departure.Line.Name}}</td>
       <td>{{getLineTypeString(departure.Line.LineType)}}</td>
-      <td>{{departure.Active}}</td>
+      <td><button (click)="onRemove(departure.Id)"  class="btn btn-danger btn-xs">Remove</button></td>
   </tr>
 </table>

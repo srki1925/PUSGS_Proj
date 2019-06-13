@@ -39,6 +39,12 @@ export class PriceListService {
         
     }
 
+    updatePriceList(list:IPriceList){
+      this.http.put(this.externalApis.getDataApiUrl() + '/pricelist/update/',list).subscribe(
+        ok => this.refreshList(),
+        error => console.log(error)
+      )
+    }
     createPriceList(list:IPriceListRequest){
       this.http.post(this.externalApis.getDataApiUrl() + '/pricelist/createpricelist',list).subscribe(
         ok => this.refreshList(),

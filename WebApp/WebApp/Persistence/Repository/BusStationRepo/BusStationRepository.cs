@@ -19,7 +19,7 @@ namespace WebApp.Persistence.Repository.StationRepo
         {
             if (_context.BusStations.Any(predicate))
             {
-            return _context.BusStations.Where(predicate).First() as BusStation;
+            return _context.BusStations.Where(predicate).Include(x => x.Lines).First() as BusStation;
 
             }
             return null;

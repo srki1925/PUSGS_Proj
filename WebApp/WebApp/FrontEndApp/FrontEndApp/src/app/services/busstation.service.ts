@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IBusStation,IBusStationRequest} from './interfaces'
+import { IBusStation,IBusStationRequest, ILine} from './interfaces'
 import { Subject } from 'rxjs';
 import { ExternalApisDataService } from './external-apis-data.service'
 import { ok } from 'assert';
@@ -15,6 +15,7 @@ export class BusstationService {
     private externalApis : ExternalApisDataService) { }
     private busStationsChanged = new Subject<IBusStation[]>()
     private stations = new Subject<IBusStation[]>()
+    private lines = new Subject<ILine[]>()
     addBusStation(newBusStation:IBusStationRequest){
       let line = newBusStation;
       this.http.post(this.externalApis.getDataApiUrl() + '/busstation/createbusstation/', line).subscribe(
@@ -23,7 +24,16 @@ export class BusstationService {
       )
 
     }
-
+    subtToLines(id:number){
+      this.getLines(id)
+      return this.lines
+    }
+    getLines(id:number){
+      this.http.get(this.externalApis.getDataApiUrl() + '/busstation/getlines/'+id).subscribe(
+        ok => this.lines.next(<ILine[]>ok),
+        error => console.log(error)
+      )
+    }
     subscriberToFilterBusStations(id:number){
       this.getStationsFilter(id)
       return this.stations
