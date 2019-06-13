@@ -147,7 +147,10 @@ export interface IPriceList{
     To:Date,
     PriceListItems:IPriceListItem[]
 }
-
+export interface IPriceListUpdateRequest{
+    Id:number,
+    PriceListItems:number[]
+}
 export interface ITicketDefinitionResponse{
     Id : number,
     TicketType : string,

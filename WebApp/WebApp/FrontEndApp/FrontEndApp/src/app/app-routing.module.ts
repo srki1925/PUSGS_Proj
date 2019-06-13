@@ -35,6 +35,7 @@ import { ChangePasswordComponent } from './components/user/change-password/chang
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { EditProfileComponent } from './components/user/user-profile/edit-profile/edit-profile.component';
 
+import { UpdatePriceListComponent} from './components/view/Finances/price-lists/update-price-list/update-price-list.component'
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
@@ -65,7 +66,8 @@ const routes: Routes = [
     ]},
     { path:'pricelist',component: PriceListsComponent, canActivate : [AdminGuard] ,children:[
       { path:'newPriceList',component: CreatePriceListComponent },
-      {path:':id',component:PriceListDetailsComponent} 
+      {path:':id',component:PriceListDetailsComponent} ,
+      {path:':id/update',component:UpdatePriceListComponent}
     ]},
     { path:'pricelistitem',component: PriceListItemsComponent, canActivate : [AdminGuard] ,children:[
       { path:'newItem',component: CreatePriceListItemComponent }
