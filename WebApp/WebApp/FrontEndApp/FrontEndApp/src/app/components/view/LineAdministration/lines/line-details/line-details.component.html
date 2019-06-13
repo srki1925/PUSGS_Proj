@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="stations != undefined && stations.length > 0">
     <table border="1">
       <tr>
         <th>Name</th>
@@ -14,4 +14,7 @@
           <td>{{item.Longitude}}</td>
       </tr>
     </table>
+    </div>
+    <div *ngIf="stations == undefined || stations.length == 0">
+        <h4>Selected line does not contain any bus stations at the moment.</h4>
     </div>

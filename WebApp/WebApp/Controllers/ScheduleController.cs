@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApp.Models;
 using WebApp.Models.Enums;
 using WebApp.Models.RequestModel.ScheduleRequest;
 using WebApp.Persistence.UnitOfWork;
@@ -29,7 +30,7 @@ namespace WebApp.Controllers
             {
                 return Ok(lines);
             }
-            return NotFound();
+            return Ok( new List<Line>(0));
 
         }
 
@@ -42,7 +43,7 @@ namespace WebApp.Controllers
             {
                 return Ok(deparutes);
             }
-            return NotFound();
+            return Ok(new List<Departure>(0));
         }
     }
 }

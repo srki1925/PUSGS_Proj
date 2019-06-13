@@ -27,4 +27,7 @@
     <hr>
     <button type="submit">Update PriceList</button>
   </form>
+  <h4 class="text-danger" *ngIf="validationMessage !== ''">
+    {{validationMessage}}
+  </h4>
 </div>

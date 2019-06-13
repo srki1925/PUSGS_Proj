@@ -78,9 +78,9 @@ namespace WebApp.Controllers
         public IHttpActionResult Update(PriceListUpdateRequest update)
         {
             var list = unitOfWork.PriceListServices.GetPriceList(x => x.Active && x.Id == update.Id);
-            list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
             if (list != null)
             {
+            list.PriceListItems = list.PriceListItems.OrderBy(x => x.TicketDefinition.TicketType).ToList();
                 for (int i = 0; i < 4; i++)
                 {
                     var id = update.PriceListItems[i];

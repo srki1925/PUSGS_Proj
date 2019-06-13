@@ -81,7 +81,7 @@ namespace WebApp.Controllers
             {
                 return Ok(bus.Lines);
             }
-            return NotFound();
+            return Ok(new List<BusStation>(0));
         }
 	}
 }

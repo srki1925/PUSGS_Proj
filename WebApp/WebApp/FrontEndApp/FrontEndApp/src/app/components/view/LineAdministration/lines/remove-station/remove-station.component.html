@@ -1,4 +1,6 @@
-<form [formGroup]="removeForm" (submit)="onRemove()">
+<div *ngIf="stations != undefined && stations.length > 0">
+
+  <form [formGroup]="removeForm" (submit)="onRemove()">
     <div>
       <select formControlName="StationId">
         <option  *ngFor="let item of stations" value={{item.Id}}>{{item.Name}} {{item.Address}}</option>
@@ -8,3 +10,7 @@
       <button type="submit">Remove</button>
     </div>
   </form>
+</div>
+<div *ngIf="stations == undefined || stations.length == 0">
+  <h4>Selected line does not contain any bus stations at the moment.</h4>
+</div>

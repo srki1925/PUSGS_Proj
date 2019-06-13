@@ -1,4 +1,4 @@
- <table class="table table-striped custab">
+ <table class="table table-striped custab" *ngIf="lines != undefined && lines.length > 0">
     <tr>
       <th>Id</th>
       <th>Name</th>
@@ -16,4 +16,6 @@
         <td *ngIf="isAdmin"> <button (click)="onRemove(line.Id)" class="btn btn-danger btn-xs">Remove Line</button></td>
       </tr>
   </table>
-
+<div *ngIf="lines == undefined || lines.length == 0">
+  <h4>There are no acitve lines at the moment.</h4>
+</div>
